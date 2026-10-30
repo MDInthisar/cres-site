@@ -54,11 +54,11 @@ export function AdmissionTimeline({
         type="button"
         aria-label="Open Apply Guide"
         onClick={() => onOpenChange(true)}
-        className="fixed left-0 top-[44%] z-[9999] hidden -translate-y-1/2 items-center justify-center rounded-r-2xl bg-red-700 px-2.5 py-4 text-white shadow-lg transition-all duration-300 hover:bg-red-800 sm:flex"
+        className="site-floating-action site-floating-action--left fixed left-0 top-[44%] z-[9999] hidden -translate-y-1/2 items-center justify-center rounded-r-2xl bg-red-700 px-2.5 py-4 text-white shadow-lg transition-all duration-300 hover:bg-red-800 md:flex"
       >
-        <span className="flex flex-col items-center gap-2">
-          <GraduationCap className="size-5 shrink-0" aria-hidden />
-          <span className="[writing-mode:vertical-rl] rotate-180 text-sm font-semibold tracking-[0.08em]">
+        <span className="site-floating-action__content flex flex-col items-center gap-2">
+          <GraduationCap className="site-floating-action__icon size-5 shrink-0" aria-hidden />
+          <span className="site-floating-action__label [writing-mode:vertical-rl] rotate-180 text-sm font-semibold tracking-[0.08em]">
             Apply Guide
           </span>
         </span>
@@ -541,21 +541,5 @@ export function AdmissionTimeline({
         </DialogContent>
       </Dialog>
     </>
-  );
-}
-
-export function ApplyGuideFab({ onClick }: { onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      aria-label="Open Apply Guide"
-      onClick={onClick}
-      className="flex items-center justify-center rounded-2xl bg-red-700 px-2.5 py-2.5 text-white shadow-lg transition-all duration-300 hover:bg-red-800 sm:hidden"
-    >
-      <span className="flex flex-row items-center gap-2">
-        <GraduationCap className="size-5 shrink-0" aria-hidden />
-        <span className="text-xs font-semibold tracking-[0.04em]">Apply Guide</span>
-      </span>
-    </button>
   );
 }

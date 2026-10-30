@@ -1,10 +1,39 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import faqs from "../data/faq";
+import faqs, { greetingResponse, isGreeting } from "../data/faq";
 import { ui } from "../data/translations";
-import { findBestMatch } from "../utils/fuzzyMatch";
-import { MAX_QUESTIONS, type Language, type Message } from "../types/chat";
+import { findBestMatch, tokenize } from "../utils/fuzzyMatch";
+import type { Language, Message } from "../types/chat";
 
 const createId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+const GENERAL_FEE_TERMS = new Set([
+  "fee",
+  "fees",
+  "tuition",
+  "course",
+  "courses",
+  "program",
+  "programs",
+  "programme",
+  "programmes",
+  "structure",
+  "total",
+  "cost",
+  "costs",
+  "price",
+  "prices",
+  "amount",
+  "semester",
+  "year",
+  "annual",
+  "each",
+  "all",
+  "different",
+  "ug",
+  "pg",
+  "undergraduate",
+  "postgraduate",
+]);
+const FEE_TERMS = new Set(["fee", "fees", "tuition", "cost", "costs", "price", "prices"]);
 
 const greetingMessage = (language: Language): Message => ({
   id: createId(),
@@ -15,11 +44,9 @@ const greetingMessage = (language: Language): Message => ({
 });
 
 export function useChat() {
-  const [language, setLanguageState] = useState<Language>("en");
+  const language: Language = "en";
   const [messages, setMessages] = useState<Message[]>(() => [greetingMessage("en")]);
-  const [questionCount, setQuestionCount] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
-  const [showEnquiryForm, setShowEnquiryForm] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const knowledge = useMemo(() => faqs, []);
@@ -31,24 +58,10 @@ export function useChat() {
     [],
   );
 
-  const reset = useCallback((lang: Language = "en") => {
-    if (timer.current) clearTimeout(timer.current);
-    setMessages([greetingMessage(lang)]);
-    setQuestionCount(0);
-    setIsTyping(false);
-    setShowEnquiryForm(false);
-  }, []);
-
-  const setLanguage = useCallback((lang: Language) => {
-    setLanguageState(lang);
-  }, []);
-
-  const isLocked = questionCount >= MAX_QUESTIONS;
-
   const sendMessage = useCallback(
     (raw: string) => {
       const text = raw.trim();
-      if (!text || isLocked || isTyping) return;
+      if (!text || isTyping) return;
 
       const userMessage: Message = {
         id: createId(),
@@ -57,13 +70,23 @@ export function useChat() {
         timestamp: new Date().toISOString(),
         language,
       };
-      const nextCount = questionCount + 1;
       setMessages((prev) => [...prev, userMessage]);
-      setQuestionCount(nextCount);
       setIsTyping(true);
 
-      const { entry } = findBestMatch(text, knowledge, language);
-      const answer = entry ? entry.answer[language] : ui[language].fallback;
+      const { entry: matchedEntry } = findBestMatch(text, knowledge);
+      const feeTokens = tokenize(text);
+      const isGeneralFeeQuestion =
+        feeTokens.length > 0 &&
+        feeTokens.some((token) => FEE_TERMS.has(token)) &&
+        feeTokens.every((token) => GENERAL_FEE_TERMS.has(token));
+      const entry = isGeneralFeeQuestion
+        ? (knowledge.find((item) => item.id === "q38-fee-structure") ?? matchedEntry)
+        : matchedEntry;
+      const answer = isGreeting(text)
+        ? greetingResponse
+        : entry
+          ? entry.answer
+          : ui[language].fallback;
 
       timer.current = setTimeout(
         () => {
@@ -79,57 +102,25 @@ export function useChat() {
               ...(entry?.link
                 ? {
                     link: {
-                      label: entry.link.label[language],
+                      label: entry.link.label,
                       url: entry.link.url,
                     },
                   }
                 : {}),
             };
-            const list = [...prev, botMessage];
-            if (nextCount >= MAX_QUESTIONS) {
-              list.push({
-                id: createId(),
-                sender: "bot",
-                text: ui[language].limitReached,
-                timestamp: new Date().toISOString(),
-                language,
-              });
-            }
-            return list;
+            return [...prev, botMessage];
           });
-          if (nextCount >= MAX_QUESTIONS) setShowEnquiryForm(true);
         },
         700 + Math.random() * 500,
       );
     },
-    [isLocked, isTyping, knowledge, language, questionCount],
+    [isTyping, knowledge, language],
   );
-
-  const completeEnquiry = useCallback(() => {
-    setShowEnquiryForm(false);
-    setQuestionCount(0);
-    setMessages((prev) => [
-      ...prev,
-      {
-        id: createId(),
-        sender: "bot",
-        text: ui[language].submitted,
-        timestamp: new Date().toISOString(),
-        language,
-      },
-    ]);
-  }, [language]);
 
   return {
     messages,
-    questionCount,
     isTyping,
     language,
-    showEnquiryForm,
-    isLocked,
-    setLanguage,
     sendMessage,
-    completeEnquiry,
-    reset,
   };
 }

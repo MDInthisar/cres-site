@@ -28,7 +28,7 @@ export function ChatWidget() {
               <div
                 role="status"
                 aria-live="polite"
-                className="fixed bottom-24 right-4 z-[10002] flex h-[min(78vh,650px)] w-[min(94vw,420px)] items-center justify-center rounded-[28px] border border-[#d9c49a]/45 bg-white text-sm text-slate-600 shadow-[0_25px_80px_rgba(20,32,63,0.28)] sm:right-6"
+                className="chatbot-window flex items-center justify-center rounded-[28px] border border-[#d9c49a]/45 bg-white text-sm text-slate-600 shadow-[0_25px_80px_rgba(20,32,63,0.28)]"
               >
                 Loading admission assistant…
               </div>

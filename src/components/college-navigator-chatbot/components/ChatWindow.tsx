@@ -1,44 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Bot, CircleCheck, Sparkles } from "lucide-react";
-
-import crescentLogo from "@/assets/logo.jpeg";
+import { Bot, CircleCheck } from "lucide-react";
 
 import ChatInput from "./ChatInput";
-import EnquiryForm from "./EnquiryForm";
-import LanguageSwitcher from "./LanguageSwitcher";
 import MessageBubble from "./MessageBubble";
-import PdfDownloadButton from "./PdfDownloadButton";
-import ThemeToggle from "./ThemeToggle";
 import TypingIndicator from "./TypingIndicator";
 
 import { suggestions, ui } from "../data/translations";
 import { useChat } from "../hooks/useChat";
-import { useTheme } from "../hooks/useTheme";
-import { cn } from "../lib/utils";
-import { MAX_QUESTIONS } from "../types/chat";
 
 export function ChatWindow() {
-  const {
-    messages,
-    questionCount,
-    isTyping,
-    language,
-    showEnquiryForm,
-    isLocked,
-    setLanguage,
-    sendMessage,
-    completeEnquiry,
-  } = useChat();
-
-  const { theme, toggleTheme } = useTheme();
+  const { messages, isTyping, language, sendMessage } = useChat();
 
   const [draft, setDraft] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const t = ui[language];
-
-  const remaining = Math.max(MAX_QUESTIONS - questionCount, 0);
 
   const quickPrompts = useMemo(() => suggestions[language], [language]);
 
@@ -55,7 +32,7 @@ export function ChatWindow() {
         behavior: "smooth",
       });
     }
-  }, [messages, isTyping, showEnquiryForm]);
+  }, [messages, isTyping]);
 
   /* ================================
      SEND MESSAGE
@@ -94,19 +71,15 @@ export function ChatWindow() {
       }}
       role="dialog"
       aria-label={t.headerTitle}
-      className={cn(
-        `
-        fixed
-        bottom-24
-        right-4
-        z-[10002]
+      className={`
+        chatbot-window
 
         flex
-        h-[min(78vh,650px)]
-        w-[min(94vw,420px)]
         flex-col
 
         overflow-hidden
+        min-h-0
+        box-border
 
         rounded-[28px]
 
@@ -120,10 +93,7 @@ export function ChatWindow() {
         ring-1
         ring-black/5
 
-        sm:right-6
-      `,
-        theme === "dark" && "dark",
-      )}
+      `}
     >
       {/* =====================================================
           PREMIUM TOP ACCENT
@@ -151,6 +121,7 @@ export function ChatWindow() {
 
       <header
         className="
+          chatbot-header
           relative
           shrink-0
           overflow-hidden
@@ -160,9 +131,12 @@ export function ChatWindow() {
           via-[#203b70]
           to-[#8f1d1d]
 
-          px-4
-          pb-3
-          pt-5
+          px-3
+          pb-2
+          pt-4
+          sm:px-4
+          sm:pb-3
+          sm:pt-5
 
           text-white
         "
@@ -197,145 +171,17 @@ export function ChatWindow() {
 
         {/* HEADER MAIN */}
 
-        <div className="relative flex items-center gap-3">
-          {/* LOGO */}
-
-          <div
-            className="
-              relative
-              flex
-              h-16
-              w-40
-              shrink-0
-              items-center
-              justify-center
-
-              overflow-hidden
-
-              rounded-2xl
-
-              border
-              border-white/70
-
-              bg-white
-
-              shadow-[0_8px_24px_rgba(0,0,0,0.18)]
-            "
-          >
-            <img
-              src={crescentLogo}
-              alt="Crescent Logo"
-              className="
-                h-auto
-                w-[150px]
-                object-contain
-              "
-            />
-
-            {/* online dot */}
-
-            <span
-              className="
-                absolute
-                bottom-0.5
-                right-0.5
-                size-3
-                rounded-full
-                border-2
-                border-white
-                bg-emerald-500
-              "
-            />
-          </div>
-
+        <div className="relative flex items-center gap-2 sm:gap-3">
           {/* TITLE */}
 
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
-              <p className="truncate text-[15px] font-bold tracking-tight">{t.headerTitle}</p>
+              <p className="truncate text-[13px] font-bold tracking-tight sm:text-[15px]">
+                {t.headerTitle}
+              </p>
 
               <CircleCheck className="size-4 shrink-0 text-[#e0bd68]" aria-hidden />
             </div>
-
-            <p className="mt-0.5 truncate text-[11px] font-medium text-white/70">
-              {t.headerSubtitle}
-            </p>
-
-            <div className="mt-1 flex items-center gap-1.5">
-              <span className="size-1.5 rounded-full bg-emerald-400" />
-
-              <span className="text-[10px] font-medium text-white/65">
-                Online • Admissions Assistant
-              </span>
-            </div>
-          </div>
-
-          {/* HEADER ACTIONS */}
-
-          <div className="flex shrink-0 items-center gap-1.5">
-            <PdfDownloadButton messages={messages} language={language} label={t.downloadPdf} />
-
-            <ThemeToggle theme={theme} onToggle={toggleTheme} label={t.theme} />
-          </div>
-        </div>
-
-        {/* HEADER BOTTOM */}
-
-        <div
-          className="
-            relative
-            mt-3
-
-            flex
-            items-center
-            justify-between
-            gap-2
-          "
-        >
-          {/* LANGUAGE */}
-
-          <div
-            className="
-              rounded-full
-              border
-              border-white/10
-              bg-white/10
-              p-0.5
-
-              backdrop-blur-md
-            "
-          >
-            <LanguageSwitcher language={language} onChange={setLanguage} />
-          </div>
-
-          {/* QUESTIONS */}
-
-          <div
-            className="
-              flex
-              items-center
-              gap-1.5
-
-              rounded-full
-
-              border
-              border-[#e0bd68]/30
-
-              bg-black/10
-
-              px-3
-              py-1.5
-
-              backdrop-blur-md
-            "
-          >
-            <Sparkles className="size-3.5 text-[#e0bd68]" aria-hidden />
-
-            <span className="text-[10px] font-semibold text-white/85">
-              {remaining}/{MAX_QUESTIONS}
-            </span>
-
-            <span className="text-[10px] text-white/60">{t.questionsLeft}</span>
           </div>
         </div>
       </header>
@@ -348,6 +194,7 @@ export function ChatWindow() {
         ref={scrollRef}
         className="
           relative
+          min-h-0
           flex-1
 
           overflow-y-auto
@@ -529,42 +376,13 @@ export function ChatWindow() {
           shadow-[0_-8px_24px_rgba(23,44,91,0.05)]
         "
       >
-        {showEnquiryForm ? (
-          <EnquiryForm language={language} onSubmitted={completeEnquiry} />
-        ) : (
-          <>
-            <ChatInput
-              value={draft}
-              onChange={setDraft}
-              onSend={() => handleSend()}
-              disabled={isLocked || isTyping}
-              language={language}
-              remaining={remaining}
-            />
-
-            {/* FOOTER STATUS */}
-
-            <div
-              className="
-                mt-1.5
-                flex
-                items-center
-                justify-between
-                px-1
-              "
-            >
-              <div className="flex items-center gap-1.5">
-                <span className="size-1.5 rounded-full bg-emerald-500" />
-
-                <span className="text-[9px] font-medium text-slate-400">
-                  Crescent Admission Assistant
-                </span>
-              </div>
-
-              <span className="text-[9px] text-slate-400">Enter ↵ / Shift+Enter</span>
-            </div>
-          </>
-        )}
+        <ChatInput
+          value={draft}
+          onChange={setDraft}
+          onSend={() => handleSend()}
+          disabled={isTyping}
+          language={language}
+        />
       </div>
     </motion.div>
   );

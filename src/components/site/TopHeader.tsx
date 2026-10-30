@@ -189,6 +189,7 @@ export function TopHeader() {
         {/* RIGHT SIDE */}
         <div
           className="
+            top-header-actions
             flex
             shrink-0
             items-center
@@ -200,6 +201,7 @@ export function TopHeader() {
           <a
             href="https://lmscdoe.crescent-institute.edu.in/login/index.php"
             className="
+              top-header-action
               group
               flex
               shrink-0
@@ -227,6 +229,7 @@ export function TopHeader() {
           >
             <BookOpen
               className="
+                top-header-action__icon
                 size-4
                 shrink-0
                 text-[#d1ad5b]
@@ -257,6 +260,7 @@ export function TopHeader() {
           <a
             href="https://odladmission.crescent-institute.edu.in/login/index.php"
             className="
+              top-header-action
               group
               flex
               shrink-0
@@ -285,6 +289,7 @@ export function TopHeader() {
           >
             <span
               className="
+                top-header-action__icon-badge
                 flex
                 size-6
                 shrink-0
@@ -309,6 +314,7 @@ export function TopHeader() {
           <a
             href="https://odladmission.crescent-institute.edu.in/login/signup.php?"
             className="
+              top-header-action
               group
               hidden
               shrink-0
@@ -335,6 +341,7 @@ export function TopHeader() {
           >
             <span
               className="
+                top-header-action__icon-badge
                 flex
                 size-6
                 shrink-0
@@ -359,6 +366,7 @@ export function TopHeader() {
           <a
             href="https://odladmission.crescent-institute.edu.in/login/index.php"
             className="
+              top-header-action
               group
               ml-0.5
               flex
@@ -390,6 +398,7 @@ export function TopHeader() {
 
             <ArrowRight
               className="
+                top-header-action__icon
                 size-4
                 shrink-0
                 transition-transform

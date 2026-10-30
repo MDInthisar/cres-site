@@ -1,5 +1,4 @@
-export type Language = "en" | "ta" | "ur";
-export type Theme = "light" | "dark";
+export type Language = "en";
 
 export interface Message {
   id: string;
@@ -17,10 +16,10 @@ export interface FaqEntry {
   id: string;
   category: string;
   keywords: string[];
-  question: Record<Language, string>;
-  answer: Record<Language, string>;
+  question: string;
+  answer: string;
   link?: {
-    label: Record<Language, string>;
+    label: string;
     url: string;
   };
 }
@@ -32,5 +31,3 @@ export interface EnquiryData {
   course: string;
   message: string;
 }
-
-export const MAX_QUESTIONS = 5;

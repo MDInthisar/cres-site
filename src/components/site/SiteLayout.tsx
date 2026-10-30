@@ -1,11 +1,10 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { EnquiryFab } from "./EnquiryFab";
-import { FloatingActions } from "./FloatingActions";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { EventsFab, EventsModalProvider } from "./EventsFab";
-import { AdmissionTimeline, ApplyGuideFab } from "./AdmissionTimeline";
+import { AdmissionTimeline } from "./AdmissionTimeline";
 import { Chatbot } from "@/components/college-navigator-chatbot";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
@@ -21,10 +20,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <SiteFooter />
         <Chatbot />
 
-        <FloatingActions />
         <AdmissionTimeline open={applyGuideOpen} onOpenChange={setApplyGuideOpen} />
-        <div className="fixed bottom-20 left-3 z-[9999] flex flex-row gap-1.5 sm:bottom-auto sm:left-auto sm:right-0 sm:top-[44%] sm:-translate-y-1/2 sm:flex-col sm:gap-3">
-          <ApplyGuideFab onClick={() => setApplyGuideOpen(true)} />
+        <div className="site-floating-actions fixed bottom-5 left-3 right-[88px] z-[9999] grid grid-cols-2 gap-1.5 md:bottom-auto md:left-auto md:right-0 md:top-[44%] md:-translate-y-1/2 md:flex md:flex-col md:gap-3">
           <EventsFab />
           <EnquiryFab />
         </div>

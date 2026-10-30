@@ -284,9 +284,9 @@ export function HeroDE() {
               text-white
             "
           >
-            UGC Entitled
+            UGC Approved
             <br />
-            <span className="text-white">Online Programmes</span>
+            <span className="text-white">Distance Education</span>
           </h1>
 
           <p className="mt-4 text-base font-semibold text-[#e2c56e] sm:text-lg">
