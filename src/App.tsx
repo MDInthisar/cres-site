@@ -207,7 +207,7 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/cres-site">
       <AppErrorBoundary>
         <Suspense fallback={<div className="min-h-screen bg-background" aria-busy="true" />}>
           <AppRoutes />
