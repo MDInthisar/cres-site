@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/cres-site/",
+  base: process.env.VITE_BASE_PATH || "/cres-site/",
   resolve: {
     tsconfigPaths: true,
   },
