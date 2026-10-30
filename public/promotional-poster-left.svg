@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Promotional poster placeholder one</title>
+  <desc id="desc">Replace this file with the first promotional poster.</desc>
+  <rect width="900" height="1200" fill="#17243d"/>
+  <rect x="56" y="56" width="788" height="1088" rx="28" fill="#203d71" stroke="#d4af37" stroke-width="5"/>
+  <circle cx="730" cy="210" r="130" fill="#d4af37" opacity=".2"/>
+  <text x="100" y="220" fill="#d4af37" font-family="sans-serif" font-size="34" font-weight="700" letter-spacing="6">CRESCENT</text>
+  <text x="100" y="430" fill="white" font-family="sans-serif" font-size="76" font-weight="700">PROMOTIONAL</text>
+  <text x="100" y="520" fill="white" font-family="sans-serif" font-size="76" font-weight="700">POSTER 01</text>
+  <line x1="100" y1="600" x2="800" y2="600" stroke="#d4af37" stroke-width="6"/>
+  <text x="100" y="700" fill="#f7f4e9" font-family="sans-serif" font-size="38">Replace this placeholder</text>
+  <text x="100" y="760" fill="#f7f4e9" font-family="sans-serif" font-size="38">with your campaign artwork.</text>
+  <text x="100" y="1030" fill="#d4af37" font-family="sans-serif" font-size="28" letter-spacing="4">CENTRE FOR DISTANCE &amp; ONLINE EDUCATION</text>
+</svg>
