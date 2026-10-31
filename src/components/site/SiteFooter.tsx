@@ -58,7 +58,7 @@ export function SiteFooter() {
         <div className="min-w-0 sm:col-span-2 lg:col-span-1">
           <a
             href="/"
-            className="mx-auto flex w-fit max-w-full items-center rounded-xl bg-white px-3 py-2.5 sm:mx-0 sm:px-4 sm:py-3"
+            className="flex w-fit max-w-full items-center rounded-xl bg-white px-3 py-2.5 sm:px-4 sm:py-3"
             aria-label="Crescent Institute Home"
           >
             <img
@@ -68,18 +68,16 @@ export function SiteFooter() {
             />
           </a>
 
-          <p className="mt-2 text-center text-xs font-semibold text-white/90 sm:text-left">
-            {college.unit}
-          </p>
+          <p className="mt-2 text-left text-xs font-semibold text-white/90">{college.unit}</p>
 
-          <p className="mx-auto mt-3 flex max-w-md items-start justify-center gap-2 text-center text-xs leading-relaxed text-white/75 sm:mx-0 sm:justify-start sm:text-left">
+          <p className="mt-3 flex max-w-md items-start justify-start gap-2 text-left text-xs leading-relaxed text-white/75">
             <MapPin className="mt-0.5 size-3.5 shrink-0 text-[#d1ad5b]" />
             <span>{college.address}</span>
           </p>
 
           <a
             href="https://youtu.be/2jvzpjgUOhY?feature=shared"
-            className="group mx-auto mt-4 inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#d1ad5b] hover:text-[#4b1111] sm:mx-0"
+            className="group mt-4 inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#d1ad5b] hover:text-[#4b1111]"
           >
             Explore Campus
             <ArrowUpRight className="size-3.5 transition-transform group-hover:rotate-45" />

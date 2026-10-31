@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Bot } from "lucide-react";
 
 import ChatInput from "./ChatInput";
-import EnquiryForm from "./EnquiryForm";
 import MessageBubble from "./MessageBubble";
 import TypingIndicator from "./TypingIndicator";
 
@@ -11,7 +10,7 @@ import { suggestions, ui } from "../data/translations";
 import { useChat } from "../hooks/useChat";
 
 export function ChatWindow() {
-  const { messages, isTyping, showEnquiryForm, isLocked, sendMessage, completeEnquiry } = useChat();
+  const { messages, isTyping, sendMessage } = useChat();
 
   const [draft, setDraft] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -33,7 +32,7 @@ export function ChatWindow() {
         behavior: "smooth",
       });
     }
-  }, [messages, isTyping, showEnquiryForm]);
+  }, [messages, isTyping]);
 
   /* ================================
      SEND MESSAGE
@@ -312,18 +311,12 @@ export function ChatWindow() {
           shadow-[0_-8px_24px_rgba(23,44,91,0.05)]
         "
       >
-        {showEnquiryForm ? (
-          <EnquiryForm onSubmitted={completeEnquiry} />
-        ) : (
-          <>
-            <ChatInput
-              value={draft}
-              onChange={setDraft}
-              onSend={() => handleSend()}
-              disabled={isLocked || isTyping}
-            />
-          </>
-        )}
+        <ChatInput
+          value={draft}
+          onChange={setDraft}
+          onSend={() => handleSend()}
+          disabled={isTyping}
+        />
       </div>
     </motion.div>
   );

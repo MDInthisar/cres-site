@@ -28,5 +28,3 @@ export interface EnquiryData {
   course: string;
   message: string;
 }
-
-export const MAX_QUESTIONS = 5;

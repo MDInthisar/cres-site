@@ -9,6 +9,8 @@ import type { FaqEntry } from "../types/chat";
    ========================================================= */
 
 export const ADMISSION_LINK = "https://odladmission.crescent-institute.edu.in/login/index.php";
+export const APPLICATION_PORTAL_LINK =
+  "https://admission.crescent-institute.edu.in/login/index.php";
 
 export const DUMMY_ENQUIRY_EMAIL = "yourdummyemail@gmail.com";
 
@@ -58,10 +60,29 @@ export const outOfScopeResponse =
   "Sorry! I can help only with Crescent college-related topics such as courses, admission, eligibility, fees, scholarships, hostel, campus, timings, exams and student services. 🎓";
 
 export const feeResponse =
-  "Fees are ₹40,000 per semester for MBA, ₹30,000 per semester for MCA, and ₹15,000 per year for BA Islamic Studies.";
+  "MBA fees are ₹25,000 per semester. MCA fees are ₹20,000 for Indian students and $750 for foreign nationals. BA Islamic Studies fees are ₹15,000 per year.";
+
+export const applicationFeeResponse =
+  "The application fee is ₹1,000 for Indian applicants and $15 for foreign nationals.";
+
+export const mcaFeeResponse =
+  "MCA fees are ₹20,000 for Indian students and $750 for foreign nationals.";
+
+export function isApplicationFeeQuestion(input: string): boolean {
+  const text = normalizeText(input);
+  return (
+    /\b(fee|fees|cost|price|pricing)\b/.test(text) &&
+    /\b(application|registration|apply)\b/.test(text)
+  );
+}
+
+export function isMcaFeeQuestion(input: string): boolean {
+  return /\bmca\b/.test(normalizeText(input)) && isFeeQuestion(input);
+}
 
 export function isFeeQuestion(input: string): boolean {
   const text = normalizeText(input);
+  if (/\b(apply|application|registration)\b/.test(text)) return false;
   if (/\b(refund|pay|payment|installment|instalment)\b/.test(text)) return false;
   return /\b(fee|fees|tuition|cost|price|pricing)\b/.test(text);
 }
@@ -421,7 +442,7 @@ export const faqs: BotFaqEntry[] = [
       en: "What are the MBA fees?",
     },
     {
-      en: "MBA fee is Rs. 25,000 per semester and Rs. 1,00,000 for the full 2 year programme.",
+      en: "MBA fees are ₹25,000 per semester.",
     },
     ["MBA eligibility", "MBA specialisations", "Fee payment methods"],
   ),
@@ -490,7 +511,7 @@ export const faqs: BotFaqEntry[] = [
       en: "What are the MCA fees?",
     },
     {
-      en: "MCA fee is Rs. 20,000 per semester and Rs. 80,000 for the full 2 year programme. Exam fees are separate.",
+      en: "MCA fees are ₹20,000 for Indian students and $750 for foreign nationals.",
     },
     ["MCA eligibility", "Fee payment methods", "PG courses"],
   ),
@@ -579,14 +600,26 @@ export const faqs: BotFaqEntry[] = [
   faq(
     "q34-application-fee",
     "Admission",
-    ["application fee", "application fees", "registration fee", "500 fee"],
+    [
+      "application fee",
+      "application fees",
+      "registration fee",
+      "application cost",
+      "apply fee",
+      "fee to apply",
+      "1000 fee",
+    ],
     {
       en: "What is the application fee?",
     },
     {
-      en: "The application fee mentioned in the knowledge base is Rs. 500.",
+      en: 'New applicants: create an account with "New Registration" first, then sign in with "Apply Online" to fill the form and pay the application fee (₹1,000 for Indian applicants and $15 for foreign nationals).',
     },
     ["How do I apply?", "Admission process", "Fee payment methods"],
+    {
+      label: "Apply Online",
+      url: APPLICATION_PORTAL_LINK,
+    },
   ),
 
   faq(
@@ -644,7 +677,7 @@ export const faqs: BotFaqEntry[] = [
       en: "What is the fee structure?",
     },
     {
-      en: "MBA tuition is Rs. 25,000 per semester, MCA tuition is Rs. 20,000 per semester, and BA Islamic Studies tuition is Rs. 15,000 per year. Other programme fees vary.",
+      en: "MBA fees are ₹25,000 per semester, MCA fees are ₹20,000 for Indian students and $750 for foreign nationals, and BA Islamic Studies fees are ₹15,000 per year.",
     },
     ["MBA fees", "MCA fees", "BA English fees", "Scholarships"],
   ),

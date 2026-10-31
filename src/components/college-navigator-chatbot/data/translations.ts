@@ -4,7 +4,6 @@ type UIKey =
   | "send"
   | "typing"
   | "fallback"
-  | "limitReached"
   | "close"
   | "openChat"
   | "enquiryTitle"
@@ -31,8 +30,6 @@ export const ui = {
     typing: "Assistant is typing",
     fallback:
       "I don't have an answer for that yet — for anything specific, please call +91 97909 53750 or email cdoesupport@crescent.education.",
-    limitReached:
-      "You have reached the limit of 5 questions. Please fill the enquiry form below and our team will reach out to you.",
     close: "Close chat",
     openChat: "Chat with us",
     enquiryTitle: "Enquiry Form",
