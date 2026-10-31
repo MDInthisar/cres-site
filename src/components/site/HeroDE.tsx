@@ -27,7 +27,6 @@ const heroImages = [heroAuditorium, heroCampusCourtyard, heroMainBuilding, heroC
 ========================================================= */
 
 const features = [
-  "Live Interactive Classes",
   "AICTE / UGC Approved",
   "Placement Support",
 ];
@@ -278,7 +277,7 @@ export function HeroDE() {
           >
             UGC Approved
             <br />
-            <span className="text-white">Distanc Programmes</span>
+            <span className="text-white">Distance Programmes</span>
           </h1>
 
           <p className="mt-4 text-base font-semibold text-[#e2c56e] sm:text-lg">
