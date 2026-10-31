@@ -139,13 +139,11 @@ export function EventsFab() {
       type="button"
       aria-label="Open events"
       onClick={openEvents}
-      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-400 p-2 text-[#14284e] shadow-lg transition-all duration-300 hover:bg-amber-300 sm:h-20 sm:w-12 sm:rounded-l-2xl sm:rounded-r-none sm:px-2.5 sm:py-4"
+      className="site-floating-action site-floating-action--events"
     >
-      <span className="relative z-10 flex flex-col items-center gap-3">
-        <CalendarDays className="size-5 shrink-0" aria-hidden />
-        <span className="sr-only text-sm font-semibold tracking-[0.08em] sm:not-sr-only sm:[writing-mode:vertical-rl] sm:rotate-180">
-          Events
-        </span>
+      <span className="site-floating-action__content">
+        <CalendarDays className="site-floating-action__icon" aria-hidden />
+        <span className="site-floating-action__label">Events</span>
       </span>
     </button>
   );

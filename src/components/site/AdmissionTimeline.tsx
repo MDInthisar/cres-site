@@ -181,11 +181,11 @@ export function ApplyGuideFab({ onClick }: { onClick: () => void }) {
       type="button"
       aria-label="Open Apply Guide"
       onClick={onClick}
-      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-700 p-2 text-white shadow-lg transition-all duration-300 hover:bg-red-800 sm:h-32 sm:w-6 sm:rounded-l-none sm:rounded-r-xl sm:px-1.5 sm:py-4"
+      className="site-floating-action site-floating-action--apply"
     >
-      <span className="flex flex-col items-center gap-3">
-        <GraduationCap className="size-5 shrink-0" aria-hidden />
-        <span className="sr-only text-sm font-semibold tracking-[0.08em] sm:not-sr-only sm:[writing-mode:vertical-rl] sm:rotate-180">
+      <span className="site-floating-action__content">
+        <GraduationCap className="site-floating-action__icon" aria-hidden />
+        <span className="site-floating-action__label site-floating-action__label--apply">
           Apply Guide
         </span>
       </span>

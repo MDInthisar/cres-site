@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import faqs from "../data/faq";
+import faqs, { isGreeting } from "../data/faq";
 import { ui } from "../data/translations";
 import { findBestMatch } from "../utils/fuzzyMatch";
 import { MAX_QUESTIONS, type Language, type Message } from "../types/chat";
 
 const createId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+const greetingResponse =
+  "Hi there! 👋 Ask me about our programmes, fees, admissions, or placements.";
 
 const greetingMessage = (language: Language): Message => ({
   id: createId(),
@@ -62,8 +64,13 @@ export function useChat() {
       setQuestionCount(nextCount);
       setIsTyping(true);
 
-      const { entry } = findBestMatch(text, knowledge, language);
-      const answer = entry ? entry.answer[language] : ui[language].fallback;
+      const greeting = isGreeting(text);
+      const { entry } = greeting ? { entry: null } : findBestMatch(text, knowledge, language);
+      const answer = greeting
+        ? greetingResponse
+        : entry
+          ? entry.answer[language]
+          : ui[language].fallback;
 
       timer.current = setTimeout(
         () => {

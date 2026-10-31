@@ -96,14 +96,11 @@ export function ChatWindow() {
       aria-label={t.headerTitle}
       className={cn(
         `
+        chatbot-window
         fixed
-        bottom-24
-        right-4
         z-[10002]
 
         flex
-        h-[min(78vh,650px)]
-        w-[min(94vw,420px)]
         flex-col
 
         overflow-hidden
@@ -119,8 +116,6 @@ export function ChatWindow() {
 
         ring-1
         ring-black/5
-
-        sm:right-6
       `,
         theme === "dark" && "dark",
       )}

@@ -17,13 +17,11 @@ export function EnquiryFab() {
         <button
           type="button"
           aria-label="Open enquiry form"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-700 p-2 text-white shadow-lg transition-all duration-300 hover:bg-red-800 sm:h-32 sm:w-12 sm:rounded-l-2xl sm:rounded-r-none sm:px-2.5 sm:py-4"
+          className="site-floating-action site-floating-action--enquiry"
         >
-          <span className="relative z-10 flex flex-col items-center gap-3">
-            <MessageSquareText className="size-5 shrink-0" aria-hidden />
-            <span className="sr-only text-sm font-semibold tracking-[0.08em] sm:not-sr-only sm:[writing-mode:vertical-rl] sm:rotate-180">
-              Enquire Now
-            </span>
+          <span className="site-floating-action__content">
+            <MessageSquareText className="site-floating-action__icon" aria-hidden />
+            <span className="site-floating-action__label">Enquire Now</span>
           </span>
         </button>
       }

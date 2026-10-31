@@ -38,9 +38,16 @@ export const greetings = [
   "hi",
   "hello",
   "hey",
+  "hey there",
   "hai",
   "hii",
   "hiii",
+  "hello there",
+  "hi there",
+  "how are you",
+  "howdy",
+  "greetings",
+  "good day",
   "good morning",
   "good afternoon",
   "good evening",
@@ -1975,15 +1982,15 @@ export const faqs: BotFaqEntry[] = [
    ========================================================= */
 
 export function isGreeting(input: string): boolean {
-  const text = input.trim().toLowerCase();
+  const text = input
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
   if (!text) return false;
 
-  return greetings.some((greeting) => {
-    const g = greeting.toLowerCase();
-
-    return text === g || text.startsWith(`${g} `) || text.endsWith(` ${g}`);
-  });
+  return greetings.some((greeting) => greeting.toLowerCase() === text);
 }
 
 /* =========================================================

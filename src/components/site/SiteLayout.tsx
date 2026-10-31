@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { EnquiryFab } from "./EnquiryFab";
-import { FloatingActions } from "./FloatingActions";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { EventsFab, EventsModalProvider } from "./EventsFab";
@@ -17,27 +16,21 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <SiteHeader />
 
         <main className="m-0 p-0">{children}</main>
-        <div className="flex items-center justify-between px-3 py-3 sm:hidden">
-          <ApplyGuideFab onClick={() => setApplyGuideOpen(true)} />
-          <div className="flex gap-1.5">
-            <EventsFab />
-            <EnquiryFab />
-          </div>
-        </div>
-        <div className="fixed right-0 top-[23%] z-[9999] hidden sm:block">
+        <div className="site-floating-actions-mobile">
           <EventsFab />
-        </div>
-        <div className="fixed right-0 top-[calc(23%+5.5rem)] z-[9999] hidden sm:block">
           <EnquiryFab />
         </div>
-        <div className="fixed left-0 top-[35%] z-[9999] hidden -translate-y-1/2 sm:block">
+        <div className="site-floating-actions-right">
+          <EventsFab />
+          <EnquiryFab />
+        </div>
+        <div className="site-floating-actions-left">
           <ApplyGuideFab onClick={() => setApplyGuideOpen(true)} />
         </div>
 
         <SiteFooter />
         <Chatbot />
 
-        <FloatingActions />
         <AdmissionTimeline open={applyGuideOpen} onOpenChange={setApplyGuideOpen} />
       </div>
     </EventsModalProvider>

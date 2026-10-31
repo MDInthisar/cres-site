@@ -25,68 +25,6 @@ function FloatingChatButtonBase({ open, onToggle, label }: Props) {
       "
     >
       {/* ===================================================== */}
-      {/* PREMIUM CHAT TEASER */}
-      {/* ===================================================== */}
-
-      {!open && (
-        <motion.button
-          type="button"
-          onClick={onToggle}
-          aria-label="Open Crescent Admission Assistant"
-          initial={{
-            opacity: 0,
-            x: 25,
-            scale: 0.92,
-          }}
-          animate={{
-            opacity: 1,
-            x: 0,
-            scale: 1,
-          }}
-          transition={{
-            duration: 0.5,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-          whileHover={{
-            scale: 1.025,
-            x: -3,
-          }}
-          whileTap={{
-            scale: 0.97,
-          }}
-          className="
-            group
-            absolute
-            right-[68px]
-            bottom-1
-            flex
-            items-center
-            whitespace-nowrap
-            rounded-full
-            border
-            border-white/20
-            bg-gradient-to-r
-            from-[#202b55]
-            via-[#30276b]
-            to-[#8f1d1d]
-            px-3
-            py-2
-            text-left
-            text-[11px]
-            font-semibold
-            text-white
-            shadow-[0_8px_24px_rgba(15,23,42,0.28)]
-            backdrop-blur-xl
-            transition-all
-            duration-300
-            hover:shadow-[0_12px_30px_rgba(15,23,42,0.38)]
-          "
-        >
-          Can I help you?
-        </motion.button>
-      )}
-
-      {/* ===================================================== */}
       {/* CHATBOT BUTTON */}
       {/* ===================================================== */}
 
