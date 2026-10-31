@@ -1,24 +1,22 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import faqs, { isGreeting } from "../data/faq";
+import faqs, { feeResponse, isFeeQuestion, isGreeting } from "../data/faq";
 import { ui } from "../data/translations";
 import { findBestMatch } from "../utils/fuzzyMatch";
-import { MAX_QUESTIONS, type Language, type Message } from "../types/chat";
+import { MAX_QUESTIONS, type Message } from "../types/chat";
 
 const createId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 const greetingResponse =
   "Hi there! 👋 Ask me about our programmes, fees, admissions, or placements.";
 
-const greetingMessage = (language: Language): Message => ({
+const greetingMessage = (): Message => ({
   id: createId(),
   sender: "bot",
-  text: ui[language].greeting,
+  text: ui.en.greeting,
   timestamp: new Date().toISOString(),
-  language,
 });
 
 export function useChat() {
-  const [language, setLanguageState] = useState<Language>("en");
-  const [messages, setMessages] = useState<Message[]>(() => [greetingMessage("en")]);
+  const [messages, setMessages] = useState<Message[]>(() => [greetingMessage()]);
   const [questionCount, setQuestionCount] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [showEnquiryForm, setShowEnquiryForm] = useState(false);
@@ -33,16 +31,12 @@ export function useChat() {
     [],
   );
 
-  const reset = useCallback((lang: Language = "en") => {
+  const reset = useCallback(() => {
     if (timer.current) clearTimeout(timer.current);
-    setMessages([greetingMessage(lang)]);
+    setMessages([greetingMessage()]);
     setQuestionCount(0);
     setIsTyping(false);
     setShowEnquiryForm(false);
-  }, []);
-
-  const setLanguage = useCallback((lang: Language) => {
-    setLanguageState(lang);
   }, []);
 
   const isLocked = questionCount >= MAX_QUESTIONS;
@@ -57,7 +51,6 @@ export function useChat() {
         sender: "user",
         text,
         timestamp: new Date().toISOString(),
-        language,
       };
       const nextCount = questionCount + 1;
       setMessages((prev) => [...prev, userMessage]);
@@ -65,12 +58,15 @@ export function useChat() {
       setIsTyping(true);
 
       const greeting = isGreeting(text);
-      const { entry } = greeting ? { entry: null } : findBestMatch(text, knowledge, language);
+      const feeQuestion = isFeeQuestion(text);
+      const { entry } = greeting || feeQuestion ? { entry: null } : findBestMatch(text, knowledge);
       const answer = greeting
         ? greetingResponse
-        : entry
-          ? entry.answer[language]
-          : ui[language].fallback;
+        : feeQuestion
+          ? feeResponse
+          : entry
+            ? entry.answer
+            : ui.en.fallback;
 
       timer.current = setTimeout(
         () => {
@@ -82,11 +78,10 @@ export function useChat() {
               sender: "bot",
               text: answer,
               timestamp: new Date().toISOString(),
-              language,
               ...(entry?.link
                 ? {
                     link: {
-                      label: entry.link.label[language],
+                      label: entry.link.label,
                       url: entry.link.url,
                     },
                   }
@@ -97,9 +92,8 @@ export function useChat() {
               list.push({
                 id: createId(),
                 sender: "bot",
-                text: ui[language].limitReached,
+                text: ui.en.limitReached,
                 timestamp: new Date().toISOString(),
-                language,
               });
             }
             return list;
@@ -109,7 +103,7 @@ export function useChat() {
         700 + Math.random() * 500,
       );
     },
-    [isLocked, isTyping, knowledge, language, questionCount],
+    [isLocked, isTyping, knowledge, questionCount],
   );
 
   const completeEnquiry = useCallback(() => {
@@ -120,21 +114,18 @@ export function useChat() {
       {
         id: createId(),
         sender: "bot",
-        text: ui[language].submitted,
+        text: ui.en.submitted,
         timestamp: new Date().toISOString(),
-        language,
       },
     ]);
-  }, [language]);
+  }, []);
 
   return {
     messages,
     questionCount,
     isTyping,
-    language,
     showEnquiryForm,
     isLocked,
-    setLanguage,
     sendMessage,
     completeEnquiry,
     reset,

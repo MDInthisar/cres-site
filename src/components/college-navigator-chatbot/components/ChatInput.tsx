@@ -1,22 +1,18 @@
 import { memo, useRef, type FormEvent, type KeyboardEvent } from "react";
 import { SendHorizonal } from "lucide-react";
-import { ui, RTL_LANGUAGES } from "../data/translations";
+import { ui } from "../data/translations";
 import { cn } from "../lib/utils";
-import type { Language } from "../types/chat";
 
 interface Props {
   value: string;
   onChange: (value: string) => void;
   onSend: () => void;
   disabled: boolean;
-  language: Language;
-  remaining: number;
 }
 
-function ChatInputBase({ value, onChange, onSend, disabled, language, remaining }: Props) {
+function ChatInputBase({ value, onChange, onSend, disabled }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const t = ui[language];
-  const rtl = RTL_LANGUAGES.includes(language);
+  const t = ui.en;
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
@@ -41,7 +37,7 @@ function ChatInputBase({ value, onChange, onSend, disabled, language, remaining 
       >
         <textarea
           ref={textareaRef}
-          dir={rtl ? "rtl" : "ltr"}
+          dir="ltr"
           rows={1}
           value={value}
           disabled={disabled}
@@ -60,9 +56,6 @@ function ChatInputBase({ value, onChange, onSend, disabled, language, remaining 
           <SendHorizonal className="size-4" />
         </button>
       </div>
-      <p className="mt-1.5 px-1 text-[11px] text-muted-foreground">
-        {remaining} {t.questionsLeft} · Enter ↵ / Shift+Enter
-      </p>
     </form>
   );
 }

@@ -2,11 +2,10 @@ import { memo, useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { ui } from "../data/translations";
 import { cn } from "../lib/utils";
-import type { EnquiryData, Language } from "../types/chat";
+import type { EnquiryData } from "../types/chat";
 import { courseInfo } from "@/data/programmes";
 
 interface Props {
-  language: Language;
   onSubmitted: (data: EnquiryData) => void;
 }
 
@@ -14,8 +13,8 @@ const COURSES = courseInfo.map((course) => course.name);
 
 type Errors = Partial<Record<keyof EnquiryData, string>>;
 
-function EnquiryFormBase({ language, onSubmitted }: Props) {
-  const t = ui[language];
+function EnquiryFormBase({ onSubmitted }: Props) {
+  const t = ui.en;
   const [data, setData] = useState<EnquiryData>({
     name: "",
     mobile: "",

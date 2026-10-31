@@ -2,7 +2,6 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { Bot, User } from "lucide-react";
 import { cn } from "../lib/utils";
-import { RTL_LANGUAGES } from "../data/translations";
 import type { Message } from "../types/chat";
 
 interface Props {
@@ -11,7 +10,6 @@ interface Props {
 
 function MessageBubbleBase({ message }: Props) {
   const isUser = message.sender === "user";
-  const rtl = RTL_LANGUAGES.includes(message.language);
   const time = new Date(message.timestamp).toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
@@ -36,7 +34,7 @@ function MessageBubbleBase({ message }: Props) {
 
       <div className={cn("flex max-w-[80%] flex-col gap-1", isUser ? "items-end" : "items-start")}>
         <div
-          dir={rtl ? "rtl" : "ltr"}
+          dir="ltr"
           className={cn(
             "rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap",
             isUser

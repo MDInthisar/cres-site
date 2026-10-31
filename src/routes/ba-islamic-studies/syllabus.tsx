@@ -862,10 +862,7 @@ function SyllabusPage() {
           theme="green"
           onClose={syllabusDownload.close}
         >
-          <EnquiryForm
-            language="en"
-            onSubmitted={syllabusDownload.unlock}
-          />
+          <EnquiryForm onSubmitted={syllabusDownload.unlock} />
         </SyllabusDownloadDialog>
       </main>
     </SiteLayout>

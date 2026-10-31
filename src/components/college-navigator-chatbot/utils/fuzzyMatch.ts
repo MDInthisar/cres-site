@@ -1,4 +1,4 @@
-import type { FaqEntry, Language } from "../types/chat";
+import type { FaqEntry } from "../types/chat";
 
 const STOP_WORDS = new Set([
   "the",
@@ -83,12 +83,8 @@ function tokenSimilarity(a: string, b: string): number {
   return sim >= 0.75 ? sim : 0;
 }
 
-function scoreEntry(tokens: string[], entry: FaqEntry, language: Language): number {
-  const haystack = [
-    ...entry.keywords,
-    ...tokenize(entry.question[language]),
-    ...tokenize(entry.question.en),
-  ];
+function scoreEntry(tokens: string[], entry: FaqEntry): number {
+  const haystack = [...entry.keywords, ...tokenize(entry.question)];
   let score = 0;
   for (const token of tokens) {
     let best = 0;
@@ -107,19 +103,14 @@ export interface MatchResult {
   confidence: number;
 }
 
-export function findBestMatch(
-  input: string,
-  faqs: FaqEntry[],
-  language: Language,
-  threshold = 0.5,
-): MatchResult {
+export function findBestMatch(input: string, faqs: FaqEntry[], threshold = 0.5): MatchResult {
   const tokens = tokenize(input);
   if (!tokens.length) return { entry: null, confidence: 0 };
 
   let best: FaqEntry | null = null;
   let bestScore = 0;
   for (const entry of faqs) {
-    const score = scoreEntry(tokens, entry, language);
+    const score = scoreEntry(tokens, entry);
     if (score > bestScore) {
       bestScore = score;
       best = entry;
