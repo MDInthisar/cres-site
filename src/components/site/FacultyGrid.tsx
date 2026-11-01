@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
-
 import type { FacultyProfile } from "@/data/facultyProfiles";
+import { PeopleCard } from "@/components/site/PeopleCard";
 
 export type FacultyTheme = "blue" | "green";
 
@@ -23,21 +22,12 @@ const linkColors: Record<FacultyTheme, string> = {
 
 export function FacultyCard({ faculty, theme, onSelect }: FacultyCardProps) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className={`flex min-w-0 flex-col items-center bg-white text-center ${cardStyles[theme]}`}
+    <PeopleCard
+      name={faculty.name}
+      designation={faculty.designation}
+      photo={faculty.photo}
+      className={`bg-white ${cardStyles[theme]}`}
     >
-      <img
-        src={faculty.photo}
-        alt={faculty.name}
-        className="size-24 shrink-0 rounded-full border-4 border-[#e8eef6] object-cover sm:size-28"
-      />
-      <h3 className="mt-4 w-full break-words text-base font-bold leading-6 text-[#17366F] sm:text-lg">
-        {faculty.name}
-      </h3>
-      <p className="mt-1 text-sm font-semibold leading-5 text-[#a33438]">{faculty.designation}</p>
       <div className="mt-3">
         <button
           type="button"
@@ -48,7 +38,7 @@ export function FacultyCard({ faculty, theme, onSelect }: FacultyCardProps) {
           View profile
         </button>
       </div>
-    </motion.article>
+    </PeopleCard>
   );
 }
 

@@ -84,23 +84,19 @@ export const navItems: NavItem[] = [
     children: [
       {
         label: "Visionary Team",
-        to: "/about",
-        hash: "visionary-team",
+        to: "/visionary-team",
       },
       {
         label: "Execution Team",
-        to: "/about",
-        hash: "execution-team",
+        to: "/execution-team",
       },
       {
         label: "CDOE Team",
-        to: "/about",
-        hash: "cdoe-team",
+        to: "/cdoe-team",
       },
       {
         label: "Facilities",
-        to: "/about",
-        hash: "facilities",
+        to: "/facilities",
       },
     ],
   },
@@ -134,17 +130,17 @@ export const navItems: NavItem[] = [
       {
         label: "How to Apply",
         to: "/admission",
-        hash: "how-to-apply",
+        hash: "steps-heading",
       },
       {
         label: "New Registration",
         to: "/admission",
-        hash: "new-registration",
+        hash: "registration",
       },
       {
         label: "Applicant Login",
         to: "/admission",
-        hash: "applicant-login",
+        hash: "login",
       },
       {
         label: "Notification",
@@ -220,12 +216,12 @@ export const navItems: NavItem[] = [
       {
         label: "Distance Education",
         to: "/gallery",
-        hash: "distance-education",
+        hash: "gallery",
       },
       {
         label: "Campus",
         to: "/gallery",
-        hash: "campus",
+        hash: "gallery",
       },
       {
         label: "Convocation",
@@ -245,7 +241,7 @@ export const navItems: NavItem[] = [
       {
         label: "Faculty",
         to: "/gallery",
-        hash: "faculty",
+        hash: "gallery",
       },
     ],
   },
@@ -262,20 +258,7 @@ const toProgrammeSummary = (programme: (typeof ugProgrammeListings)[number]) => 
   duration: programme.duration,
 });
 
-export const degreeProgrammes = [
-  {
-    group: "Undergraduate",
-    items: ugProgrammeListings.map(toProgrammeSummary),
-  },
-  {
-    group: "Postgraduate",
-    items: pgProgrammeListings.map(toProgrammeSummary),
-  },
-];
-
-export const certificationProgrammes = certificationProgrammeListings.map(
-  toProgrammeSummary,
-);
+export const certificationProgrammes = certificationProgrammeListings.map(toProgrammeSummary);
 
 const toProgrammeDetails = (programme: (typeof ugProgrammeListings)[number]) => ({
   slug: programme.slug,
@@ -287,47 +270,4 @@ const toProgrammeDetails = (programme: (typeof ugProgrammeListings)[number]) => 
 
 export const ugProgrammes = ugProgrammeListings.map(toProgrammeDetails);
 export const pgProgrammes = pgProgrammeListings.map(toProgrammeDetails);
-export const certificationCourses =
-  certificationProgrammeListings.map(toProgrammeDetails);
-
-/* =========================================================
-   ADMISSION PROCESS
-========================================================= */
-
-export const admissionSteps = [
-  {
-    step: "1",
-    title: "Apply Online",
-    body: "Complete the online application form in under ten minutes.",
-  },
-
-  {
-    step: "2",
-    title: "Upload Documents",
-    body: "Attach marksheets, ID proof and a passport photograph.",
-  },
-
-  {
-    step: "3",
-    title: "Verification",
-    body: "Our admission cell verifies eligibility within 48 hours.",
-  },
-
-  {
-    step: "4",
-    title: "Fee Payment",
-    body: "Pay securely online in full or through easy instalments.",
-  },
-
-  {
-    step: "5",
-    title: "Admission Confirmation",
-    body: "Receive your enrolment number and confirmation letter.",
-  },
-
-  {
-    step: "6",
-    title: "Begin Learning",
-    body: "Access the LMS, study material and live mentor sessions.",
-  },
-];
+export const certificationCourses = certificationProgrammeListings.map(toProgrammeDetails);

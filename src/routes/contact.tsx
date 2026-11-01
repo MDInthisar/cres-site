@@ -1,22 +1,14 @@
-
 import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import { college } from "@/data/site";
 
 import { Mail, Phone } from "lucide-react";
-
-const title = "Contact Us — Crescent CDOE";
-
-const description =
-  "Contact Crescent CDOE for admission support, programmes and general enquiries.";
 
 function ContactPage() {
   return (
     <SiteLayout>
       {/* CONTACT HEADER */}
-      <section
-        className="bg-[#f7f4ee] px-5 pb-5 pt-6 sm:px-8 lg:px-12"
-        style={circularFont}
-      >
+      <section className="bg-[#f7f4ee] px-5 pb-5 pt-6 sm:px-8 lg:px-12" style={circularFont}>
         <div className="mx-auto max-w-7xl">
           <div className="border-b border-[#d9d4ca] pb-5">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#8f1d1d]">
@@ -32,55 +24,38 @@ function ContactPage() {
             </div>
 
             <p className="mt-3 max-w-4xl text-base font-medium leading-7 text-black/65 sm:text-lg">
-              Have a question about admissions, programmes or the university?
-              Get in touch with our team.
+              Have a question about admissions, programmes or the university? Get in touch with our
+              team.
             </p>
           </div>
         </div>
       </section>
 
       {/* CONTACT DETAILS */}
-      <section
-        className="bg-[#f6f3ec] px-5 py-6 sm:px-8 lg:px-10"
-        style={circularFont}
-      >
+      <section className="bg-[#f6f3ec] px-5 py-6 sm:px-8 lg:px-10" style={circularFont}>
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.6fr] lg:gap-4">
-          <ContactCard
-            icon={<Phone className="size-5" />}
-            title="MBA"
-            text="+91 9790953750"
-            href="tel:+919790953750"
-          />
-
-          <ContactCard
-            icon={<Phone className="size-5" />}
-            title="MCA"
-            text="+91 9444437309"
-            href="tel:+919444437309"
-          />
-
-          <ContactCard
-            icon={<Phone className="size-5" />}
-            title="Islamic Studies"
-            text="+91 8667530226"
-            href="tel:+918667530226"
-          />
+          {college.numbers.map((number) => (
+            <ContactCard
+              key={number.label}
+              icon={<Phone className="size-5" />}
+              title={number.label}
+              text={number.value}
+              href={`tel:${number.tel}`}
+            />
+          ))}
 
           <ContactCard
             icon={<Mail className="size-5" />}
             title="Email"
-            text="admissions@crescentcdoe.edu.in"
-            href="mailto:admissions@crescentcdoe.edu.in"
+            text={college.email}
+            href={`mailto:${college.email}`}
             isEmail
           />
         </div>
       </section>
 
       {/* ADMISSION SUPPORT */}
-      <section
-        className="bg-white px-5 py-6 sm:px-8 lg:px-10"
-        style={circularFont}
-      >
+      <section className="bg-white px-5 py-6 sm:px-8 lg:px-10" style={circularFont}>
         <div className="mx-auto max-w-6xl">
           <div className="rounded-2xl border border-[#172554]/10 bg-[#f8f9fc] px-5 py-8 text-center sm:px-8">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8f1d1d]">
@@ -94,30 +69,29 @@ function ContactPage() {
             <div className="mx-auto mt-3 h-[2px] w-10 rounded-full bg-[#8f1d1d]" />
 
             <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-black/60 sm:text-lg">
-              Our admission team can help you with programme selection,
-              eligibility, application process and other admission-related
-              queries.
+              Our admission team can help you with programme selection, eligibility, application
+              process and other admission-related queries.
             </p>
 
             <div className="mt-5 flex flex-wrap justify-center gap-3">
               <a
-                href="tel:+919790953750"
+                href={`tel:${college.numbers[0].tel}`}
                 className="inline-flex items-center gap-2 rounded-full bg-[#172554] px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#8f1d1d]"
               >
                 <Phone className="size-4" />
-                MBA Enquiries
+                {college.numbers[0].label} Enquiries
               </a>
 
               <a
-                href="tel:+919444437309"
+                href={`tel:${college.numbers[1].tel}`}
                 className="inline-flex items-center gap-2 rounded-full border border-[#172554]/15 bg-white px-5 py-3 text-sm font-bold text-black transition-all hover:-translate-y-0.5 hover:border-[#d4af37]"
               >
                 <Phone className="size-4" />
-                MCA Enquiries
+                {college.numbers[1].label} Enquiries
               </a>
 
               <a
-                href="mailto:admissions@crescentcdoe.edu.in"
+                href={`mailto:${college.email}`}
                 className="inline-flex items-center gap-2 rounded-full border border-[#172554]/15 bg-white px-5 py-3 text-sm font-bold text-black transition-all hover:-translate-y-0.5 hover:border-[#d4af37]"
               >
                 <Mail className="size-4" />
@@ -156,15 +130,11 @@ function ContactCard({
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#8f1d1d]">
-          {title}
-        </p>
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#8f1d1d]">{title}</p>
 
         <p
           className={`mt-1 text-sm font-semibold leading-5 text-black ${
-            isEmail
-              ? "whitespace-normal [overflow-wrap:anywhere]"
-              : "break-words"
+            isEmail ? "whitespace-normal [overflow-wrap:anywhere]" : "break-words"
           }`}
         >
           {text}

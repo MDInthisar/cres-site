@@ -45,15 +45,6 @@ export type ProgrammeListing = {
   description: string;
 };
 
-const sharedVision =
-  "To provide accessible, quality distance and online education that helps learners grow academically, professionally and personally.";
-
-const sharedMission = [
-  "To deliver flexible, student-centred learning supported by relevant academic resources.",
-  "To help learners develop knowledge and practical skills for further study and their chosen careers.",
-  "To provide an inclusive learning environment with academic support throughout the programme.",
-];
-
 const islamicStudiesVision =
   "The school looks forward to be a leader in Arabic and Islamic Studies to promote graduates, capable of bringing about positive change for the betterment of self, family, society and humanity based on moderate approach of revealed knowledge and modern science.";
 
@@ -75,8 +66,6 @@ export const courseInfo: CourseInfo[] = [
   //   eligibility: "10+2 in any stream",
   //   description:
   //     "Study English language, literature and communication through flexible distance learning.",
-  //   vision: sharedVision,
-  //   mission: sharedMission,
   //   listing: {
   //     description: "Literature, language and communication for modern careers.",
   //     eligibility: "10+2 in any stream",
@@ -113,8 +102,6 @@ export const courseInfo: CourseInfo[] = [
   //   duration: "3 Years",
   //   eligibility: "10+2 in any stream",
   //   description: "Build foundations in governance, economics and policy analysis.",
-  //   vision: sharedVision,
-  //   mission: sharedMission,
   //   listing: {
   //     description: "Governance, economics and policy analysis fundamentals.",
   //     eligibility: "10+2 in any stream",
@@ -210,8 +197,6 @@ export const courseInfo: CourseInfo[] = [
   //   eligibility: "12th / Diploma / Degree",
   //   description:
   //     "Build modern Android and iOS applications using contemporary cross-platform technologies.",
-  //   vision: sharedVision,
-  //   mission: sharedMission,
   //   listing: {
   //     description:
   //       "Build modern Android and iOS applications using contemporary cross-platform technologies.",
@@ -253,9 +238,3 @@ export function getRequiredCourseInfo(slug: string) {
   }
   return course;
 }
-
-export const registrationProgrammeOptions = [
-  { slug: "mba", value: "MBA" },
-  { slug: "mca", value: "MCA" },
-  { slug: "ba-islamic-studies", value: "BAIS" },
-] as const;

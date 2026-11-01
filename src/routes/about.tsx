@@ -1,86 +1,10 @@
-import { circularFont } from "@/lib/fonts";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, GraduationCap, Landmark, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { ArrowRight, GraduationCap, ShieldCheck, Sparkles, Users } from "lucide-react";
 
 import aboutCampusPhoto from "@/assets/about-cdoe-launch.jpg";
-import { AboutUsSidebar } from "@/components/site/AboutUsSidebar";
+import { AboutSectionLayout } from "@/components/site/AboutSectionLayout";
 import { SiteLayout } from "@/components/site/SiteLayout";
-
-/* =========================================================
-   PAGE META
-========================================================= */
-
-const title = "About Us — Leadership, CDOE Team & Facilities";
-
-const description =
-  "Learn about our institution, visionary leadership, execution team, CDOE team and learning facilities.";
-
-/* =========================================================
-   ROUTE
-========================================================= */
-
-/* =========================================================
-   ABOUT PAGE NAVIGATION
-========================================================= */
-
-/* =========================================================
-   INFORMATION CARDS
-========================================================= */
-
-const highlights = [
-  {
-    value: "55",
-    label: "Programmes",
-    icon: GraduationCap,
-  },
-  {
-    value: "12",
-    label: "Schools",
-    icon: Landmark,
-  },
-  {
-    value: "30",
-    label: "UG Programmes",
-    icon: ShieldCheck,
-  },
-  {
-    value: "25",
-    label: "PG Programmes",
-    icon: Users,
-  },
-];
-
-function AboutHighlights() {
-  return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-      {highlights.map((item, index) => {
-        const Icon = item.icon;
-
-        return (
-          <motion.div
-            key={item.label}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.35,
-              delay: index * 0.05,
-            }}
-            className="flex min-h-[95px] min-w-0 flex-col items-center justify-center rounded-xl border border-[#dedbd6] bg-white px-3 py-4 text-center shadow-[0_5px_16px_rgba(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-[0_8px_22px_rgba(0,0,0,0.08)]"
-          >
-            <Icon className="mb-2 size-4 text-[#8f1d1d]" />
-
-            <p className="text-xl font-bold leading-none text-[#17234B]">{item.value}</p>
-
-            <p className="mt-2 text-xs font-medium leading-5 text-[#737782] sm:text-sm">
-              {item.label}
-            </p>
-          </motion.div>
-        );
-      })}
-    </div>
-  );
-}
 
 /* =========================================================
    ABOUT TEAM CARDS
@@ -165,105 +89,95 @@ function AboutTeamCards() {
 function AboutPage() {
   return (
     <SiteLayout>
-      <main
-        style={circularFont}
-        className="min-h-screen overflow-x-clip bg-[#F5F1E9] text-[#111111]"
+      <AboutSectionLayout
+        activeHref="/about"
+        mainClassName="min-h-screen overflow-x-clip bg-[#F5F1E9] text-[#111111]"
+        contentClassName="w-full min-w-0"
       >
-        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-start gap-5 px-4 py-6 sm:px-6 sm:py-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-6 lg:px-8 xl:gap-8 xl:px-10">
-          {/* SIDEBAR */}
+        {/* PAGE TITLE */}
 
-          <AboutUsSidebar activeHref="/about" />
+        <motion.header
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="mb-5"
+        >
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#8f1d1d]">
+            About Us
+          </p>
 
-          {/* MAIN CONTENT */}
+          <h1 className="mt-1.5 text-2xl font-bold tracking-tight text-[#17234B] sm:text-3xl">
+            About Crescent
+          </h1>
 
-          <div className="w-full min-w-0">
-            {/* PAGE TITLE */}
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-[#555b66] sm:text-base">
+            A renowned quality leadership institution at the greenest spot of Chennai.
+          </p>
+        </motion.header>
 
-            <motion.header
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="mb-5"
-            >
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#8f1d1d]">
-                About Us
-              </p>
+        {/* CAMPUS IMAGE */}
 
-              <h1 className="mt-1.5 text-2xl font-bold tracking-tight text-[#17234B] sm:text-3xl">
-                About Crescent
-              </h1>
+        <motion.figure
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.45,
+            delay: 0.05,
+          }}
+          className="group mb-6 h-[190px] overflow-hidden rounded-xl border-4 border-white bg-white shadow-[0_8px_24px_rgba(0,0,0,0.10)] sm:h-[250px] lg:h-[285px] xl:h-[320px]"
+        >
+          <img
+            src={aboutCampusPhoto}
+            alt="Crescent CDOE online MBA and MCA programme launch"
+            className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.025]"
+          />
+        </motion.figure>
 
-              <p className="mt-2 max-w-3xl text-sm leading-7 text-[#555b66] sm:text-base">
-                A renowned quality leadership institution at the greenest spot of Chennai.
-              </p>
-            </motion.header>
+        {/* INSTITUTION DETAILS */}
 
-            {/* CAMPUS IMAGE */}
+        <section className="mb-6">
+          <h2 className="text-lg font-bold leading-7 text-[#17234B] sm:text-xl">
+            B.S. Abdur Rahman Crescent Institute of Science &amp; Technology
+          </h2>
 
-            <motion.figure
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.45,
-                delay: 0.05,
-              }}
-              className="group mb-6 h-[190px] overflow-hidden rounded-xl border-4 border-white bg-white shadow-[0_8px_24px_rgba(0,0,0,0.10)] sm:h-[250px] lg:h-[285px] xl:h-[320px]"
-            >
-              <img
-                src={aboutCampusPhoto}
-                alt="Crescent CDOE online MBA and MCA programme launch"
-                className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.025]"
-              />
-            </motion.figure>
-
-            {/* INSTITUTION DETAILS */}
-
-            <section className="mb-6">
-              <h2 className="text-lg font-bold leading-7 text-[#17234B] sm:text-xl">
-                B.S. Abdur Rahman Crescent Institute of Science &amp; Technology
-              </h2>
-
-              <div className="mt-3 space-y-3 text-sm leading-7 text-[#555b66] sm:text-base">
-                Since 1984, B.S. Abdur Rahman Crescent Institute of Science and Technology has been
-                a renowned quality leadership institution located near Tambaram, in one of the
-                greenest areas of Chennai. Through its long history of academic excellence, the
-                institution has offered access to a wide range of educational opportunities, with 55
-                programmes grouped under 12 different schools. These include 30 undergraduate
-                programmes, 25 postgraduate programmes and Ph.D. research opportunities. The
-                institution is an intellectual destination that challenges conventional thinking and
-                encourages students to explore new ideas. Its distinctive teaching approach inspires
-                students and scholars to strive for excellence, develop their abilities and pursue
-                meaningful academic goals. Beyond quality education, the green campus and
-                thoughtfully planned student environment provide opportunities for learning,
-                collaboration and personal growth. Through a wide range of educational programmes
-                and student clubs, the institution creates experiences that build community,
-                strengthen professional skills and encourage lifelong learning.
-              </div>
-            </section>
-
-            {/* TEAM AND FACILITIES LINKS */}
-
-            <section aria-label="Explore Crescent teams" className="pb-8">
-              <div className="mb-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8f1d1d]">
-                  Discover Crescent
-                </p>
-
-                <h2 className="mt-1.5 text-xl font-bold text-[#17234B] sm:text-2xl">
-                  People, Leadership &amp; Facilities
-                </h2>
-
-                <p className="mt-2 max-w-3xl text-sm leading-7 text-[#555b66] sm:text-base">
-                  Explore the people who guide our institution, the teams that support our
-                  programmes and the facilities that contribute to the learning experience.
-                </p>
-              </div>
-
-              <AboutTeamCards />
-            </section>
+          <div className="mt-3 space-y-3 text-sm leading-7 text-[#555b66] sm:text-base">
+            Since 1984, B.S. Abdur Rahman Crescent Institute of Science and Technology has been a
+            renowned quality leadership institution located near Tambaram, in one of the greenest
+            areas of Chennai. Through its long history of academic excellence, the institution has
+            offered access to a wide range of educational opportunities, with 55 programmes grouped
+            under 12 different schools. These include 30 undergraduate programmes, 25 postgraduate
+            programmes and Ph.D. research opportunities. The institution is an intellectual
+            destination that challenges conventional thinking and encourages students to explore new
+            ideas. Its distinctive teaching approach inspires students and scholars to strive for
+            excellence, develop their abilities and pursue meaningful academic goals. Beyond quality
+            education, the green campus and thoughtfully planned student environment provide
+            opportunities for learning, collaboration and personal growth. Through a wide range of
+            educational programmes and student clubs, the institution creates experiences that build
+            community, strengthen professional skills and encourage lifelong learning.
           </div>
-        </div>
-      </main>
+        </section>
+
+        {/* TEAM AND FACILITIES LINKS */}
+
+        <section aria-label="Explore Crescent teams" className="pb-8">
+          <div className="mb-4">
+            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8f1d1d]">
+              Discover Crescent
+            </p>
+
+            <h2 className="mt-1.5 text-xl font-bold text-[#17234B] sm:text-2xl">
+              People, Leadership &amp; Facilities
+            </h2>
+
+            <p className="mt-2 max-w-3xl text-sm leading-7 text-[#555b66] sm:text-base">
+              Explore the people who guide our institution, the teams that support our programmes
+              and the facilities that contribute to the learning experience.
+            </p>
+          </div>
+
+          <AboutTeamCards />
+        </section>
+      </AboutSectionLayout>
     </SiteLayout>
   );
 }

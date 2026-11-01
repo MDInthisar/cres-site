@@ -3,6 +3,7 @@ import { BrowserRouter, useLocation, useNavigationType, useRoutes } from "react-
 import type { RouteObject } from "react-router-dom";
 
 import { pageMetadata as seoMetadata } from "./data/pageMetadata";
+import { portalLinks } from "./data/links";
 import { AppErrorBoundary, NotFoundPage } from "./components/app/AppFallbacks";
 
 const HomePage = lazy(() => import("./routes/index"));
@@ -60,9 +61,6 @@ const pageMetadata: Record<string, PageMeta> = {
   "/faq": seoMetadata.faq,
   "/gallery": seoMetadata.gallery,
   "/lms": seoMetadata.lms,
-  "/lms-login": seoMetadata.lmsLogin,
-  "/login": seoMetadata.login,
-  "/new-registration": seoMetadata.registration,
   "/programmes": seoMetadata.programmes,
   "/studio": seoMetadata.studio,
   "/ugc-corner": seoMetadata.ugcCorner,
@@ -152,13 +150,11 @@ const routes: RouteObject[] = [
   { path: "/lms", element: <LmsPage /> },
   {
     path: "/lms-login",
-    element: <ExternalRedirect to="https://lmscdoe.crescent-institute.edu.in/login/index.php" />,
+    element: <ExternalRedirect to={portalLinks.learningManagementLogin} />,
   },
   {
     path: "/login",
-    element: (
-      <ExternalRedirect to="https://odladmission.crescent-institute.edu.in/login/index.php" />
-    ),
+    element: <ExternalRedirect to={portalLinks.applicantLogin} />,
   },
   {
     path: "/mba",
@@ -180,9 +176,7 @@ const routes: RouteObject[] = [
   },
   {
     path: "/new-registration",
-    element: (
-      <ExternalRedirect to="https://odladmission.crescent-institute.edu.in/login/signup.php?" />
-    ),
+    element: <ExternalRedirect to={portalLinks.applicantRegistrationRedirect} />,
   },
   { path: "/programmes", element: <ProgrammesPage /> },
   { path: "/students-corner", element: <StudentsCornerPage /> },

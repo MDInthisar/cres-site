@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 
 import { pgProgrammes, ugProgrammes, certificationProgrammes } from "@/data/site";
+import { submitContact } from "@/lib/api/contact";
 
 // ==================================================
 // TYPES
@@ -23,11 +24,6 @@ interface EnquiryFormProps {
   idPrefix?: string;
   submissionType?: "enquiry" | "student-complaint";
   onSubmitted?: () => void;
-}
-
-interface ContactApiResponse {
-  success?: boolean;
-  message?: string;
 }
 
 // ==================================================
@@ -98,24 +94,10 @@ export function EnquiryForm({
       const complaintRrn = String(formData.get("rrn") || "").trim();
 
       // ----------------------------------------------
-      // CREATE SUBMISSION ID
-      // ----------------------------------------------
-
-      // Use randomUUID when available.
-      // Fall back for environments without randomUUID.
-      const submissionId =
-        typeof globalThis.crypto?.randomUUID === "function"
-          ? globalThis.crypto.randomUUID()
-          : `${Date.now()}-${Math.random().toString(36).slice(2)}-${Math.random()
-              .toString(36)
-              .slice(2)}`;
-
-      // ----------------------------------------------
       // CREATE API PAYLOAD
       // ----------------------------------------------
 
       const data = {
-        submissionId,
         submissionType,
 
         name: String(formData.get("name") || "").trim(),
@@ -131,48 +113,7 @@ export function EnquiryForm({
         message: String(formData.get("message") || "").trim(),
       };
 
-      // ----------------------------------------------
-      // API URL
-      // ----------------------------------------------
-
-      const API_URL = (import.meta.env.VITE_CONTACT_API_URL || "http://localhost:5000").replace(
-        /\/+$/,
-        "",
-      );
-
-      // ----------------------------------------------
-      // SEND REQUEST TO EXPRESS
-      // ----------------------------------------------
-
-      const response = await fetch(`${API_URL}/api/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      // ----------------------------------------------
-      // READ RESPONSE SAFELY
-      // ----------------------------------------------
-
-      const responseText = await response.text();
-
-      let result: ContactApiResponse;
-
-      try {
-        result = JSON.parse(responseText) as ContactApiResponse;
-      } catch {
-        throw new Error(`The server returned an invalid response (HTTP ${response.status}).`);
-      }
-
-      // ----------------------------------------------
-      // CHECK API RESPONSE
-      // ----------------------------------------------
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || `Failed to submit enquiry (HTTP ${response.status}).`);
-      }
+      const result = await submitContact(data);
 
       // ----------------------------------------------
       // SUCCESS

@@ -38,21 +38,6 @@ export const pageMetadata = {
     description:
       "Explore the Learning Management System supporting flexible, accessible and personalised online learning.",
   },
-  lmsLogin: {
-    title: "LMS Login — Crescent Distance Education",
-    description:
-      "Login to the Learning Management System to access lectures, study materials, assignments and examination updates.",
-  },
-  login: {
-    title: "Applicant Login | Crescent Distance Education",
-    description:
-      "Login to your Crescent Distance Education applicant account to continue your admission application.",
-  },
-  registration: {
-    title: "New Registration — Crescent Distance Education",
-    description:
-      "Create your applicant account for Crescent Institute Distance Education admissions 2026–2027.",
-  },
   programmes: {
     title: "Programmes Offered — Crescent Centre for Online Education",
     description:

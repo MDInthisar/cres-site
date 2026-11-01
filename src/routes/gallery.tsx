@@ -2,11 +2,6 @@ import { circularFont } from "@/lib/fonts";
 import { GalleryGrid } from "@/components/site/GalleryGrid";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
-const title = "Gallery — Job Fairs, Convocation & Events";
-
-const description =
-  "Browse photographs from Crescent CDOE job fairs, convocation ceremonies and events.";
-
 /* =========================================================
    FONT
    Same font style used in Admission page

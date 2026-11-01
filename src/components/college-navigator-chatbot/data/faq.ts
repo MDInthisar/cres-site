@@ -12,8 +12,6 @@ export const ADMISSION_LINK = "https://odladmission.crescent-institute.edu.in/lo
 export const APPLICATION_PORTAL_LINK =
   "https://admission.crescent-institute.edu.in/login/index.php";
 
-export const DUMMY_ENQUIRY_EMAIL = "yourdummyemail@gmail.com";
-
 /* =========================================================
    TYPES
    ========================================================= */
@@ -45,19 +43,17 @@ export const greetings = [
   "good evening",
 ];
 
+function normalizeText(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[?!.,:;()[\]{}"'`]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 /* =========================================================
-   GREETING RESPONSE
+   FEE RESPONSES
    ========================================================= */
-
-export const greetingResponse =
-  "Hello! 👋 I’m Cres Bot, your Crescent Admission Assistant. I can help you with UG & PG courses, admission, eligibility, fees, scholarships, hostel, campus facilities, timings and student services. How can I help you?";
-
-/* =========================================================
-   OUT OF SCOPE RESPONSE
-   ========================================================= */
-
-export const outOfScopeResponse =
-  "Sorry! I can help only with Crescent college-related topics such as courses, admission, eligibility, fees, scholarships, hostel, campus, timings, exams and student services. 🎓";
 
 export const feeResponse =
   "MBA fees are ₹25,000 per semester. MCA fees are ₹20,000 for Indian students and $750 for foreign nationals. BA Islamic Studies fees are ₹15,000 per year.";
@@ -1588,168 +1584,6 @@ export function isGreeting(input: string): boolean {
 
   return greetings.some((greeting) => greeting.toLowerCase() === text);
 }
-
-/* =========================================================
-   NORMALIZE TEXT
-   ========================================================= */
-
-function normalizeText(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[?!.,:;()[\]{}"'`]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-/* =========================================================
-   FIND BEST FAQ
-   ========================================================= */
-
-export function findBestFaq(input: string): BotFaqEntry | null {
-  const text = normalizeText(input);
-
-  if (!text) return null;
-
-  if (isGreeting(text)) {
-    return null;
-  }
-
-  let bestFaq: BotFaqEntry | null = null;
-  let bestScore = 0;
-
-  for (const item of faqs) {
-    let score = 0;
-
-    /* Keyword matching */
-    for (const keyword of item.keywords) {
-      const normalizedKeyword = normalizeText(keyword);
-
-      if (!normalizedKeyword) continue;
-
-      if (text === normalizedKeyword) {
-        score += 15;
-      } else if (text.includes(normalizedKeyword)) {
-        score += normalizedKeyword.length >= 5 ? 8 : 4;
-      }
-    }
-
-    /* Question matching */
-    const faqQuestion = normalizeText(item.question);
-
-    if (text === faqQuestion) {
-      score += 20;
-    }
-
-    /* Course-specific priority */
-    if (text.includes("mba") && item.keywords.some((k) => k.toLowerCase().includes("mba"))) {
-      score += 10;
-    }
-
-    if (text.includes("mca") && item.keywords.some((k) => k.toLowerCase().includes("mca"))) {
-      score += 10;
-    }
-
-    if (
-      text.includes("ba english") &&
-      item.keywords.some((k) => k.toLowerCase().includes("ba english"))
-    ) {
-      score += 10;
-    }
-
-    if (
-      text.includes("ba islamic") &&
-      item.keywords.some((k) => k.toLowerCase().includes("ba islamic"))
-    ) {
-      score += 10;
-    }
-
-    if (
-      text.includes("public policy") &&
-      item.keywords.some((k) => k.toLowerCase().includes("public policy"))
-    ) {
-      score += 10;
-    }
-
-    if (
-      text.includes("ma islamic") &&
-      item.keywords.some((k) => k.toLowerCase().includes("ma islamic"))
-    ) {
-      score += 10;
-    }
-
-    if (score > bestScore) {
-      bestScore = score;
-      bestFaq = item;
-    }
-  }
-
-  /*
-   * IMPORTANT:
-   * Do not answer unrelated questions.
-   */
-
-  if (bestScore < 4) {
-    return null;
-  }
-
-  return bestFaq;
-}
-
-/* =========================================================
-   GET ANSWER
-   ========================================================= */
-
-export function getBotAnswer(input: string) {
-  if (isGreeting(input)) {
-    return {
-      type: "greeting" as const,
-      answer: greetingResponse,
-      faq: null,
-      suggestions: ["UG courses", "PG courses", "Admission process", "Fees"],
-    };
-  }
-
-  if (isFeeQuestion(input)) {
-    return {
-      type: "fees" as const,
-      answer: feeResponse,
-      faq: null,
-      suggestions: ["MBA fees", "MCA fees", "BA Islamic Studies fees"],
-    };
-  }
-
-  const matchedFaq = findBestFaq(input);
-
-  if (!matchedFaq) {
-    return {
-      type: "out-of-scope" as const,
-      answer: outOfScopeResponse,
-      faq: null,
-      suggestions: ["UG courses", "PG courses", "Admission process", "Fees"],
-    };
-  }
-
-  return {
-    type: "faq" as const,
-    answer: matchedFaq.answer,
-    faq: matchedFaq,
-    suggestions: matchedFaq.suggestions || [],
-    link: matchedFaq.link || null,
-  };
-}
-
-/* =========================================================
-   QUICK QUESTIONS
-   ========================================================= */
-
-export const quickQuestions = [
-  "UG courses",
-  "PG courses",
-  "MBA fees",
-  "MCA eligibility",
-  "Admission process",
-  "Hostel facilities",
-];
 
 /* =========================================================
    EXPORT DEFAULT

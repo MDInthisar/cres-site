@@ -9,11 +9,9 @@ const navigationItems = [
   { label: "Facilities", href: "/facilities", icon: Sparkles },
 ] as const;
 
-export function AboutUsSidebar({
-  activeHref,
-}: {
-  activeHref: (typeof navigationItems)[number]["href"];
-}) {
+export type AboutSectionRoute = (typeof navigationItems)[number]["href"];
+
+export function AboutUsSidebar({ activeHref }: { activeHref: AboutSectionRoute }) {
   return (
     <aside className="h-fit w-full min-w-0 rounded-xl border border-[#dedbd6] bg-white p-3 shadow-[0_6px_18px_rgba(0,0,0,0.05)] lg:sticky lg:top-24">
       <p className="mb-2 px-3 pt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#737782]">

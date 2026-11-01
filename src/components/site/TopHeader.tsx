@@ -1,5 +1,4 @@
 import { college } from "@/data/site";
-import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, LogIn, Mail, Phone, UserPlus } from "lucide-react";
 
 export function TopHeader() {

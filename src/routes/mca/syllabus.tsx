@@ -1,18 +1,17 @@
 import { circularFont } from "@/lib/fonts";
 import { Link } from "react-router-dom";
-import {
-  ArrowLeft,
-  Download,
-  GraduationCap,
-} from "lucide-react";
+import { ArrowLeft, Download, GraduationCap } from "lucide-react";
 
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
-import {
-  SyllabusDownloadDialog,
-} from "@/components/site/SyllabusDownloadDialog";
+import { SyllabusDownloadDialog } from "@/components/site/SyllabusDownloadDialog";
 import { useSyllabusDownload } from "@/components/site/useSyllabusDownload";
-import { ProgrammeSidebarNavigation } from "@/components/site/ProgrammePageTemplate";
+import {
+  ProgrammeSyllabusLayout,
+  SyllabusBackLink,
+  SyllabusCreditSummary,
+  SyllabusPageNote,
+} from "@/components/site/ProgrammeSyllabusLayout";
 import { mcaProgrammePageConfig } from "@/data/programmePageConfigs";
 import {
   SyllabusSemesterTable as SemesterTable,
@@ -339,7 +338,6 @@ function SyllabusPage() {
   return (
     <SiteLayout>
       <main style={circularFont} className="bg-white">
-
         {/* HEADER */}
 
         <section className="bg-[#334b7c] px-5 py-6 text-white sm:px-8 sm:py-7">
@@ -360,14 +358,11 @@ function SyllabusPage() {
                 M.C.A.
               </div>
 
-              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-                Syllabus
-              </h1>
+              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">Syllabus</h1>
 
               <p className="mt-2 max-w-2xl text-xs leading-5 text-white/85 sm:text-sm">
-                Detailed semester-wise syllabus, course structure, credits
-                and elective courses for the Master of Computer Applications
-                programme.
+                Detailed semester-wise syllabus, course structure, credits and elective courses for
+                the Master of Computer Applications programme.
               </p>
 
               <button
@@ -384,130 +379,66 @@ function SyllabusPage() {
 
         {/* CONTENT */}
 
-        <section className="mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-4 px-4 py-4 sm:px-6 md:grid-cols-[180px_minmax(0,1fr)] lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-6 lg:px-8">
-          <ProgrammeSidebarNavigation
-            variant="mca"
-            navigation={mcaProgrammePageConfig.navigation}
-            activeTitle="Syllabus"
+        <ProgrammeSyllabusLayout
+          variant="mca"
+          navigation={mcaProgrammePageConfig.navigation}
+          title="M.C.A."
+          notice="Click Here To Download Our MCA Syllabus"
+          downloadLabel="MCA Syllabus PDF"
+          onDownload={syllabusDownload.show}
+        >
+          {/* SEMESTER I */}
+
+          <SemesterTable
+            semester="SEMESTER Ⅰ"
+            courses={semester1}
+            total={22}
+            categoryHeading="Course Group"
           />
-          <div className="min-w-0">
 
-            {/* DOWNLOAD BOX */}
+          {/* SEMESTER II */}
 
-            <div className="mb-8 rounded-xl border border-[#d4af37]/40 bg-[#fffaf0] px-5 py-4">
-              <p className="text-sm font-semibold text-[#111111]">
-                Click Here To Download Our MCA Syllabus
-              </p>
+          <SemesterTable
+            semester="SEMESTER Ⅱ"
+            courses={semester2}
+            total={22}
+            categoryHeading="Course Group"
+          />
 
-              <button
-                type="button"
-                onClick={syllabusDownload.show}
-                className="mt-2 inline-flex items-center gap-2 text-sm font-bold text-[#8f1d1d] transition-colors hover:text-[#334b7c]"
-              >
-                <Download size={15} />
-                MCA Syllabus PDF
-              </button>
-            </div>
+          {/* SEMESTER III */}
 
-            {/* TITLE */}
+          <SemesterTable
+            semester="SEMESTER Ⅲ"
+            courses={semester3}
+            total={24}
+            categoryHeading="Course Group"
+          />
 
-            <div className="mb-8">
-              <div className="mb-2 h-1 w-12 rounded-full bg-[#d4af37]" />
+          {/* SEMESTER IV */}
 
-              <h2 className="text-2xl font-bold text-[#111111] sm:text-3xl">
-                M.C.A.
-              </h2>
+          <SemesterTable
+            semester="SEMESTER Ⅳ"
+            courses={semester4}
+            total="Min: 86"
+            categoryHeading="Course Group"
+          />
 
-              <p className="mt-2 text-sm text-slate-600">
-                Semester-wise course structure and credit distribution
-              </p>
-            </div>
+          {/* OVERALL TOTAL */}
 
-            {/* SEMESTER I */}
+          <SyllabusCreditSummary credits={86} variant="mca" />
 
-            <SemesterTable
-              semester="SEMESTER Ⅰ"
-              courses={semester1}
-              total={22}
-              categoryHeading="Course Group"
-            />
+          {/* NOTE */}
 
-            {/* SEMESTER II */}
+          <SyllabusPageNote>
+            <span className="font-bold text-[#8f1d1d]">Note:</span> The programme includes core
+            courses, professional electives, practical laboratory components, mini project and
+            project work as specified in the MCA programme structure.
+          </SyllabusPageNote>
 
-            <SemesterTable
-              semester="SEMESTER Ⅱ"
-              courses={semester2}
-              total={22}
-              categoryHeading="Course Group"
-            />
+          {/* BOTTOM NAVIGATION */}
 
-            {/* SEMESTER III */}
-
-            <SemesterTable
-              semester="SEMESTER Ⅲ"
-              courses={semester3}
-              total={24}
-              categoryHeading="Course Group"
-            />
-
-            {/* SEMESTER IV */}
-
-            <SemesterTable
-              semester="SEMESTER Ⅳ"
-              courses={semester4}
-              total="Min: 86"
-              categoryHeading="Course Group"
-            />
-
-            {/* OVERALL TOTAL */}
-
-            <section className="mb-10 rounded-2xl bg-[#1d355f] px-5 py-6 text-white shadow-sm sm:px-7">
-              <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-[#d4af37]">
-                    Programme Credit Structure
-                  </p>
-
-                  <h2 className="mt-1 text-xl font-bold">
-                    Total Minimum Credits
-                  </h2>
-                </div>
-
-                <div className="text-4xl font-bold text-[#d4af37]">
-                  86
-                </div>
-              </div>
-            </section>
-
-            {/* NOTE */}
-
-            <div className="mb-8 rounded-xl border-l-4 border-[#8f1d1d] bg-[#fffaf0] px-4 py-3">
-              <p className="text-sm leading-6 text-[#111111]/75">
-                <span className="font-bold text-[#8f1d1d]">
-                  Note:
-                </span>{" "}
-                The programme includes core courses, professional electives,
-                practical laboratory components, mini project and project
-                work as specified in the MCA programme structure.
-              </p>
-            </div>
-
-            {/* BOTTOM NAVIGATION */}
-
-            <div className="mt-10 flex flex-col gap-3 border-t border-slate-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <Link
-                to="/mca"
-                className="group relative inline-flex w-fit items-center gap-2 overflow-hidden rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-[#111111] transition-all"
-              >
-                <ArrowLeft size={16} />
-                Back to Programme
-
-                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
-              </Link>
-
-            </div>
-          </div>
-        </section>
+          <SyllabusBackLink to="/mca" />
+        </ProgrammeSyllabusLayout>
 
         <SyllabusDownloadDialog
           open={syllabusDownload.open}

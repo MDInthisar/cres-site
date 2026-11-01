@@ -4,6 +4,7 @@ import { ui } from "../data/translations";
 import { cn } from "../lib/utils";
 import type { EnquiryData } from "../types/chat";
 import { courseInfo } from "@/data/programmes";
+import { submitContact } from "@/lib/api/contact";
 
 interface Props {
   onSubmitted: (data: EnquiryData) => void;
@@ -55,38 +56,13 @@ function EnquiryFormBase({ onSubmitted }: Props) {
     setSubmissionError("");
 
     try {
-      const apiUrl = (import.meta.env.VITE_CONTACT_API_URL || "http://localhost:5000").replace(
-        /\/+$/,
-        "",
-      );
-      const submissionId =
-        typeof globalThis.crypto?.randomUUID === "function"
-          ? globalThis.crypto.randomUUID()
-          : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      const response = await fetch(`${apiUrl}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          submissionId,
-          name: data.name.trim(),
-          email: data.email.trim(),
-          phonenumber: data.mobile.trim(),
-          program: data.course,
-          message: data.message.trim(),
-        }),
+      await submitContact({
+        name: data.name.trim(),
+        email: data.email.trim(),
+        phonenumber: data.mobile.trim(),
+        program: data.course,
+        message: data.message.trim(),
       });
-
-      const responseText = await response.text();
-      let result: { success?: boolean; message?: string };
-      try {
-        result = JSON.parse(responseText) as { success?: boolean; message?: string };
-      } catch {
-        throw new Error(`The server returned an invalid response (HTTP ${response.status}).`);
-      }
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || `Failed to submit enquiry (HTTP ${response.status}).`);
-      }
 
       onSubmitted(data);
     } catch (error) {

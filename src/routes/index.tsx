@@ -5,10 +5,6 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { StudentReviews } from "@/components/site/StudentReviews";
 import { WhoWeAre } from "@/components/site/WhoWeAre";
 
-const title = "B.S. Abdur Rahman Crescent Institute of Science and Technology";
-const description =
-  "Apply online for UGC approved UG and PG distance education programmes — B.A., B.Com., BBA, BCA, B.Sc., M.A., M.Com., MBA, MCA and M.Sc. Flexible learning and free counselling.";
-
 function Index() {
   return (
     <SiteLayout>

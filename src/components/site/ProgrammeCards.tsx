@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 import { Reveal } from "./Reveal";
-import { Section, SectionHeading } from "./Section";
+import { Section } from "./Section";
 
 import baEnglishPhoto from "@/assets/BA English_ A Literary Study.png";
 import baPublicPolicyPhoto from "@/assets/BA Public Policy_ Governance and Justice.png";
@@ -29,10 +29,6 @@ import campusPhoto from "@/assets/campus-1.jpg";
 import programmeStudentsPhoto from "@/assets/programme-students.jpg";
 
 import programmeBrochure from "@/assets/programme-brochure.pdf";
-
-const NAVY = "#172554";
-const RED = "#8F1D1D";
-const GOLD = "#D4AF37";
 
 type Programme = {
   slug: string;

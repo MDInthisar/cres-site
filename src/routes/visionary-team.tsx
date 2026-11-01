@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { AboutSectionHeading, AboutSectionLayout } from "@/components/site/AboutSectionLayout";
 import {
   Award,
   BookOpen,
@@ -14,7 +13,6 @@ import {
   Users,
 } from "lucide-react";
 
-import { AboutUsSidebar } from "@/components/site/AboutUsSidebar";
 import founderPhoto from "@/assets/founder.png";
 import presidentPhoto from "@/assets/president.png";
 import chancellorPhoto from "@/assets/Chancellor.png";
@@ -210,39 +208,25 @@ function TeamCard({ person, index }: { person: (typeof visionaryTeam)[number]; i
 function VisionaryTeamPage() {
   return (
     <SiteLayout>
-      <div style={circularFont} className="min-h-screen bg-[#F5F1E9] text-black">
-        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-start gap-5 px-4 py-6 sm:px-6 sm:py-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-6 lg:px-8 xl:gap-8 xl:px-10">
-          <AboutUsSidebar activeHref="/visionary-team" />
+      <AboutSectionLayout activeHref="/visionary-team">
+        <main className="min-w-0">
+          <AboutSectionHeading
+            eyebrow="About Us"
+            title="Visionary Team"
+            description="Leadership and vision driving excellence in education, innovation and societal development."
+            className="mb-6"
+            initialY={12}
+            duration={0.45}
+            descriptionClassName="max-w-2xl text-sm leading-6 text-[#667085] sm:text-base sm:leading-7"
+          />
 
-          <main className="min-w-0">
-            <motion.header
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45 }}
-              className="mb-6"
-            >
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#c93636]">
-                About Us
-              </p>
-
-              <h1 className="mt-1 text-2xl font-bold tracking-tight text-[#14284e] sm:text-3xl">
-                Visionary Team
-              </h1>
-
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#667085] sm:text-base sm:leading-7">
-                Leadership and vision driving excellence in education, innovation and societal
-                development.
-              </p>
-            </motion.header>
-
-            <div className="space-y-5 sm:space-y-6">
-              {visionaryTeam.map((person, index) => (
-                <TeamCard key={person.name} person={person} index={index} />
-              ))}
-            </div>
-          </main>
-        </div>
-      </div>
+          <div className="space-y-5 sm:space-y-6">
+            {visionaryTeam.map((person, index) => (
+              <TeamCard key={person.name} person={person} index={index} />
+            ))}
+          </div>
+        </main>
+      </AboutSectionLayout>
     </SiteLayout>
   );
 }

@@ -31,6 +31,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Camera, ChevronRight, Images, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Section } from "./Section";
 
 type Photo = {
@@ -113,6 +114,17 @@ const photos: Photo[] = [
 export function GalleryGrid({ featured = false }: { featured?: boolean }) {
   const [active, setActive] = useState<string>("all");
   const [slideIndex, setSlideIndex] = useState(0);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash === "#gallery") {
+      setActive("all");
+      return;
+    }
+
+    const category = galleryCategories.find((item) => `#${item.id}` === hash);
+    if (category) setActive(category.id);
+  }, [hash]);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -201,10 +213,11 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
               return (
                 <button
                   key={category.id}
+                  id={category.id === "all" ? undefined : category.id}
                   type="button"
                   onClick={() => setActive(category.id)}
                   className={cn(
-                    "group relative flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300",
+                    "group relative flex scroll-mt-24 items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300",
                     selected
                       ? "bg-[#172554] text-white shadow-md"
                       : "text-slate-500 hover:bg-[#8f1d1d]/8 hover:text-[#8f1d1d]",

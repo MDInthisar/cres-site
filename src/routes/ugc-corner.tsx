@@ -18,7 +18,6 @@ import application2023_2024Pdf from "@/assets/APP2023-2024.pdf";
 import application2024_2025Pdf from "@/assets/APP2024-2025.pdf";
 import application2026_2027Pdf from "@/assets/APP2026-2027.pdf";
 import application2026_2027PublicPolicyPdf from "@/assets/APP2026-2027 (BA Public Policy).pdf";
-import admissionAy2021Pdf from "@/assets/AY 2021.pdf";
 import admissionAy2022Pdf from "@/assets/AY 2022.pdf";
 import admissionAy2023Pdf from "@/assets/AY 2023.pdf";
 import admissionAy2024Pdf from "@/assets/AY 2024.pdf";
@@ -42,7 +41,6 @@ import {
   ShieldCheck,
   ArrowRight,
   GraduationCap,
-  ExternalLink,
   FileDown,
   CheckCircle2,
   Bell,
@@ -50,18 +48,9 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const title = "UGC Corner — Crescent Centre for Distance and Online Education";
-const description =
-  "UGC mandatory disclosures, regulatory approvals, compliance information and quality assurance documents of Crescent Centre for Distance and Online Education.";
-
 const officialLinks = {
   ugcMandatoryDisclosure: ugcDisclosurePdf,
   aicteMandatoryDisclosure: aicteDisclosurePdf,
-  ugcNotification: "/pdf/ugc-notification.pdf",
-  compliance: "/pdf/compliance.pdf",
-  ugcApplication: "/pdf/ugc-application.pdf",
-  ciqaAnnualReport: "/pdf/ciqa-annual-report.pdf",
-  admissionList: "/admission-list.pdf",
 };
 
 const ugcNotifications = [
@@ -173,7 +162,6 @@ const resources = [
     short: "Notifications",
     body: "UGC-DEB notifications, public notices and recognition-related information.",
     icon: FileText,
-    href: officialLinks.ugcNotification,
     label: "View Documents",
   },
   {
@@ -183,7 +171,6 @@ const resources = [
     short: "Disclosure",
     body: "Regulatory compliance records and institutional disclosures.",
     icon: ShieldCheck,
-    href: officialLinks.compliance,
     label: "View Reports",
   },
   {
@@ -193,7 +180,6 @@ const resources = [
     short: "Applications",
     body: "Applications and submissions related to ODL programme recognition.",
     icon: FileCheck2,
-    href: officialLinks.ugcApplication,
     label: "View Documents",
   },
   {
@@ -203,7 +189,6 @@ const resources = [
     short: "Quality",
     body: "Annual reports covering quality assurance and improvement activities.",
     icon: ClipboardList,
-    href: officialLinks.ciqaAnnualReport,
     label: "View Reports",
   },
   {
@@ -213,7 +198,6 @@ const resources = [
     short: "Admissions",
     body: "Admission information published for different academic sessions.",
     icon: ListChecks,
-    href: officialLinks.admissionList,
     label: "View Admission List",
   },
 ];

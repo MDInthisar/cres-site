@@ -1,37 +1,27 @@
 import { circularFont } from "@/lib/fonts";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Bell,
-  GraduationCap,
-  LogIn,
-  UserPlus,
-} from "lucide-react";
+import { ArrowRight, Bell, GraduationCap, LogIn, UserPlus } from "lucide-react";
 
 import admissionNotification from "@/assets/Admission_Notification_AY_2023.pdf";
-
-const registrationUrl =
-  "https://odladmission.crescent-institute.edu.in/login/signup.php";
-
-const loginUrl =
-  "https://odladmission.crescent-institute.edu.in/login/index.php";
+import { portalLinks } from "@/data/links";
 
 const quickLinks = [
   {
     label: "Registration",
-    href: registrationUrl,
+    href: portalLinks.applicantRegistration,
     icon: UserPlus,
     external: true,
   },
   {
     label: "Applicant Login",
-    href: loginUrl,
+    href: portalLinks.applicantLogin,
     icon: LogIn,
     external: true,
   },
   {
     label: "Admission Notification",
+    id: "notification",
     href: admissionNotification,
     icon: Bell,
     external: true,
@@ -44,9 +34,11 @@ const steps = [
     number: "01",
     title: "Registration",
     description: "Create an account",
-    action: { label: "Register Now", href: registrationUrl },
+    action: { label: "Register Now", href: portalLinks.applicantRegistration },
     details: [
-      <>Select <strong>Admission → New Registration</strong>.</>,
+      <>
+        Select <strong>Admission → New Registration</strong>.
+      </>,
       <>Enter your details and create your account.</>,
       <>Activate your account using the email link.</>,
     ],
@@ -56,9 +48,11 @@ const steps = [
     number: "02",
     title: "Applicant Login",
     description: "Access your account",
-    action: { label: "Applicant Login", href: loginUrl },
+    action: { label: "Applicant Login", href: portalLinks.applicantLogin },
     details: [
-      <>Select <strong>Admission → Apply Online</strong>.</>,
+      <>
+        Select <strong>Admission → Apply Online</strong>.
+      </>,
       <>Sign in using your applicant credentials.</>,
     ],
   },
@@ -84,7 +78,9 @@ const steps = [
     description: "Pay the application fee",
     action: null,
     details: [
-      <>Select <strong>Payment → Pay now</strong>.</>,
+      <>
+        Select <strong>Payment → Pay now</strong>.
+      </>,
       <>Pay by card, net banking, or UPI.</>,
       <>Save your application number and download the application.</>,
     ],
@@ -105,6 +101,7 @@ function AdmissionSidebar() {
           return (
             <a
               key={item.label}
+              id={item.id}
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noreferrer" : undefined}
@@ -159,20 +156,18 @@ function AdmissionSteps() {
   return (
     <section aria-labelledby="steps-heading" className="min-w-0">
       <div className="mb-4">
-        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8f1d1d]">
-          Overview
-        </p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8f1d1d]">Overview</p>
 
         <h2
           id="steps-heading"
-          className="mt-1.5 text-xl font-bold tracking-tight text-[#17234B] sm:text-2xl"
+          className="mt-1.5 scroll-mt-24 text-xl font-bold tracking-tight text-[#17234B] sm:text-2xl"
         >
           Steps to Apply Online
         </h2>
 
         <p className="mt-2 max-w-3xl text-xs leading-6 text-[#555b66] sm:text-sm sm:leading-7">
-          Follow the application process carefully and complete each step
-          before submitting your application.
+          Follow the application process carefully and complete each step before submitting your
+          application.
         </p>
       </div>
 
@@ -181,15 +176,13 @@ function AdmissionSteps() {
           <li
             key={step.id}
             id={step.id}
-            className="flex min-w-0 flex-col rounded-xl border border-[#dedbd6] bg-white p-4 shadow-[0_5px_18px_rgba(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-[0_8px_22px_rgba(0,0,0,0.08)]"
+            className="scroll-mt-24 flex min-w-0 flex-col rounded-xl border border-[#dedbd6] bg-white p-4 shadow-[0_5px_18px_rgba(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-[0_8px_22px_rgba(0,0,0,0.08)]"
           >
             <div className="mb-3 flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F5F1E9] text-sm font-bold text-[#8f1d1d]">
               {step.number}
             </div>
 
-            <h3 className="text-sm font-bold leading-6 text-[#17234B]">
-              {step.title}
-            </h3>
+            <h3 className="text-sm font-bold leading-6 text-[#17234B]">{step.title}</h3>
 
             <p className="mt-1 text-[10px] font-medium leading-4 text-[#737782] sm:text-xs">
               {step.description}

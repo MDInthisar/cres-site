@@ -1,4 +1,3 @@
-import campusPhoto from "@/assets/campus-1.jpg";
 import agalyaPhoto from "@/assets/Agalya.jpeg";
 import abdussamadPhoto from "@/assets/abdussamad.jpeg";
 import ahamedullahPhoto from "@/assets/ahamedullah.png";
