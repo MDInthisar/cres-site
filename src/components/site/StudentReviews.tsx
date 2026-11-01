@@ -1,10 +1,6 @@
-
 import { AnimatePresence, motion } from "framer-motion";
 
-import {
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { useCallback, useEffect, useState } from "react";
 import { Section, SectionHeading } from "./Section";
@@ -38,31 +34,20 @@ export function StudentReviews() {
   const perView = 1;
   const pages = Math.ceil(reviews.length / perView);
 
-  const next = useCallback(
-    () => setIndex((i) => (i + 1) % pages),
-    [pages],
-  );
+  const next = useCallback(() => setIndex((i) => (i + 1) % pages), [pages]);
 
-  const prev = () =>
-    setIndex((i) => (i - 1 + pages) % pages);
+  const prev = () => setIndex((i) => (i - 1 + pages) % pages);
 
   useEffect(() => {
     const id = setInterval(next, 6500);
     return () => clearInterval(id);
   }, [next]);
 
-  const visible = reviews.slice(
-    index * perView,
-    index * perView + perView,
-  );
+  const visible = reviews.slice(index * perView, index * perView + perView);
 
   return (
-    <Section
-      id="reviews"
-      className="h-full [&>div]:h-full !px-0 !py-0 bg-transparent"
-    >
+    <Section id="reviews" className="h-full [&>div]:h-full !px-0 !py-0 bg-transparent">
       <div className="mx-auto flex h-full w-full max-w-6xl flex-col">
-
         {/* =========================
             HEADING
         ========================== */}
@@ -117,15 +102,10 @@ export function StudentReviews() {
                   hover:shadow-[0_12px_30px_rgba(15,23,42,0.09)]
                 "
               >
-
                 {/* Top Row */}
                 <figcaption>
-                  <span className="block text-[16px] font-bold text-[#172554]">
-                    {r.name}
-                  </span>
-                  <span className="mt-0.5 block text-[12px] text-[#4b4b4b]">
-                    {r.programme}
-                  </span>
+                  <span className="block text-[16px] font-bold text-[#172554]">{r.name}</span>
+                  <span className="mt-0.5 block text-[12px] text-[#4b4b4b]">{r.programme}</span>
                 </figcaption>
 
                 {/* Gold Divider */}
@@ -215,7 +195,6 @@ export function StudentReviews() {
             CONTROLS
         ========================== */}
         <div className="mt-auto flex items-center justify-center gap-3 pt-5">
-
           {/* Previous */}
           <button
             type="button"
@@ -279,7 +258,6 @@ export function StudentReviews() {
           >
             <ChevronRight className="size-4" />
           </button>
-
         </div>
       </div>
     </Section>

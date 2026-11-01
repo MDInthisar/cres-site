@@ -8,8 +8,8 @@ import { facultyProfiles } from "@/data/facultyProfiles";
 import deepakPhoto from "@/assets/deepak.jpeg";
 import lathaPhoto from "@/assets/latha.jpeg";
 import meerasaPhoto from "@/assets/meerasa.jpeg";
-import merlinePhoto from "@/assets/merline.jpeg";
-import roobanPhoto from "@/assets/rooban.jpeg";
+import merlinePhoto from "@/assets/optimized/merline.webp";
+import roobanPhoto from "@/assets/optimized/rooban.webp";
 import vigneshPhoto from "@/assets/vignesh.jpg";
 
 type StaffTab = "faculty" | "technical";

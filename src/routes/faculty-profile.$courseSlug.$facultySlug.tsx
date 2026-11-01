@@ -59,6 +59,9 @@ function FacultyProfilePage() {
               <img
                 src={faculty.photo}
                 alt={faculty.name}
+                width={400}
+                height={400}
+                decoding="async"
                 className="size-32 rounded-2xl border-2 border-white/40 object-cover shadow-lg"
               />
               <div>

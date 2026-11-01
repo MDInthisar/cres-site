@@ -134,6 +134,9 @@ function FloatingChatButtonBase({ open, onToggle, label }: Props) {
             <motion.img
               src={chatbotImage}
               alt="Crescent Admission Assistant"
+              width={178}
+              height={148}
+              decoding="async"
               className="
                 h-full
                 w-full

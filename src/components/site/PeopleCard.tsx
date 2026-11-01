@@ -32,6 +32,10 @@ export function PeopleCard({
       <img
         src={photo}
         alt={name}
+        width={120}
+        height={120}
+        loading="lazy"
+        decoding="async"
         className="size-24 shrink-0 rounded-full border-4 border-[#e8eef6] object-cover sm:size-28"
       />
       <NameHeading className="mt-4 w-full break-words text-base font-bold leading-6 text-[#17366F] sm:text-lg">

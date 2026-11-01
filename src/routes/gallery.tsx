@@ -11,6 +11,7 @@ function GalleryPage() {
   return (
     <SiteLayout>
       <main style={circularFont} className="min-h-screen overflow-hidden bg-[#f7f4ee]">
+        <h1 className="sr-only">Gallery</h1>
         {/* =====================================================
             GALLERY HEADER
             HERO CONTENT REMOVED

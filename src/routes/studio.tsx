@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle2, Clapperboard, Video } from "lucide-react";
 
-import studioProduction from "@/assets/studio-production.jpg";
+import studioProduction from "@/assets/optimized/studio-production.webp";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { FacilityPageLayout, FacilitySectionHeading } from "@/components/site/FacilityPageLayout";
 
@@ -160,6 +160,10 @@ function StudioPage() {
               <img
                 src={studioProduction}
                 alt="CDOE studio green screen and video editing facilities"
+                width={1365}
+                height={768}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
 

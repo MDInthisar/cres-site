@@ -1,8 +1,4 @@
-import {
-  ArrowRight,
-  Award,
-  GraduationCap,
-} from "lucide-react";
+import { ArrowRight, Award, GraduationCap } from "lucide-react";
 import ugc from "@/assets/ugc.png";
 
 const items = [
@@ -14,7 +10,7 @@ const items = [
   {
     text: "UGC Approved Distance Education",
     type: "ugc",
-    href: "#ugc",
+    href: "/ugc-corner",
   },
   {
     text: "UG & PG Admissions Open",
@@ -90,6 +86,9 @@ function MarqueeItem({
           <img
             src={ugc}
             alt="UGC Approved"
+            width={160}
+            height={173}
+            decoding="async"
             className="
               h-full
               w-full
@@ -290,12 +289,7 @@ export function Marquee({ compact = false }: { compact?: boolean }) {
             "
           >
             {items.map((item, index) => (
-              <MarqueeItem
-                key={`first-${item.text}`}
-                item={item}
-                index={index}
-                compact={compact}
-              />
+              <MarqueeItem key={`first-${item.text}`} item={item} index={index} compact={compact} />
             ))}
           </div>
 

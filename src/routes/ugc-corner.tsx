@@ -246,18 +246,10 @@ function UgcSidebar() {
   );
 }
 
-function SectionHeading({
-  eyebrow,
-  title,
-}: {
-  eyebrow: string;
-  title: string;
-}) {
+function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div className="mb-4">
-      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#23457D]">
-        {eyebrow}
-      </p>
+      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#23457D]">{eyebrow}</p>
       <h2 className="mt-1.5 text-xl font-bold tracking-tight text-[#20242B] sm:text-2xl">
         {title}
       </h2>
@@ -269,6 +261,8 @@ function SectionHeading({
 function DisclosureCard({
   image,
   imageAlt,
+  imageWidth,
+  imageHeight,
   heading,
   subtitle,
   href,
@@ -276,6 +270,8 @@ function DisclosureCard({
 }: {
   image: string;
   imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
   heading: string;
   subtitle?: string;
   href: string;
@@ -289,18 +285,21 @@ function DisclosureCard({
     >
       <div className="flex min-w-0 items-center gap-3">
         <div className="flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#D9D4CA] bg-white p-2">
-          <img src={image} alt={imageAlt} className="h-full w-full object-contain" />
+          <img
+            src={image}
+            alt={imageAlt}
+            width={imageWidth}
+            height={imageHeight}
+            decoding="async"
+            className="h-full w-full object-contain"
+          />
         </div>
         <div className="min-w-0">
           <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#23457D]">
             Regulatory Authority
           </p>
-          <h3 className="mt-1 text-lg font-bold leading-snug text-[#20242B]">
-            {heading}
-          </h3>
-          {subtitle && (
-            <p className="mt-0.5 text-xs text-[#737782]">{subtitle}</p>
-          )}
+          <h3 className="mt-1 text-lg font-bold leading-snug text-[#20242B]">{heading}</h3>
+          {subtitle && <p className="mt-0.5 text-xs text-[#737782]">{subtitle}</p>}
         </div>
       </div>
 
@@ -325,10 +324,7 @@ function DisclosureCard({
 function UgcResources() {
   return (
     <section id="ugc-resources" className="scroll-mt-6">
-      <SectionHeading
-        eyebrow="Official Information"
-        title="Regulatory & Quality Resources"
-      />
+      <SectionHeading eyebrow="Official Information" title="Regulatory & Quality Resources" />
 
       <div className="grid gap-4 sm:grid-cols-2">
         {resources.map((resource) => {
@@ -361,9 +357,7 @@ function UgcResources() {
                 <h3 className="mt-1 text-base font-bold leading-snug text-[#20242B]">
                   {resource.title}
                 </h3>
-                <p className="mt-1.5 text-xs leading-5 text-[#737782]">
-                  {resource.body}
-                </p>
+                <p className="mt-1.5 text-xs leading-5 text-[#737782]">{resource.body}</p>
               </div>
 
               <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-3">
@@ -420,20 +414,20 @@ function UgcCornerPage() {
                 UGC Corner
               </h1>
               <p className="mt-2 max-w-2xl text-sm leading-5 text-[#737782]">
-                Regulatory approvals, mandatory disclosures, compliance records and quality assurance documents.
+                Regulatory approvals, mandatory disclosures, compliance records and quality
+                assurance documents.
               </p>
             </header>
 
             <section id="disclosures" className="scroll-mt-6">
-              <SectionHeading
-                eyebrow="Mandatory Disclosure"
-                title="UGC & AICTE Documents"
-              />
+              <SectionHeading eyebrow="Mandatory Disclosure" title="UGC & AICTE Documents" />
 
               <div className="grid gap-3 md:grid-cols-2">
                 <DisclosureCard
                   image={ugc}
                   imageAlt="UGC Logo"
+                  imageWidth={160}
+                  imageHeight={173}
                   heading="UGC"
                   subtitle="University Grants Commission"
                   href={officialLinks.ugcMandatoryDisclosure}
@@ -444,6 +438,8 @@ function UgcCornerPage() {
                   <DisclosureCard
                     image={aicte}
                     imageAlt="AICTE Logo"
+                    imageWidth={225}
+                    imageHeight={225}
                     heading="AICTE"
                     subtitle="All India Council for Technical Education"
                     href={officialLinks.aicteMandatoryDisclosure}
@@ -475,7 +471,8 @@ function UgcCornerPage() {
             </div>
 
             <p className="text-center text-[11px] leading-5 text-slate-400">
-              Regulatory documents and admission information are linked to the available Crescent Centre for Distance and Online Education resources.
+              Regulatory documents and admission information are linked to the available Crescent
+              Centre for Distance and Online Education resources.
             </p>
           </div>
         </div>

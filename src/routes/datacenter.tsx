@@ -10,7 +10,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-import dataCenterServer from "@/assets/data-center-server.jpg";
+import dataCenterServer from "@/assets/optimized/data-center-server.webp";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { FacilityPageLayout, FacilitySectionHeading } from "@/components/site/FacilityPageLayout";
 
@@ -162,6 +162,10 @@ function DatacenterPage() {
               <img
                 src={dataCenterServer}
                 alt="Server racks and network equipment in the data centre"
+                width={1140}
+                height={768}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
 

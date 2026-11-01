@@ -113,8 +113,7 @@ export const mbaProgrammePageConfig: PageConfig = {
     badgeIcon: <GraduationCap size={20} />,
     badge: "Postgraduate Programme",
     title: getRequiredCourseInfo("mba").fullName,
-    description:
-      "MBA Distance Learning | Crescent University Distance Education.",
+    description: "MBA Distance Learning | Crescent University Distance Education.",
     applyIcon: <ArrowRight size={18} />,
     applyTo: "/admission",
     applyHash: "how-to-apply",
@@ -221,8 +220,7 @@ export const mcaProgrammePageConfig: PageConfig = {
     badgeIcon: <GraduationCap size={16} />,
     badge: "Postgraduate Programme",
     title: getRequiredCourseInfo("mca").fullName,
-    description:
-      "MCA Distance Learning Programme | Crescent University Distance Education.",
+    description: "MCA Distance Learning Programme | Crescent University Distance Education.",
     applyIcon: <ArrowRight size={15} />,
     applyTo: "/admission",
     applyHash: "how-to-apply",
@@ -329,8 +327,7 @@ export const baIslamicStudiesProgrammePageConfig: PageConfig = {
     badgeIcon: <GraduationCap className="size-4" />,
     badge: "Undergraduate Programme",
     title: getRequiredCourseInfo("ba-islamic-studies").name,
-    description:
-      "BA Islamic Studies | Crescent University Distance Education.",
+    description: "BA Islamic Studies | Crescent University Distance Education.",
     applyIcon: (
       <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
     ),

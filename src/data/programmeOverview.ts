@@ -1,9 +1,11 @@
-import islamicStudiesOverview from "@/assets/islamic-studies.png";
-import mbaOverview from "@/assets/MBA Leadership at Golden Hour.png";
-import mcaOverview from "@/assets/MCA Tech Workstation_ Coding and Innovation.png";
+import islamicStudiesOverview from "@/assets/optimized/islamic-studies.webp";
+import mbaOverview from "@/assets/optimized/MBA Leadership at Golden Hour.webp";
+import mcaOverview from "@/assets/optimized/MCA Tech Workstation_ Coding and Innovation.webp";
 
 export type ProgrammeOverviewContent = {
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   imageAlt: string;
   title: string;
   programmeLabel: string;
@@ -18,6 +20,8 @@ export const programmeOverviewData: Record<
 > = {
   mba: {
     image: mbaOverview,
+    imageWidth: 1672,
+    imageHeight: 941,
     imageAlt: "MBA leadership and business administration",
     title: "Master of Business Administration",
     programmeLabel: "MBA Online Learning",
@@ -31,6 +35,8 @@ export const programmeOverviewData: Record<
   },
   mca: {
     image: mcaOverview,
+    imageWidth: 1536,
+    imageHeight: 1024,
     imageAlt: "MCA computer applications and technology",
     title: "Master of Computer Applications",
     programmeLabel: "MCA",
@@ -44,6 +50,8 @@ export const programmeOverviewData: Record<
   },
   baIslamicStudies: {
     image: islamicStudiesOverview,
+    imageWidth: 1536,
+    imageHeight: 1024,
     imageAlt: "Islamic studies books and learning environment",
     title: "Bachelor of Arts in Islamic Studies",
     programmeLabel: "BA Islamic Studies",

@@ -16,10 +16,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn(
-        "relative px-5 py-20 sm:px-8 md:py-28 lg:py-32",
-        className,
-      )}
+      className={cn("relative px-5 py-20 sm:px-8 md:py-28 lg:py-32", className)}
       style={style}
     >
       <div className="mx-auto w-full max-w-7xl">{children}</div>
@@ -69,9 +66,7 @@ export function SectionHeading({
         <p
           className={cn(
             "mt-5 text-base leading-relaxed text-pretty sm:text-lg",
-            tone === "invert"
-              ? "text-primary-foreground/70"
-              : "text-muted-foreground",
+            tone === "invert" ? "text-primary-foreground/70" : "text-muted-foreground",
           )}
         >
           {description}

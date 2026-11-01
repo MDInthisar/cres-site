@@ -1,11 +1,11 @@
 import agalyaPhoto from "@/assets/Agalya.jpeg";
-import abdussamadPhoto from "@/assets/abdussamad.jpeg";
-import ahamedullahPhoto from "@/assets/ahamedullah.png";
-import jeslinPhoto from "@/assets/jeslin.jpeg";
-import maheshwariPhoto from "@/assets/maheshwari.jpeg";
-import manjulaPhoto from "@/assets/manjula.jpeg";
-import thowseafPhoto from "@/assets/thowseaf.jpeg";
-import yasarPhoto from "@/assets/yasar-arafath.jpeg";
+import abdussamadPhoto from "@/assets/optimized/abdussamad.webp";
+import ahamedullahPhoto from "@/assets/optimized/ahamedullah.webp";
+import jeslinPhoto from "@/assets/optimized/jeslin.webp";
+import maheshwariPhoto from "@/assets/optimized/maheshwari.webp";
+import manjulaPhoto from "@/assets/optimized/manjula.webp";
+import thowseafPhoto from "@/assets/optimized/thowseaf.webp";
+import yasarPhoto from "@/assets/optimized/yasar-arafath.webp";
 
 export type FacultyProfile = {
   slug: string;

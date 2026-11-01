@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { AboutSectionHeading, AboutSectionLayout } from "@/components/site/AboutSectionLayout";
 
 import jayaPhoto from "@/assets/jaya.jpg";
-import aishaBanuPhoto from "@/assets/DR.AISHABANU.png";
-import thowseafPhoto from "@/assets/thowseaf.jpeg";
+import aishaBanuPhoto from "@/assets/optimized/DR.AISHABANU.webp";
+import thowseafPhoto from "@/assets/optimized/thowseaf.webp";
 import sharonPriyaPhoto from "@/assets/sharon-priya-updated.png";
-import sabinBegumPhoto from "@/assets/sabin-begum-updated.png";
-import formerDirectorPhoto from "@/assets/director.png";
+import sabinBegumPhoto from "@/assets/optimized/sabin-begum-updated.webp";
+import formerDirectorPhoto from "@/assets/optimized/director.webp";
 
 /* =========================================================
    DATA
@@ -17,6 +17,8 @@ const director = {
   name: "Dr. A. Jaya",
   role: "Professor & Director",
   image: jayaPhoto,
+  imageWidth: 472,
+  imageHeight: 529,
   description:
     "The Centre for Distance and Online Education is committed to providing quality education through Online and Distance Learning modes. We understand that each student has unique needs and learning styles. Our ODL and OL programmes are designed to cater to all types of learners, whether you prefer to learn in a traditional classroom setting or from the comfort of your own home. Our highly qualified and experienced faculty members are dedicated to ensuring that you receive the best possible education and guidance to help you achieve your academic and career goals. We believe that education is a lifelong journey. As Director, we are committed to providing you with the necessary knowledge and skills to succeed in today's ever-changing world. We encourage you to take advantage of all the resources and opportunities available to you and actively participate in your learning experience.",
 };
@@ -26,6 +28,8 @@ const cdoeTeam = [
     name: "Dr. W. Aisha Banu",
     role: "Professor & HOD CSE",
     image: aishaBanuPhoto,
+    imageWidth: 1254,
+    imageHeight: 1254,
     accent: "green",
   },
   {
@@ -33,6 +37,8 @@ const cdoeTeam = [
     role: "Associate Professor / CDOE",
     extra: "Deputy Director",
     image: sharonPriyaPhoto,
+    imageWidth: 150,
+    imageHeight: 154,
     accent: "gold",
   },
   {
@@ -40,6 +46,8 @@ const cdoeTeam = [
     role: "Assistant Professor / CDOE",
     extra: "Assistant Director",
     image: sabinBegumPhoto,
+    imageWidth: 768,
+    imageHeight: 789,
     accent: "green",
   },
   {
@@ -47,6 +55,8 @@ const cdoeTeam = [
     role: "Assistant Professor / CDOE",
     extra: "Assistant Director",
     image: thowseafPhoto,
+    imageWidth: 1102,
+    imageHeight: 1427,
     accent: "gold",
   },
 ];
@@ -56,6 +66,8 @@ const formerDirector = {
   role: "Former Director",
   year: "2021–2023",
   image: formerDirectorPhoto,
+  imageWidth: 1098,
+  imageHeight: 1432,
 };
 
 /* =========================================================
@@ -91,7 +103,7 @@ function ExecutionTeamPage() {
   return (
     <SiteLayout>
       <AboutSectionLayout activeHref="/execution-team">
-        <main className="min-w-0">
+        <div className="min-w-0">
           {/* PAGE HEADER */}
 
           <AboutSectionHeading
@@ -153,6 +165,10 @@ function ExecutionTeamPage() {
                   <img
                     src={director.image}
                     alt={director.name}
+                    width={director.imageWidth}
+                    height={director.imageHeight}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 h-full w-full object-cover object-top"
                   />
                 </div>
@@ -202,6 +218,10 @@ function ExecutionTeamPage() {
                         <img
                           src={member.image}
                           alt={member.name}
+                          width={member.imageWidth}
+                          height={member.imageHeight}
+                          loading="lazy"
+                          decoding="async"
                           className="absolute inset-0 h-full w-full object-cover object-top"
                         />
                       </div>
@@ -256,6 +276,10 @@ function ExecutionTeamPage() {
                 <img
                   src={formerDirector.image}
                   alt={formerDirector.name}
+                  width={formerDirector.imageWidth}
+                  height={formerDirector.imageHeight}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover object-top"
                 />
               </div>
@@ -277,7 +301,7 @@ function ExecutionTeamPage() {
               </div>
             </article>
           </motion.section>
-        </main>
+        </div>
       </AboutSectionLayout>
     </SiteLayout>
   );

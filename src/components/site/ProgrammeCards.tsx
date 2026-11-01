@@ -19,12 +19,12 @@ import {
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
-import baEnglishPhoto from "@/assets/BA English_ A Literary Study.png";
-import baPublicPolicyPhoto from "@/assets/BA Public Policy_ Governance and Justice.png";
-import islamicStudiesPhoto from "@/assets/islamic-studies.png";
-import mcaPhoto from "@/assets/MCA Tech Workstation_ Coding and Innovation.png";
-import mbaPhoto from "@/assets/MBA Leadership at Golden Hour.png";
-import mobileAppPhoto from "@/assets/Mobile App Development Workspace.png";
+import baEnglishPhoto from "@/assets/optimized/BA English_ A Literary Study.webp";
+import baPublicPolicyPhoto from "@/assets/optimized/BA Public Policy_ Governance and Justice.webp";
+import islamicStudiesPhoto from "@/assets/optimized/islamic-studies.webp";
+import mcaPhoto from "@/assets/optimized/MCA Tech Workstation_ Coding and Innovation.webp";
+import mbaPhoto from "@/assets/optimized/MBA Leadership at Golden Hour.webp";
+import mobileAppPhoto from "@/assets/optimized/Mobile App Development Workspace.webp";
 import campusPhoto from "@/assets/campus-1.jpg";
 import programmeStudentsPhoto from "@/assets/programme-students.jpg";
 
@@ -47,26 +47,31 @@ type ProgrammeCardProps = {
   compact?: boolean;
 };
 
-function getProgrammeImage(
-  programme: Programme,
-  type: ProgrammeCategory
-) {
-  if (type === "certification") return mobileAppPhoto;
+type ProgrammeImage = {
+  src: string;
+  width: number;
+  height: number;
+};
+
+function getProgrammeImage(programme: Programme, type: ProgrammeCategory) {
+  if (type === "certification") {
+    return { src: mobileAppPhoto, width: 1536, height: 1024 };
+  }
 
   switch (programme.slug) {
     case "ba-english":
-      return baEnglishPhoto;
+      return { src: baEnglishPhoto, width: 1536, height: 1024 };
     case "ba-public-policy":
-      return baPublicPolicyPhoto;
+      return { src: baPublicPolicyPhoto, width: 1536, height: 1024 };
     case "ba-islamic-studies":
     case "ma-islamic-studies":
-      return islamicStudiesPhoto;
+      return { src: islamicStudiesPhoto, width: 1536, height: 1024 };
     case "mca":
-      return mcaPhoto;
+      return { src: mcaPhoto, width: 1536, height: 1024 };
     case "mba":
-      return mbaPhoto;
+      return { src: mbaPhoto, width: 1672, height: 941 };
     default:
-      return campusPhoto;
+      return { src: campusPhoto, width: 1024, height: 1024 };
   }
 }
 
@@ -99,9 +104,7 @@ const programmeCategories: Record<
   },
 };
 
-const programmeCategoryIds = Object.keys(
-  programmeCategories
-) as ProgrammeCategory[];
+const programmeCategoryIds = Object.keys(programmeCategories) as ProgrammeCategory[];
 
 const programmeCategoryIcons: Record<ProgrammeCategory, typeof GraduationCap> = {
   ug: GraduationCap,
@@ -150,10 +153,7 @@ function ProgrammeExploreLink({
   }
 
   return (
-    <Link
-      to={`/course-info/${encodeURIComponent(programme.slug)}`}
-      className={className}
-    >
+    <Link to={`/course-info/${encodeURIComponent(programme.slug)}`} className={className}>
       {children}
     </Link>
   );
@@ -163,19 +163,14 @@ function ProgrammeExploreLink({
    PROGRAMME CARD
 ========================================================= */
 
-function ProgrammeCard({
-  programme,
-  index,
-  type,
-  compact = false,
-}: ProgrammeCardProps) {
+function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCardProps) {
   const isPG = type === "pg";
   const isCertification = type === "certification";
   const isBAIslamicStudies = programme.slug === "ba-islamic-studies";
   const hasBrochure = !["ba-islamic-studies", "mca", "mba"].includes(programme.slug);
 
   const programmeRoute = getProgrammeRoute(programme);
-  const programmeImage = getProgrammeImage(programme, type);
+  const programmeImage: ProgrammeImage = getProgrammeImage(programme, type);
 
   return (
     <Reveal
@@ -184,8 +179,8 @@ function ProgrammeCard({
         isBAIslamicStudies
           ? "h-full w-full max-w-[320px] basis-full"
           : compact
-          ? "h-full w-full max-w-[360px] basis-full md:basis-[calc(50%-0.3125rem)]"
-          : "h-full basis-full md:basis-[calc(50%-0.3125rem)] lg:basis-[calc(33.333%-0.45rem)]"
+            ? "h-full w-full max-w-[360px] basis-full md:basis-[calc(50%-0.3125rem)]"
+            : "h-full basis-full md:basis-[calc(50%-0.3125rem)] lg:basis-[calc(33.333%-0.45rem)]"
       }
     >
       <motion.article
@@ -222,11 +217,12 @@ function ProgrammeCard({
           }`}
         >
           <img
-            src={programmeImage}
+            src={programmeImage.src}
             alt={`${programme.name} programme`}
             loading="lazy"
-            width={960}
-            height={520}
+            width={programmeImage.width}
+            height={programmeImage.height}
+            decoding="async"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
 
@@ -234,9 +230,7 @@ function ProgrammeCard({
         </div>
 
         <div
-          className={`relative flex flex-1 flex-col ${
-            isBAIslamicStudies ? "p-3.5" : "p-4 sm:p-5"
-          }`}
+          className={`relative flex flex-1 flex-col ${isBAIslamicStudies ? "p-3.5" : "p-4 sm:p-5"}`}
         >
           {/* DECORATION */}
 
@@ -260,11 +254,7 @@ function ProgrammeCard({
                   : "bg-[#F4F1E8] text-[#111111]"
               }`}
             >
-              {isCertification
-                ? "Certification"
-                : isPG
-                  ? "Postgraduate"
-                  : "Undergraduate"}
+              {isCertification ? "Certification" : isPG ? "Postgraduate" : "Undergraduate"}
             </span>
           </div>
 
@@ -318,9 +308,7 @@ function ProgrammeCard({
           {/* ELIGIBILITY */}
 
           <p className="relative mt-3 line-clamp-2 text-xs leading-5 text-slate-600">
-            <span className="font-semibold text-[#172554]">
-              Eligibility:
-            </span>{" "}
+            <span className="font-semibold text-[#172554]">Eligibility:</span>{" "}
             {programme.eligibility}
           </p>
 
@@ -337,10 +325,7 @@ function ProgrammeCard({
           {/* ACTION BUTTONS */}
 
           <div className="relative mt-auto flex gap-1.5 pt-3">
-            <ProgrammeExploreLink
-              programme={programme}
-              programmeRoute={programmeRoute}
-            />
+            <ProgrammeExploreLink programme={programme} programmeRoute={programmeRoute} />
 
             <Button
               size="pill"
@@ -381,10 +366,7 @@ function ProgrammeSection({
   type: ProgrammeCategory;
 }) {
   return (
-    <div
-      id={id}
-      className="scroll-mt-20 min-w-0 pt-1"
-    >
+    <div id={id} className="scroll-mt-20 min-w-0 pt-1">
       {/* SECTION HEADER */}
 
       <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
@@ -398,9 +380,7 @@ function ProgrammeSection({
           >
             {title}
           </h3>
-          <p className="mt-3 text-sm leading-6 text-[#61718a] sm:text-base">
-            {description}
-          </p>
+          <p className="mt-3 text-sm leading-6 text-[#61718a] sm:text-base">{description}</p>
         </div>
 
         {items.length > 0 && (
@@ -430,9 +410,7 @@ function ProgrammeSection({
           className="flex min-h-40 items-center justify-center rounded-[1.2rem] border border-dashed border-[#172554]/15 bg-[#F4F1E8]/40 px-6 py-10 text-center"
           role="status"
         >
-          <p className="text-sm font-semibold text-[#172554]">
-            Coming Soon
-          </p>
+          <p className="text-sm font-semibold text-[#172554]">Coming Soon</p>
         </div>
       )}
     </div>
@@ -443,24 +421,15 @@ function ProgrammeSection({
    MAIN PROGRAMME CARDS
 ========================================================= */
 
-export function ProgrammeCards({
-  withHeading = true,
-}: {
-  withHeading?: boolean;
-}) {
-  const [activeCategory, setActiveCategory] =
-    useState<ProgrammeCategory>("ug");
+export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }) {
+  const [activeCategory, setActiveCategory] = useState<ProgrammeCategory>("ug");
 
   const { hash } = useLocation();
 
   useEffect(() => {
     const category = hash.replace(/^#/, "");
 
-    if (
-      category === "ug" ||
-      category === "pg" ||
-      category === "certification"
-    ) {
+    if (category === "ug" || category === "pg" || category === "certification") {
       setActiveCategory(category);
     }
   }, [hash]);
@@ -468,11 +437,7 @@ export function ProgrammeCards({
   const selectedCategory = programmeCategories[activeCategory];
 
   return (
-    <Section
-      id="programmes"
-      className="!py-0 bg-[#F5F1E9]"
-      style={circularFont}
-    >
+    <Section id="programmes" className="!py-0 bg-[#F5F1E9]" style={circularFont}>
       {/* =====================================================
           SMALLER HEADING + RIGHT-SIDE IMAGE
       ===================================================== */}
@@ -501,8 +466,8 @@ export function ProgrammeCards({
               </h2>
 
               <p className="mt-3 max-w-lg text-sm leading-6 text-slate-600 sm:text-base">
-                Explore undergraduate, postgraduate and professional
-                certification programmes designed for flexible learning.
+                Explore undergraduate, postgraduate and professional certification programmes
+                designed for flexible learning.
               </p>
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -525,8 +490,9 @@ export function ProgrammeCards({
                 src={programmeStudentsPhoto}
                 alt="Students discussing their studies on campus"
                 loading="lazy"
-                width={960}
-                height={600}
+                width={558}
+                height={286}
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
 

@@ -5,7 +5,7 @@ import { reportLovableError } from "@/lib/lovable-error-reporting";
 
 export function NotFoundPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 text-center">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-background px-6 text-center">
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">404</p>
       <h1 className="mt-3 font-display text-4xl text-foreground">Page not found</h1>
       <p className="mt-4 max-w-md text-base text-muted-foreground">
@@ -17,7 +17,7 @@ export function NotFoundPage() {
       >
         Go home
       </Link>
-    </div>
+    </main>
   );
 }
 

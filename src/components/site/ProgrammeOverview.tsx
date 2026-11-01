@@ -10,6 +10,8 @@ const themeStyles = {
 export function ProgrammeOverview({
   image,
   imageAlt,
+  imageWidth,
+  imageHeight,
   title,
   programmeLabel,
   department,
@@ -27,6 +29,10 @@ export function ProgrammeOverview({
                 <img
                   src={image}
                   alt={imageAlt}
+                  width={imageWidth}
+                  height={imageHeight}
+                  fetchPriority="high"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#d4af37]" />

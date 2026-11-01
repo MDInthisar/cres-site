@@ -13,7 +13,7 @@ import {
   Video,
 } from "lucide-react";
 
-import lmsDashboardCollage from "@/assets/lms-dashboard-collage.png";
+import lmsDashboardCollage from "@/assets/optimized/lms-dashboard-collage.webp";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { FacilityPageLayout, FacilitySectionHeading } from "@/components/site/FacilityPageLayout";
 
@@ -192,6 +192,10 @@ function LMSPage() {
               <img
                 src={lmsDashboardCollage}
                 alt="Screenshots of the Crescent Learning Management System dashboard, courses and learning resources"
+                width={1589}
+                height={768}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
 

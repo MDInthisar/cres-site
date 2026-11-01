@@ -1,10 +1,5 @@
-
-import whoWeAreImage from "@/assets/homepage-campus-building.jpg";
-import {
-  ArrowRight,
-  GraduationCap,
-  Sparkles,
-} from "lucide-react";
+import whoWeAreImage from "@/assets/optimized/homepage-campus-building.webp";
+import { ArrowRight, GraduationCap, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
@@ -109,8 +104,9 @@ export function WhoWeAre() {
                     src={whoWeAreImage}
                     alt="Crescent Institute campus building surrounded by greenery"
                     loading="lazy"
-                    width={1200}
-                    height={850}
+                    width={1157}
+                    height={768}
+                    decoding="async"
                     className="
                       h-[280px]
                       w-full
@@ -222,9 +218,7 @@ export function WhoWeAre() {
                       </div>
 
                       <div>
-                        <p className="text-xl font-bold leading-none text-slate-900">
-                          40+
-                        </p>
+                        <p className="text-xl font-bold leading-none text-slate-900">40+</p>
 
                         <p className="mt-1 text-[10px] text-slate-500 sm:text-[11px]">
                           Years of Excellence
@@ -288,13 +282,9 @@ export function WhoWeAre() {
                 </div>
 
                 <div className="hidden text-right sm:block">
-                  <p className="text-[10px] font-semibold text-slate-400">
-                    CRESCENT
-                  </p>
+                  <p className="text-[10px] font-semibold text-slate-400">CRESCENT</p>
 
-                  <p className="text-[9px] tracking-[0.12em] text-slate-400">
-                    INSTITUTION
-                  </p>
+                  <p className="text-[9px] tracking-[0.12em] text-slate-400">INSTITUTION</p>
                 </div>
               </div>
             </div>
@@ -346,9 +336,12 @@ export function WhoWeAre() {
                     text-slate-600
                   "
                 >
-                  Since 1984, B.S. Abdur Rahman Crescent Institute of Science and Technology is a renowned Quality Leadership Institution located at the greenest spot of Chennai near Tambaram.
-
-Through our long history of 37 years of excellence, the Institution has offered access to a wide range of academic opportunities. With 55 programmes, grouped under 12 different Schools, 30 Undergraduate programmes, 25 Postgraduate programmes, and Ph.D.
+                  Since 1984, B.S. Abdur Rahman Crescent Institute of Science and Technology is a
+                  renowned Quality Leadership Institution located at the greenest spot of Chennai
+                  near Tambaram. Through our long history of 37 years of excellence, the Institution
+                  has offered access to a wide range of academic opportunities. With 55 programmes,
+                  grouped under 12 different Schools, 30 Undergraduate programmes, 25 Postgraduate
+                  programmes, and Ph.D.
                 </p>
 
                 <p
@@ -359,10 +352,9 @@ Through our long history of 37 years of excellence, the Institution has offered 
                     text-slate-600
                   "
                 >
-                  Through our Centre for Distance and Online Education,
-                  learners can pursue undergraduate, postgraduate and
-                  certification programmes with flexible learning, expert
-                  faculty, digital resources and continuous academic support.
+                  Through our Centre for Distance and Online Education, learners can pursue
+                  undergraduate, postgraduate and certification programmes with flexible learning,
+                  expert faculty, digital resources and continuous academic support.
                 </p>
               </div>
 
@@ -394,7 +386,6 @@ Through our long history of 37 years of excellence, the Institution has offered 
                   "
                 >
                   Discover More
-
                   <ArrowRight
                     className="
                       size-4

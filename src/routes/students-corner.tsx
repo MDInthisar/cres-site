@@ -15,12 +15,11 @@ import {
   MessageSquareWarning,
 } from "lucide-react";
 
-import merlinePhoto from "@/assets/merline.jpeg";
+import merlinePhoto from "@/assets/optimized/merline.webp";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 
-const LMS_URL =
-  "https://lmscdoe.crescent-institute.edu.in/login/index.php";
+const LMS_URL = "https://lmscdoe.crescent-institute.edu.in/login/index.php";
 
 const STUDY_MATERIAL_URL = "https://library.crescent.education/";
 
@@ -70,10 +69,7 @@ function StudentsCornerPage() {
 
   return (
     <SiteLayout>
-      <main
-        style={circularFont}
-        className="bg-[#F5F1E9] text-[#17234B]"
-      >
+      <main style={circularFont} className="bg-[#F5F1E9] text-[#17234B]">
         <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-start gap-4 px-4 py-4 sm:px-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-6 lg:px-8 lg:py-5">
           {/* SIDEBAR NAVIGATION */}
 
@@ -98,9 +94,7 @@ function StudentsCornerPage() {
                         setActiveSection(item.id);
                       }
                     }}
-                    aria-current={
-                      !item.external && isActive ? "location" : undefined
-                    }
+                    aria-current={!item.external && isActive ? "location" : undefined}
                     className={`group flex w-full min-w-0 items-center justify-start gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-semibold leading-5 transition-colors duration-200 ${
                       isActive
                         ? "bg-[#23457D] text-white"
@@ -117,7 +111,6 @@ function StudentsCornerPage() {
                 );
               })}
             </nav>
-
           </aside>
 
           {/* MAIN CONTENT */}
@@ -141,8 +134,8 @@ function StudentsCornerPage() {
               </h1>
 
               <p className="mt-2 max-w-3xl text-[14px] leading-[1.65] text-[#686D79]">
-                Your learning resources, academic services and student
-                assistance, all in one convenient place.
+                Your learning resources, academic services and student assistance, all in one
+                convenient place.
               </p>
             </motion.section>
 
@@ -179,8 +172,8 @@ function StudentsCornerPage() {
                   </div>
 
                   <p className="mt-2.5 text-[13px] leading-[1.65] text-[#707482]">
-                    Access your online learning environment, course materials
-                    and important academic updates.
+                    Access your online learning environment, course materials and important academic
+                    updates.
                   </p>
 
                   <div className="mt-3.5 grid gap-x-3 gap-y-2 sm:grid-cols-2">
@@ -195,9 +188,7 @@ function StudentsCornerPage() {
                       <div key={item} className="flex items-start gap-2">
                         <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-[#23457D]" />
 
-                        <span className="text-[12px] leading-[1.6] text-[#343846]">
-                          {item}
-                        </span>
+                        <span className="text-[12px] leading-[1.6] text-[#343846]">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -246,8 +237,8 @@ function StudentsCornerPage() {
                   </div>
 
                   <p className="mt-2.5 text-[12px] leading-[1.65] text-white/70">
-                    For academic or student-related concerns, contact the
-                    designated Nodal Officer or submit an online complaint.
+                    For academic or student-related concerns, contact the designated Nodal Officer
+                    or submit an online complaint.
                   </p>
 
                   {/* NODAL OFFICER */}
@@ -257,14 +248,16 @@ function StudentsCornerPage() {
                       <img
                         src={merlinePhoto}
                         alt="P. Paul Merlin"
+                        width={1129}
+                        height={1393}
+                        loading="lazy"
+                        decoding="async"
                         className="h-full w-full object-cover object-center"
                       />
                     </div>
 
                     <div className="min-w-0">
-                      <h3 className="text-[13px] font-bold">
-                        P. Paul Merlin
-                      </h3>
+                      <h3 className="text-[13px] font-bold">P. Paul Merlin</h3>
 
                       <p className="mt-1 text-[11px] leading-[1.6] text-white/65">
                         Technical Manager
@@ -272,9 +265,7 @@ function StudentsCornerPage() {
                         (LMS &amp; Data Management)
                       </p>
 
-                      <p className="mt-1 text-[11px] font-bold text-white/80">
-                        Nodal Officer
-                      </p>
+                      <p className="mt-1 text-[11px] font-bold text-white/80">Nodal Officer</p>
                     </div>
                   </div>
 
@@ -374,8 +365,8 @@ function StudentsCornerPage() {
 
                   <div className="mt-4 rounded-lg border-l-[3px] border-[#23457D] bg-[#F5F1E9] px-3.5 py-3">
                     <p className="text-[12px] leading-[1.7] text-[#343846]">
-                      <span className="font-bold text-[#23457D]">Note:</span>{" "}
-                      You can also email your grievance to{" "}
+                      <span className="font-bold text-[#23457D]">Note:</span> You can also email
+                      your grievance to{" "}
                       <a
                         href="mailto:cdoesupport@crescent.education"
                         className="font-bold text-[#23457D] underline underline-offset-2"

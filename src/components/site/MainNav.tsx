@@ -6,8 +6,8 @@ import { Link, NavLink, type NavLinkProps } from "react-router-dom";
 import { Menu, ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import cresolineLogo from "@/assets/cresoline-cdoe.png";
-import crescentWordmark from "@/assets/crescent-wordmark.png";
+import cresolineLogo from "@/assets/optimized/cresoline-cdoe-2x.png";
+import crescentWordmark from "@/assets/optimized/crescent-wordmark-2x.png";
 
 type ActiveNavLinkProps = Omit<NavLinkProps, "className"> & {
   className: string;
@@ -16,10 +16,7 @@ type ActiveNavLinkProps = Omit<NavLinkProps, "className"> & {
 
 function ActiveNavLink({ className, activeClassName, ...props }: ActiveNavLinkProps) {
   return (
-    <NavLink
-      {...props}
-      className={({ isActive }) => cn(className, isActive && activeClassName)}
-    />
+    <NavLink {...props} className={({ isActive }) => cn(className, isActive && activeClassName)} />
   );
 }
 
@@ -43,6 +40,9 @@ function Logo({ compact = false }: { compact?: boolean }) {
         <img
           src={cresolineLogo}
           alt="Cresoline CDOE"
+          width={256}
+          height={256}
+          decoding="async"
           className={
             compact
               ? "size-7 shrink-0 rounded-full object-cover sm:size-8"
@@ -52,6 +52,9 @@ function Logo({ compact = false }: { compact?: boolean }) {
         <img
           src={crescentWordmark}
           alt={`${college.name} logo`}
+          width={800}
+          height={266}
+          decoding="async"
           className={
             compact
               ? "h-7 w-auto max-w-[112px] object-contain sm:h-8 sm:max-w-[140px]"

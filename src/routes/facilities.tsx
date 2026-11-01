@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Database, Laptop, Server, ShieldCheck, Sparkles } from "lucide-react";
 
-import facilitiesCollage from "@/assets/facilities-collage.jpg";
+import facilitiesCollage from "@/assets/optimized/facilities-collage.webp";
 import { AboutSectionHeading, AboutSectionLayout } from "@/components/site/AboutSectionLayout";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
@@ -188,6 +188,10 @@ function FacilitiesPage() {
                   <img
                     src={facilitiesCollage}
                     alt="CDOE facilities including the data centre, studio, LMS and learning spaces"
+                    width={1365}
+                    height={768}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
 

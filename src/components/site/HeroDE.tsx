@@ -1,9 +1,9 @@
 import { circularFont } from "@/lib/fonts";
-import heroAuditorium from "@/assets/hero-auditorium.png";
-import heroCampusCourtyard from "@/assets/hero-campus-courtyard.png";
-import heroMainBuilding from "@/assets/hero-main-building.png";
-import heroCampusBuilding from "@/assets/hero-campus-building.png";
-import banner from "@/assets/banner.png";
+import heroAuditorium from "@/assets/optimized/hero-auditorium.webp";
+import heroCampusCourtyard from "@/assets/optimized/hero-campus-courtyard.webp";
+import heroMainBuilding from "@/assets/optimized/hero-main-building.webp";
+import heroCampusBuilding from "@/assets/optimized/hero-campus-building.webp";
+import banner from "@/assets/optimized/banner.webp";
 import ugc from "@/assets/ugc.png";
 
 import { Button } from "@/components/ui/button";
@@ -20,16 +20,18 @@ import { useEffect, useState } from "react";
    HERO IMAGES
 ========================================================= */
 
-const heroImages = [heroAuditorium, heroCampusCourtyard, heroMainBuilding, heroCampusBuilding];
+const heroImages = [
+  { src: heroAuditorium, width: 1365, height: 768 },
+  { src: heroCampusCourtyard, width: 1075, height: 768 },
+  { src: heroMainBuilding, width: 1024, height: 768 },
+  { src: heroCampusBuilding, width: 1085, height: 768 },
+];
 
 /* =========================================================
    FEATURES
 ========================================================= */
 
-const features = [
-  "AICTE / UGC Approved",
-  "Placement Support",
-];
+const features = ["AICTE / UGC Approved", "Placement Support"];
 
 /* =========================================================
    HERO
@@ -38,12 +40,11 @@ const features = [
 export function HeroDE() {
   const [currentImage, setCurrentImage] = useState(0);
   const [loadedImage, setLoadedImage] = useState<string | null>(null);
+  const activeHeroImage = heroImages[currentImage];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage(
-        (prev) => (prev + 1) % heroImages.length
-      );
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
     }, 4500);
 
     return () => clearInterval(interval);
@@ -59,7 +60,6 @@ export function HeroDE() {
       ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
-
         <div
           className="
             absolute
@@ -85,7 +85,6 @@ export function HeroDE() {
             blur-3xl
           "
         />
-
       </div>
 
       {/* =====================================================
@@ -107,7 +106,6 @@ export function HeroDE() {
           xl:gap-12
         "
       >
-
         {/* =================================================
             LEFT CONTENT
         ================================================== */}
@@ -138,7 +136,6 @@ export function HeroDE() {
             lg:py-2
           "
         >
-
           {/* =================================================
               CRESCENT DISTANCE EDUCATION
           ================================================== */}
@@ -154,7 +151,6 @@ export function HeroDE() {
               sm:gap-3
             "
           >
-
             <span
               className="
                 h-[3px]
@@ -185,7 +181,6 @@ export function HeroDE() {
             >
               Centre for Distance Education
             </span>
-
           </div>
 
           {/* =================================================
@@ -290,7 +285,6 @@ export function HeroDE() {
           ================================================== */}
 
           <div className="my-5 flex items-center gap-2">
-
             <span
               className="
                 h-[4px]
@@ -317,7 +311,6 @@ export function HeroDE() {
                 bg-[#e2c56e]
               "
             />
-
           </div>
 
           {/* =================================================
@@ -338,7 +331,6 @@ export function HeroDE() {
               gap-y-3
             "
           >
-
             {features.map((feature) => (
               <div
                 key={feature}
@@ -355,7 +347,6 @@ export function HeroDE() {
                   py-2
                 "
               >
-
                 <CheckCircle2
                   className="
                     size-[18px]
@@ -374,10 +365,8 @@ export function HeroDE() {
                 >
                   {feature}
                 </span>
-
               </div>
             ))}
-
           </div>
 
           {/* =================================================
@@ -393,7 +382,6 @@ export function HeroDE() {
               gap-3
             "
           >
-
             <Button
               asChild
               size="pill-lg"
@@ -416,11 +404,8 @@ export function HeroDE() {
                 sm:text-base
               "
             >
-              <Link
-                to="/admission#how-to-apply"
-              >
+              <Link to="/admission#how-to-apply">
                 Apply Now
-
                 <ArrowRight className="ml-1 size-4" />
               </Link>
             </Button>
@@ -450,13 +435,9 @@ export function HeroDE() {
                 sm:text-base
               "
             >
-              <Link to="/programmes">
-                Explore Programmes
-              </Link>
+              <Link to="/programmes">Explore Programmes</Link>
             </Button>
-
           </div>
-
         </motion.div>
 
         {/* =================================================
@@ -485,7 +466,6 @@ export function HeroDE() {
             w-full
           "
         >
-
           {/* =================================================
               OUTER PREMIUM FRAME
           ================================================== */}
@@ -504,7 +484,6 @@ export function HeroDE() {
               sm:p-2.5
             "
           >
-
             {/* =================================================
                 INNER IMAGE
             ================================================== */}
@@ -523,23 +502,27 @@ export function HeroDE() {
                 sm:rounded-[1.85rem]
               "
             >
-
               <img
                 src={banner}
                 alt=""
                 aria-hidden="true"
+                width={1297}
+                height={517}
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
               <AnimatePresence mode="wait">
-
                 <motion.img
                   key={currentImage}
-                  src={heroImages[currentImage]}
-                  onLoad={() => setLoadedImage(heroImages[currentImage])}
+                  src={activeHeroImage.src}
+                  onLoad={() => setLoadedImage(activeHeroImage.src)}
                   alt="Crescent Distance Education campus"
-                  width={1600}
-                  height={1000}
+                  width={activeHeroImage.width}
+                  height={activeHeroImage.height}
+                  loading={currentImage === 0 ? "eager" : "lazy"}
+                  fetchPriority={currentImage === 0 ? "high" : "auto"}
+                  decoding="async"
                   className="
                     absolute
                     inset-0
@@ -552,7 +535,7 @@ export function HeroDE() {
                     scale: 1.04,
                   }}
                   animate={{
-                    opacity: loadedImage === heroImages[currentImage] ? 1 : 0,
+                    opacity: loadedImage === activeHeroImage.src ? 1 : 0,
                     scale: 1,
                   }}
                   exit={{
@@ -564,7 +547,6 @@ export function HeroDE() {
                     ease: "easeOut",
                   }}
                 />
-
               </AnimatePresence>
 
               {/* =================================================
@@ -617,9 +599,7 @@ export function HeroDE() {
                   sm:right-7
                 "
               >
-
                 <div className="min-w-0">
-
                   <p
                     className="
                       text-[13px]
@@ -648,7 +628,6 @@ export function HeroDE() {
                   >
                     Your Future Starts Here
                   </h2>
-
                 </div>
 
                 {/* =================================================
@@ -663,7 +642,6 @@ export function HeroDE() {
                     sm:flex
                   "
                 >
-
                   {heroImages.map((_, i) => (
                     <button
                       key={i}
@@ -683,13 +661,9 @@ export function HeroDE() {
                       `}
                     />
                   ))}
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
 
           {/* =================================================
@@ -739,7 +713,6 @@ export function HeroDE() {
               sm:py-3
             "
           >
-
             {/* PHOTO */}
 
             <span
@@ -767,7 +740,6 @@ export function HeroDE() {
             </span>
 
             <span className="min-w-0">
-
               <span
                 className="
                   block
@@ -791,15 +763,10 @@ export function HeroDE() {
               >
                 Approved programmes
               </span>
-
             </span>
-
           </motion.div>
-
         </motion.div>
-
       </div>
-
     </section>
   );
 }

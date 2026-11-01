@@ -1,4 +1,4 @@
-import crescentWordmark from "@/assets/crescent-wordmark.png";
+import crescentWordmark from "@/assets/optimized/crescent-wordmark-2x.png";
 import {
   ArrowUpRight,
   ChevronRight,
@@ -64,6 +64,10 @@ export function SiteFooter() {
             <img
               src={crescentWordmark}
               alt="B.S. Abdur Rahman Crescent Institute of Science and Technology"
+              width={800}
+              height={266}
+              loading="lazy"
+              decoding="async"
               className="h-9 w-auto max-w-[220px] object-contain sm:h-11 sm:max-w-[280px]"
             />
           </a>

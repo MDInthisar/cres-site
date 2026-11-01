@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, GraduationCap, ShieldCheck, Sparkles, Users } from "lucide-react";
 
-import aboutCampusPhoto from "@/assets/about-cdoe-launch.jpg";
+import aboutCampusPhoto from "@/assets/optimized/about-cdoe-launch.webp";
 import { AboutSectionLayout } from "@/components/site/AboutSectionLayout";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
@@ -129,6 +129,8 @@ function AboutPage() {
           <img
             src={aboutCampusPhoto}
             alt="Crescent CDOE online MBA and MCA programme launch"
+            width={1600}
+            height={728}
             className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.025]"
           />
         </motion.figure>

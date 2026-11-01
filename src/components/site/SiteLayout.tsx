@@ -15,7 +15,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <div className="min-h-screen bg-background">
         <SiteHeader />
 
-        <main className="m-0 p-0">{children}</main>
+        <div className="m-0 p-0">{children}</div>
         <div className="site-floating-actions-mobile">
           <EventsFab />
           <EnquiryFab />

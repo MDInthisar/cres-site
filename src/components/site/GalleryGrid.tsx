@@ -1,33 +1,6 @@
-import convocationImg1 from "@/assets/convocation/convocation-1.jpeg";
-import convocationImg2 from "@/assets/convocation/convocation-2.jpeg";
-import convocationImg3 from "@/assets/convocation/convocation-3.jpeg";
-import convocationImg4 from "@/assets/convocation/convocation-4.jpeg";
-import eventsImg1 from "@/assets/events/events-1.jpeg";
-import eventsImg2 from "@/assets/events/events-2.jpeg";
-import eventsImg3 from "@/assets/events/events-3.jpeg";
-import eventsImg4 from "@/assets/events/events-4.jpeg";
-import jobFairImg1 from "@/assets/job-fair/DSC03345_8K.jpg";
-import jobFairImg2 from "@/assets/job-fair/DSC03379_8K.jpg";
-import jobFairImg3 from "@/assets/job-fair/DSC03380_8K.jpg";
-import jobFairImg4 from "@/assets/job-fair/DSC03384_8K.jpg";
-import jobFairImg5 from "@/assets/job-fair/DSC03398_8K.jpg";
-import jobFairImg6 from "@/assets/job-fair/DSC03402_8K.jpg";
-import jobFairImg7 from "@/assets/job-fair/DSC03407_8K.jpg";
-import jobFairImg8 from "@/assets/job-fair/DSC03415_8K.jpg";
-import jobFairImg9 from "@/assets/job-fair/DSC03418_8K.jpg";
-import jobFairImg10 from "@/assets/job-fair/DSC03428_8K.jpg";
-import jobFairImg11 from "@/assets/job-fair/DSC03437_8K.jpg";
-import jobFairImg12 from "@/assets/job-fair/DSC03439_8K.jpg";
-import jobFairImg13 from "@/assets/job-fair/DSC03448_8K.jpg";
-import jobFairImg14 from "@/assets/job-fair/DSC03454_8K.jpg";
-import jobFairImg15 from "@/assets/job-fair/DSC03459_8K.jpg";
-import jobFairImg16 from "@/assets/job-fair/DSC03463_8K.jpg";
-import jobFairImg17 from "@/assets/job-fair/DSC03477_8K.jpg";
-import jobFairImg18 from "@/assets/job-fair/DSC03478_8K.jpg";
-import jobFairImg19 from "@/assets/job-fair/DSC03485_8K.jpg";
-import jobFairImg20 from "@/assets/job-fair/DSC03489_8K.jpg";
-
 import { cn } from "@/lib/utils";
+import { galleryCategories } from "@/data/gallery";
+import { galleryImages, type GalleryImage } from "@/data/galleryImages";
 import { motion } from "framer-motion";
 import { Camera, ChevronRight, Images, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -35,34 +8,27 @@ import { useLocation } from "react-router-dom";
 import { Section } from "./Section";
 
 type Photo = {
-  src: string;
+  src: GalleryImage["src"];
+  srcSet?: GalleryImage["srcSet"];
+  width: number;
+  height: number;
   alt: string;
   category: string;
-  slides?: string[];
+  slides?: GalleryImage[];
   slideAlts?: string[];
 };
 
-export const galleryCategories = [
-  {
-    id: "convocation",
-    label: "Convocation",
-  },
-  {
-    id: "job-fair",
-    label: "Job Fair",
-  },
-  {
-    id: "events",
-    label: "Events",
-  },
-];
-
 const photos: Photo[] = [
   {
-    src: convocationImg1,
+    ...galleryImages.convocation1,
     alt: "Degree award ceremony at Crescent",
     category: "convocation",
-    slides: [convocationImg1, convocationImg2, convocationImg3, convocationImg4],
+    slides: [
+      galleryImages.convocation1,
+      galleryImages.convocation2,
+      galleryImages.convocation3,
+      galleryImages.convocation4,
+    ],
     slideAlts: [
       "Degree award ceremony at Crescent",
       "Institute leaders at the convocation ceremony",
@@ -71,37 +37,42 @@ const photos: Photo[] = [
     ],
   },
   {
-    src: jobFairImg1,
+    ...galleryImages.jobFair1,
     alt: "Students and recruiters at the Crescent Job Fair",
     category: "job-fair",
     slides: [
-      jobFairImg1,
-      jobFairImg2,
-      jobFairImg3,
-      jobFairImg4,
-      jobFairImg5,
-      jobFairImg6,
-      jobFairImg7,
-      jobFairImg8,
-      jobFairImg9,
-      jobFairImg10,
-      jobFairImg11,
-      jobFairImg12,
-      jobFairImg13,
-      jobFairImg14,
-      jobFairImg15,
-      jobFairImg16,
-      jobFairImg17,
-      jobFairImg18,
-      jobFairImg19,
-      jobFairImg20,
+      galleryImages.jobFair1,
+      galleryImages.jobFair2,
+      galleryImages.jobFair3,
+      galleryImages.jobFair4,
+      galleryImages.jobFair5,
+      galleryImages.jobFair6,
+      galleryImages.jobFair7,
+      galleryImages.jobFair8,
+      galleryImages.jobFair9,
+      galleryImages.jobFair10,
+      galleryImages.jobFair11,
+      galleryImages.jobFair12,
+      galleryImages.jobFair13,
+      galleryImages.jobFair14,
+      galleryImages.jobFair15,
+      galleryImages.jobFair16,
+      galleryImages.jobFair17,
+      galleryImages.jobFair18,
+      galleryImages.jobFair19,
+      galleryImages.jobFair20,
     ],
   },
   {
-    src: eventsImg1,
+    ...galleryImages.events1,
     alt: "Crescent campus celebration",
     category: "events",
-    slides: [eventsImg1, eventsImg2, eventsImg3, eventsImg4],
+    slides: [
+      galleryImages.events1,
+      galleryImages.events2,
+      galleryImages.events3,
+      galleryImages.events4,
+    ],
     slideAlts: [
       "Crescent campus celebration",
       "Teachers' Day celebration at Crescent",
@@ -269,10 +240,13 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
               <span className="relative block overflow-hidden">
                 <img
                   src={photo.src}
+                  srcSet={photo.srcSet}
+                  sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
                   alt={photo.alt}
                   loading="lazy"
-                  width={1200}
-                  height={800}
+                  decoding="async"
+                  width={photo.width}
+                  height={photo.height}
                   className="block h-auto w-full object-cover"
                 />
 
@@ -339,7 +313,7 @@ function GallerySpotlight() {
 
     return {
       ...photo,
-      src: photo.slides[1],
+      ...photo.slides[1],
       alt: photo.slideAlts[1],
       slides: photo.slides.slice(1),
       slideAlts: photo.slideAlts.slice(1),
@@ -392,10 +366,13 @@ function GallerySpotlight() {
         <div className="relative block size-full min-h-[280px] w-full overflow-hidden">
           <img
             src={photo.src}
+            srcSet={photo.srcSet}
+            sizes="(min-width: 1280px) 50vw, 100vw"
             alt={photo.alt}
-            width={1200}
-            height={900}
-            loading="eager"
+            width={photo.width}
+            height={photo.height}
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 size-full object-cover"
           />
           <span className="absolute inset-0 bg-gradient-to-t from-[#101a3c]/90 via-[#172554]/5 to-transparent" />
@@ -455,7 +432,7 @@ function getPhotoSlide(photo: Photo, index: number): Photo {
   const slideIndex = index % photo.slides.length;
   return {
     ...photo,
-    src: photo.slides[slideIndex],
+    ...photo.slides[slideIndex],
     alt: photo.slideAlts?.[slideIndex] ?? photo.alt,
   };
 }

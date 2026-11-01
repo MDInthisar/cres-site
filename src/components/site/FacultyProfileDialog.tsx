@@ -187,6 +187,8 @@ export function FacultyProfileDialog({
                     <img
                       src={faculty.photo}
                       alt={faculty.name}
+                      width={140}
+                      height={140}
                       className={`h-full w-full object-cover ${styles.photo}`}
                     />
                   </div>
