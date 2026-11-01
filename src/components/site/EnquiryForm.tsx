@@ -14,7 +14,12 @@ import {
 } from "@/components/ui/select";
 
 import { pgProgrammes, ugProgrammes, certificationProgrammes } from "@/data/site";
-import { submitContact } from "@/lib/api/contact";
+
+// ==================================================
+// GOOGLE APPS SCRIPT BACKEND
+// ==================================================
+
+const SCRIPT_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL;
 
 // ==================================================
 // TYPES
@@ -35,19 +40,17 @@ export function EnquiryForm({
   submissionType = "enquiry",
   onSubmitted,
 }: EnquiryFormProps) {
-  // ------------------------------------------------
-  // STATE
-  // ------------------------------------------------
-
   const [programme, setProgramme] = useState("");
   const [rrn, setRrn] = useState("");
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
 
-  // ------------------------------------------------
+  const isStudentComplaint = submissionType === "student-complaint";
+
+  // ==================================================
   // PROGRAMME OPTIONS
-  // ------------------------------------------------
+  // ==================================================
 
   const options = [
     ...ugProgrammes.map((p) => p.name),
@@ -56,94 +59,141 @@ export function EnquiryForm({
   ];
 
   // ==================================================
-  // SUBMIT FORM
+  // FORM SUBMISSION
   // ==================================================
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Prevent duplicate submissions
     if (loading) return;
 
     const form = e.currentTarget;
 
-    // Browser validation
+    setError("");
+    setSuccessMessage("");
+
+    // Validate native HTML fields.
     if (!form.reportValidity()) {
       setError("Please complete all required fields.");
       return;
     }
 
-    const isStudentComplaint = submissionType === "student-complaint";
+    // Validate complaint-specific fields.
+    if (isStudentComplaint && !rrn.trim()) {
+      setError("Please enter your RRN.");
+      return;
+    }
 
-    // Programme validation
+    // Validate programme selection.
     if (!isStudentComplaint && !programme.trim()) {
       setError("Please select a programme.");
       return;
     }
 
     setLoading(true);
-    setMessage("");
-    setError("");
 
     try {
-      // ----------------------------------------------
-      // GET FORM DATA
-      // ----------------------------------------------
+      if (!SCRIPT_URL) {
+        throw new Error("Google Apps Script URL is not configured.");
+      }
 
       const formData = new FormData(form);
-      const complaintRrn = String(formData.get("rrn") || "").trim();
 
-      // ----------------------------------------------
-      // CREATE API PAYLOAD
-      // ----------------------------------------------
+      const name = String(formData.get("name") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const phone = String(formData.get("phonenumber") || "").trim();
+      const message = String(formData.get("message") || "").trim();
+
+      // ==================================================
+      // CREATE CORRECT PAYLOAD FOR BOTH FORM TYPES
+      // ==================================================
 
       const data = {
-        submissionType,
+        submissionId:
+          typeof crypto !== "undefined" && crypto.randomUUID
+            ? crypto.randomUUID()
+            : `${Date.now()}-${Math.random().toString(36).slice(2)}`,
 
-        name: String(formData.get("name") || "").trim(),
+        // Always explicitly send the submission type.
+        submissionType: isStudentComplaint ? "student-complaint" : "enquiry",
 
-        email: String(formData.get("email") || "").trim(),
+        name,
+        email,
+        phone,
 
-        phonenumber: String(formData.get("phonenumber") || "").trim(),
+        ...(isStudentComplaint
+          ? {
+              rrn: rrn.trim(),
+            }
+          : {
+              programme: programme.trim(),
+            }),
 
-        rrn: complaintRrn,
-
-        program: isStudentComplaint ? "Student Complaint" : programme.trim(),
-
-        message: String(formData.get("message") || "").trim(),
+        message,
       };
 
-      const result = await submitContact(data);
+      // Debug: inspect the payload in browser console.
+      console.log("Submitting form:", data);
 
-      // ----------------------------------------------
+      // ==================================================
+      // SEND TO GOOGLE APPS SCRIPT
+      // ==================================================
+
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(data),
+      });
+
+      // Read response as text first to handle invalid JSON.
+      const responseText = await response.text();
+
+      console.log("Apps Script response:", responseText);
+
+      let result;
+
+      try {
+        result = JSON.parse(responseText);
+      } catch {
+        throw new Error("Invalid response from Google Apps Script. Check the deployment.");
+      }
+
+      if (!response.ok || !result.success || result.saved === false) {
+        throw new Error(result.message || "Your submission could not be completed.");
+      }
+
+      // ==================================================
       // SUCCESS
-      // ----------------------------------------------
+      // ==================================================
 
-      setMessage(result.message || "Thank you! Your enquiry has been submitted successfully.");
+      setSuccessMessage(
+        result.message ||
+          (isStudentComplaint
+            ? "Your complaint has been submitted successfully."
+            : "Thank you! Your enquiry has been submitted successfully."),
+      );
 
-      // Reset HTML form
+      // Reset form fields.
       form.reset();
-
-      // Reset controlled React Select
       setProgramme("");
       setRrn("");
 
-      // Clear only enquiry-related storage.
-      // Storage cleanup must not turn a successful
-      // server submission into a reported failure.
+      // Clear stored enquiry data if present.
       try {
         localStorage.removeItem("enquiryForm");
         sessionStorage.removeItem("enquiryForm");
       } catch (storageError) {
-        console.warn("Could not clear enquiry form storage:", storageError);
+        console.warn("Could not clear form storage:", storageError);
       }
 
-      // Close modal if a callback was provided
+      // Close complaint modal if callback exists.
       onSubmitted?.();
     } catch (err) {
       console.error("Enquiry submission error:", err);
 
-      setError(err instanceof Error ? err.message : "Failed to submit enquiry. Please try again.");
+      setError(err instanceof Error ? err.message : "Failed to submit. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -158,9 +208,7 @@ export function EnquiryForm({
       {/* NAME */}
 
       <div className="grid gap-2">
-        <Label htmlFor={`${idPrefix}-name`}>
-          {submissionType === "student-complaint" ? "Name of Student" : "Student name"}
-        </Label>
+        <Label htmlFor={`${idPrefix}-name`}>Student name</Label>
 
         <Input
           id={`${idPrefix}-name`}
@@ -172,11 +220,9 @@ export function EnquiryForm({
         />
       </div>
 
-      {/* EMAIL + PHONE */}
+      {/* EMAIL AND PHONE */}
 
       <div className="grid gap-5 sm:grid-cols-2 sm:gap-4">
-        {/* EMAIL */}
-
         <div className="grid gap-2">
           <Label htmlFor={`${idPrefix}-email`}>Email address</Label>
 
@@ -190,8 +236,6 @@ export function EnquiryForm({
           />
         </div>
 
-        {/* PHONE */}
-
         <div className="grid gap-2">
           <Label htmlFor={`${idPrefix}-phone`}>Phone number</Label>
 
@@ -200,7 +244,7 @@ export function EnquiryForm({
             name="phonenumber"
             type="tel"
             required
-            pattern="[0-9+\\x20\\-]{8,15}"
+            pattern="[0-9+ -]{8,15}"
             title="Enter 8 to 15 characters using digits, spaces, + or hyphens."
             autoComplete="tel"
             disabled={loading}
@@ -208,24 +252,30 @@ export function EnquiryForm({
         </div>
       </div>
 
-      {submissionType === "student-complaint" && (
+      {/* RRN - COMPLAINT ONLY */}
+
+      {isStudentComplaint && (
         <div className="grid gap-2">
           <Label htmlFor={`${idPrefix}-rrn`}>RRN</Label>
+
           <Input
             id={`${idPrefix}-rrn`}
             name="rrn"
             type="text"
             required
             value={rrn}
-            onChange={(event) => setRrn(event.target.value)}
+            onChange={(event) => {
+              setRrn(event.target.value);
+              setError("");
+            }}
             disabled={loading}
           />
         </div>
       )}
 
-      {/* PROGRAMME */}
+      {/* PROGRAMME - ENQUIRY ONLY */}
 
-      {submissionType !== "student-complaint" && (
+      {!isStudentComplaint && (
         <div className="grid gap-2">
           <Label htmlFor={`${idPrefix}-programme`}>Programme of interest</Label>
 
@@ -246,7 +296,7 @@ export function EnquiryForm({
               <SelectValue placeholder="Select a programme" />
             </SelectTrigger>
 
-            <SelectContent>
+            <SelectContent className="z-[100000]">
               {options.map((option) => (
                 <SelectItem key={option} value={option}>
                   {option}
@@ -257,40 +307,27 @@ export function EnquiryForm({
         </div>
       )}
 
-      {/* MESSAGE */}
+      {/* MESSAGE / GRIEVANCE */}
 
       <div className="grid gap-2">
         <Label htmlFor={`${idPrefix}-message`}>
-          {submissionType === "student-complaint" ? "State Your Grievance" : "Message"}
+          {isStudentComplaint ? "Grievance" : "Message"}
         </Label>
 
-        <Textarea
-          id={`${idPrefix}-message`}
-          name="message"
-          rows={4}
-          required
-          placeholder={
-            submissionType === "student-complaint" ? "State your grievance clearly..." : undefined
-          }
-          disabled={loading}
-        />
+        <Textarea id={`${idPrefix}-message`} name="message" rows={4} required disabled={loading} />
       </div>
 
       {/* SUBMIT BUTTON */}
 
       <Button type="submit" variant="hero" size="pill-lg" className="w-full" disabled={loading}>
-        {loading
-          ? "Submitting..."
-          : submissionType === "student-complaint"
-            ? "Submit complaint"
-            : "Submit enquiry"}
+        {loading ? "Submitting..." : isStudentComplaint ? "Submit Complaint" : "Submit Enquiry"}
       </Button>
 
       {/* SUCCESS MESSAGE */}
 
-      {message && (
+      {successMessage && (
         <p aria-live="polite" className="text-sm text-green-600">
-          {message}
+          {successMessage}
         </p>
       )}
 

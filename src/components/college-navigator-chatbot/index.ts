@@ -1,4 +1,3 @@
 export { Chatbot, Chatbot as default } from "./Chatbot";
 export { ChatWidget } from "./components/ChatWidget";
-export { EnquiryForm } from "./components/EnquiryForm";
-export type { EnquiryData, Message } from "./types/chat";
+export type { Message } from "./types/chat";

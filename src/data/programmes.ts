@@ -161,7 +161,6 @@ export type ProgrammeSyllabusConfig = {
     description: string;
     successDescription: string;
     theme: "purple" | "green";
-    form: "chatbot" | "site";
   };
 };
 
@@ -1255,7 +1254,6 @@ export const programmes = {
         successDescription:
           "Thank you for submitting your details. You can now download the BA Islamic Studies syllabus.",
         theme: "green",
-        form: "chatbot",
       },
     },
     metadata: {
@@ -2084,7 +2082,6 @@ export const programmes = {
         successDescription:
           "Thank you for submitting your details. You can now download the MCA syllabus.",
         theme: "purple",
-        form: "site",
       },
     },
     metadata: {
@@ -2890,7 +2887,6 @@ export const programmes = {
         successDescription:
           "Thank you for submitting your details. You can now download the MBA syllabus.",
         theme: "purple",
-        form: "chatbot",
       },
     },
     metadata: {

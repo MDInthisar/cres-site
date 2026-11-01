@@ -20,11 +20,3 @@ export interface FaqEntry {
     url: string;
   };
 }
-
-export interface EnquiryData {
-  name: string;
-  mobile: string;
-  email: string;
-  course: string;
-  message: string;
-}

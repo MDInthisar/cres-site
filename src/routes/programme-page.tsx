@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BookOpen, Download, GraduationCap } from "lucide-react";
 
 import { NotFoundPage } from "@/components/app/AppFallbacks";
-import { EnquiryForm as ChatbotEnquiryForm } from "@/components/college-navigator-chatbot";
 import { FacultyDirectory } from "@/components/site/FacultyDirectory";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { ProgrammeOverview } from "@/components/site/ProgrammeOverview";
@@ -329,11 +328,7 @@ function ProgrammeSyllabusRoute({ slug }: { slug: string }) {
           theme={syllabus.download.theme}
           onClose={closeDownload}
         >
-          {syllabus.download.form === "chatbot" ? (
-            <ChatbotEnquiryForm onSubmitted={() => setUnlocked(true)} />
-          ) : (
-            <EnquiryForm onSubmitted={() => setUnlocked(true)} />
-          )}
+          <EnquiryForm onSubmitted={() => setUnlocked(true)} />
         </SyllabusDownloadDialog>
       </main>
     </SiteLayout>
