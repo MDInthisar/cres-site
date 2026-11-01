@@ -264,8 +264,14 @@ const toProgrammeDetails = (programme: (typeof ugProgrammeListings)[number]) => 
   slug: programme.slug,
   name: programme.name,
   full: programme.full,
+  level: programme.level,
+  description: programme.description,
   duration: programme.duration,
   eligibility: programme.eligibility,
+  image: programme.image,
+  landingRoute: programme.landingRoute,
+  theme: programme.theme,
+  cardPresentation: programme.cardPresentation,
 });
 
 export const ugProgrammes = ugProgrammeListings.map(toProgrammeDetails);

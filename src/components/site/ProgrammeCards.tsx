@@ -1,8 +1,8 @@
 import { circularFont } from "@/lib/fonts";
 import { useEffect, useState } from "react";
-import { getCourseInfo } from "@/data/programmes";
 
 import { Button } from "@/components/ui/button";
+import type { ProgrammeListing } from "@/data/programmes";
 import { certificationCourses, pgProgrammes, ugProgrammes } from "@/data/site";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -19,24 +19,11 @@ import {
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
-import baEnglishPhoto from "@/assets/optimized/BA English_ A Literary Study.webp";
-import baPublicPolicyPhoto from "@/assets/optimized/BA Public Policy_ Governance and Justice.webp";
-import islamicStudiesPhoto from "@/assets/optimized/islamic-studies.webp";
-import mcaPhoto from "@/assets/optimized/MCA Tech Workstation_ Coding and Innovation.webp";
-import mbaPhoto from "@/assets/optimized/MBA Leadership at Golden Hour.webp";
-import mobileAppPhoto from "@/assets/optimized/Mobile App Development Workspace.webp";
-import campusPhoto from "@/assets/campus-1.jpg";
 import programmeStudentsPhoto from "@/assets/programme-students.jpg";
 
 import programmeBrochure from "@/assets/programme-brochure.pdf";
 
-type Programme = {
-  slug: string;
-  name: string;
-  full: string;
-  duration: string;
-  eligibility: string;
-};
+type Programme = ProgrammeListing;
 
 type ProgrammeCategory = "ug" | "pg" | "certification";
 
@@ -46,34 +33,6 @@ type ProgrammeCardProps = {
   type: ProgrammeCategory;
   compact?: boolean;
 };
-
-type ProgrammeImage = {
-  src: string;
-  width: number;
-  height: number;
-};
-
-function getProgrammeImage(programme: Programme, type: ProgrammeCategory) {
-  if (type === "certification") {
-    return { src: mobileAppPhoto, width: 1536, height: 1024 };
-  }
-
-  switch (programme.slug) {
-    case "ba-english":
-      return { src: baEnglishPhoto, width: 1536, height: 1024 };
-    case "ba-public-policy":
-      return { src: baPublicPolicyPhoto, width: 1536, height: 1024 };
-    case "ba-islamic-studies":
-    case "ma-islamic-studies":
-      return { src: islamicStudiesPhoto, width: 1536, height: 1024 };
-    case "mca":
-      return { src: mcaPhoto, width: 1536, height: 1024 };
-    case "mba":
-      return { src: mbaPhoto, width: 1672, height: 941 };
-    default:
-      return { src: campusPhoto, width: 1024, height: 1024 };
-  }
-}
 
 const programmeCategories: Record<
   ProgrammeCategory,
@@ -113,7 +72,7 @@ const programmeCategoryIcons: Record<ProgrammeCategory, typeof GraduationCap> = 
 };
 
 function getProgrammeRoute(programme: Programme) {
-  return getCourseInfo(programme.slug)?.landingRoute;
+  return programme.landingRoute;
 }
 
 /* =========================================================
@@ -166,19 +125,20 @@ function ProgrammeExploreLink({
 function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCardProps) {
   const isPG = type === "pg";
   const isCertification = type === "certification";
-  const isBAIslamicStudies = programme.slug === "ba-islamic-studies";
-  const hasBrochure = !["ba-islamic-studies", "mca", "mba"].includes(programme.slug);
+  const isCompact = compact || programme.cardPresentation?.compact === true;
+  const hasGoldAccent = programme.cardPresentation?.accent === "blue-gold";
+  const hasBrochure = programme.cardPresentation?.brochureAvailable ?? true;
 
   const programmeRoute = getProgrammeRoute(programme);
-  const programmeImage: ProgrammeImage = getProgrammeImage(programme, type);
+  const programmeImage = programme.image;
 
   return (
     <Reveal
       delay={(index % 3) * 0.05}
       className={
-        isBAIslamicStudies
+        isCompact && hasGoldAccent
           ? "h-full w-full max-w-[320px] basis-full"
-          : compact
+          : isCompact
             ? "h-full w-full max-w-[360px] basis-full md:basis-[calc(50%-0.3125rem)]"
             : "h-full basis-full md:basis-[calc(50%-0.3125rem)] lg:basis-[calc(33.333%-0.45rem)]"
       }
@@ -196,14 +156,14 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
           bg-white p-0 shadow-[0_5px_18px_rgba(15,23,42,0.055)]
           transition-all duration-300 hover:border-[#D4AF37]/55
           hover:shadow-[0_16px_36px_rgba(15,23,42,0.10)]
-          ${isBAIslamicStudies ? "min-h-[380px]" : compact ? "min-h-[420px]" : ""}
+          ${isCompact && hasGoldAccent ? "min-h-[380px]" : isCompact ? "min-h-[420px]" : ""}
         `}
       >
         {/* TOP ACCENT */}
 
         <div
           className={`absolute inset-x-0 top-0 z-10 h-[3px] ${
-            isBAIslamicStudies
+            hasGoldAccent
               ? "bg-gradient-to-r from-[#172554] via-[#23457D] to-[#D4AF37]"
               : "bg-gradient-to-r from-[#172554] via-[#8F1D1D] to-[#D4AF37]"
           }`}
@@ -213,7 +173,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
 
         <div
           className={`relative w-full shrink-0 overflow-hidden bg-[#172554] ${
-            isBAIslamicStudies ? "h-32" : compact ? "h-40" : "h-48 sm:h-52"
+            isCompact && hasGoldAccent ? "h-32" : isCompact ? "h-40" : "h-48 sm:h-52"
           }`}
         >
           <img
@@ -230,7 +190,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
         </div>
 
         <div
-          className={`relative flex flex-1 flex-col ${isBAIslamicStudies ? "p-3.5" : "p-4 sm:p-5"}`}
+          className={`relative flex flex-1 flex-col ${isCompact && hasGoldAccent ? "p-3.5" : "p-4 sm:p-5"}`}
         >
           {/* DECORATION */}
 
@@ -249,9 +209,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
 
             <span
               className={`rounded-full px-2.5 py-1.5 text-[clamp(0.55rem,0.5rem+0.12vw,0.7rem)] font-bold uppercase tracking-[0.11em] ${
-                isBAIslamicStudies
-                  ? "bg-[#23457D]/[0.08] text-[#172554]"
-                  : "bg-[#F4F1E8] text-[#111111]"
+                hasGoldAccent ? "bg-[#23457D]/[0.08] text-[#172554]" : "bg-[#F4F1E8] text-[#111111]"
               }`}
             >
               {isCertification ? "Certification" : isPG ? "Postgraduate" : "Undergraduate"}
@@ -263,7 +221,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
           <div className="relative mt-3">
             <h4
               className={`text-[clamp(1rem,0.9rem+0.35vw,1.15rem)] font-bold leading-tight tracking-[-0.01em] ${
-                isBAIslamicStudies ? "text-[#172554]" : "text-[#111111]"
+                hasGoldAccent ? "text-[#172554]" : "text-[#111111]"
               }`}
             >
               {programme.name}

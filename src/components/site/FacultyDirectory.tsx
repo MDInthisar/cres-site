@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FacultyGrid, type FacultyTheme } from "@/components/site/FacultyGrid";
 import { FacultyProfileDialog } from "@/components/site/FacultyProfileDialog";
 import { useFacultyDialogFocus } from "@/components/site/useFacultyDialogFocus";
-import type { FacultyProfile } from "@/data/facultyProfiles";
+import type { ProgrammeFacultyProfile } from "@/data/programmes";
 
 export function FacultyDirectory({
   faculty,
@@ -13,17 +13,17 @@ export function FacultyDirectory({
   profileLinkLabel,
   profileLinkDescription,
 }: {
-  faculty: FacultyProfile[];
+  faculty: ProgrammeFacultyProfile[];
   theme: FacultyTheme;
   programmeBadge: string;
   programmeName: string;
   profileLinkLabel: string;
   profileLinkDescription: string;
 }) {
-  const [selectedFaculty, setSelectedFaculty] = useState<FacultyProfile | null>(null);
+  const [selectedFaculty, setSelectedFaculty] = useState<ProgrammeFacultyProfile | null>(null);
   const focus = useFacultyDialogFocus();
 
-  const selectFaculty = (selected: FacultyProfile, trigger: HTMLButtonElement) => {
+  const selectFaculty = (selected: ProgrammeFacultyProfile, trigger: HTMLButtonElement) => {
     focus.setTrigger(trigger);
     setSelectedFaculty(selected);
   };

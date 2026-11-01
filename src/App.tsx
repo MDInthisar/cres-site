@@ -5,14 +5,11 @@ import type { RouteObject } from "react-router-dom";
 import { pageMetadata as seoMetadata } from "./data/pageMetadata";
 import { portalLinks } from "./data/links";
 import { AppErrorBoundary, NotFoundPage } from "./components/app/AppFallbacks";
+import type { ProgrammeMetadataPage } from "./data/programmes";
 
 const HomePage = lazy(() => import("./routes/index"));
 const AboutPage = lazy(() => import("./routes/about"));
 const AdmissionPage = lazy(() => import("./routes/admission"));
-const BAIslamicStudiesLayout = lazy(() => import("./routes/ba-islamic-studies"));
-const BAIslamicStudiesPage = lazy(() => import("./routes/ba-islamic-studies/index"));
-const BAIslamicStudiesPeoplePage = lazy(() => import("./routes/ba-islamic-studies/people"));
-const BAIslamicStudiesSyllabusPage = lazy(() => import("./routes/ba-islamic-studies/syllabus"));
 const CdoeTeamPage = lazy(() => import("./routes/cdoe-team"));
 const ContactPage = lazy(() => import("./routes/contact"));
 const CourseOverviewPage = lazy(() => import("./routes/course-info.$courseSlug.index"));
@@ -26,14 +23,7 @@ const FacultyProfilePage = lazy(() => import("./routes/faculty-profile.$courseSl
 const FaqPage = lazy(() => import("./routes/faq"));
 const GalleryPage = lazy(() => import("./routes/gallery"));
 const LmsPage = lazy(() => import("./routes/lms"));
-const MbaLayout = lazy(() => import("./routes/mba"));
-const MbaPage = lazy(() => import("./routes/mba/index"));
-const MbaPeoplePage = lazy(() => import("./routes/mba/people"));
-const MbaSyllabusPage = lazy(() => import("./routes/mba/syllabus"));
-const McaLayout = lazy(() => import("./routes/mca"));
-const McaPage = lazy(() => import("./routes/mca/index"));
-const McaPeoplePage = lazy(() => import("./routes/mca/people"));
-const McaSyllabusPage = lazy(() => import("./routes/mca/syllabus"));
+const ProgrammeRoutePage = lazy(() => import("./routes/programme-page"));
 const ProgrammesPage = lazy(() => import("./routes/programmes"));
 const StudentsCornerPage = lazy(() => import("./routes/students-corner"));
 const StudioPage = lazy(() => import("./routes/studio"));
@@ -47,9 +37,15 @@ const defaultMeta = {
     "Crescent Institute Centre for Distance and Online Education — UG, PG and certification programmes.",
 };
 
+const notFoundMeta = {
+  title: "Page not found — Crescent CDOE",
+  description: "The requested page does not exist or is no longer available.",
+};
+
 type PageMeta = {
   title: string;
   description: string;
+  canonicalPath?: string;
 };
 
 const pageMetadata: Record<string, PageMeta> = {
@@ -71,17 +67,96 @@ function updateMeta(selector: string, value: string) {
   if (element) element.content = value;
 }
 
+function updateCanonical(canonicalPath?: string) {
+  const existing = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+  if (!canonicalPath) {
+    existing?.remove();
+    return;
+  }
+
+  const canonical = existing ?? document.createElement("link");
+  canonical.rel = "canonical";
+  canonical.href = new URL(canonicalPath, window.location.origin).href;
+  if (!existing) document.head.append(canonical);
+}
+
 function RouteMetadata() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     const normalizedPath = pathname.replace(/\/+$/, "") || "/";
-    const meta = pageMetadata[normalizedPath] ?? defaultMeta;
+    const staticMeta = pageMetadata[normalizedPath];
+    let active = true;
 
-    document.title = meta.title;
-    updateMeta('meta[name="description"]', meta.description);
-    updateMeta('meta[property="og:title"]', meta.title);
-    updateMeta('meta[property="og:description"]', meta.description);
+    const applyMeta = (meta: PageMeta) => {
+      document.title = meta.title;
+      updateMeta('meta[name="description"]', meta.description);
+      updateMeta('meta[property="og:title"]', meta.title);
+      updateMeta('meta[property="og:description"]', meta.description);
+      updateCanonical(meta.canonicalPath);
+    };
+
+    if (staticMeta) {
+      applyMeta(staticMeta);
+    } else if (isExactStaticRoute(normalizedPath)) {
+      applyMeta(defaultMeta);
+    } else {
+      const pathSegments = normalizedPath.slice(1).split("/");
+      void import("./data/programmes")
+        .then(({ getCourseInfo, getProgrammeMetadata }) => {
+          if (!active) return;
+          if (pathSegments[0] === "course-info" && pathSegments.length <= 3) {
+            const [, courseSlug, section] = pathSegments;
+            const course = getCourseInfo(courseSlug ?? "");
+            const sectionPage: ProgrammeMetadataPage | undefined =
+              section === "vision" || section === "mission" || section === "eligibility-fee"
+                ? section
+                : undefined;
+            if (!course || (section && !sectionPage)) {
+              applyMeta(notFoundMeta);
+              return;
+            }
+            const page = sectionPage ?? "overview";
+            applyMeta(
+              getProgrammeMetadata(course.slug, page) ?? (section ? notFoundMeta : defaultMeta),
+            );
+            return;
+          }
+
+          if (pathSegments[0] === "faculty-profile") {
+            applyMeta(defaultMeta);
+            return;
+          }
+
+          const [programmeSlug, programmePage] = pathSegments;
+          const page: ProgrammeMetadataPage | undefined =
+            programmePage === "people" || programmePage === "syllabus"
+              ? programmePage
+              : programmePage
+                ? undefined
+                : "overview";
+          if (pathSegments.length > 2 || !page) {
+            applyMeta(notFoundMeta);
+            return;
+          }
+
+          const programme = getCourseInfo(programmeSlug ?? "");
+          if (!programme?.landingRoute) {
+            applyMeta(notFoundMeta);
+            return;
+          }
+
+          applyMeta(getProgrammeMetadata(programmeSlug, page) ?? notFoundMeta);
+        })
+        .catch((error: unknown) => {
+          console.error("Could not load programme page metadata:", error);
+          if (active) applyMeta(defaultMeta);
+        });
+    }
+
+    return () => {
+      active = false;
+    };
   }, [pathname]);
 
   return null;
@@ -118,15 +193,6 @@ const routes: RouteObject[] = [
   { path: "/", element: <HomePage /> },
   { path: "/about", element: <AboutPage /> },
   { path: "/admission", element: <AdmissionPage /> },
-  {
-    path: "/ba-islamic-studies",
-    element: <BAIslamicStudiesLayout />,
-    children: [
-      { index: true, element: <BAIslamicStudiesPage /> },
-      { path: "people", element: <BAIslamicStudiesPeoplePage /> },
-      { path: "syllabus", element: <BAIslamicStudiesSyllabusPage /> },
-    ],
-  },
   { path: "/cdoe-team", element: <CdoeTeamPage /> },
   { path: "/contact", element: <ContactPage /> },
   {
@@ -157,24 +223,6 @@ const routes: RouteObject[] = [
     element: <ExternalRedirect to={portalLinks.applicantLogin} />,
   },
   {
-    path: "/mba",
-    element: <MbaLayout />,
-    children: [
-      { index: true, element: <MbaPage /> },
-      { path: "people", element: <MbaPeoplePage /> },
-      { path: "syllabus", element: <MbaSyllabusPage /> },
-    ],
-  },
-  {
-    path: "/mca",
-    element: <McaLayout />,
-    children: [
-      { index: true, element: <McaPage /> },
-      { path: "people", element: <McaPeoplePage /> },
-      { path: "syllabus", element: <McaSyllabusPage /> },
-    ],
-  },
-  {
     path: "/new-registration",
     element: <ExternalRedirect to={portalLinks.applicantRegistrationRedirect} />,
   },
@@ -184,8 +232,20 @@ const routes: RouteObject[] = [
   { path: "/technical", element: <TechnicalPage /> },
   { path: "/ugc-corner", element: <UgcCornerPage /> },
   { path: "/visionary-team", element: <VisionaryTeamPage /> },
+  { path: "/:programmeSlug", element: <ProgrammeRoutePage /> },
+  { path: "/:programmeSlug/:programmePage", element: <ProgrammeRoutePage /> },
   { path: "*", element: <NotFoundPage /> },
 ];
+
+function isExactStaticRoute(pathname: string) {
+  return routes.some(
+    (route) =>
+      typeof route.path === "string" &&
+      !route.path.includes(":") &&
+      !route.path.includes("*") &&
+      route.path === pathname,
+  );
+}
 
 function AppRoutes() {
   const routeElement = useRoutes(routes);

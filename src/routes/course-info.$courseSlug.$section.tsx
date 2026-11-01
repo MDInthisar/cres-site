@@ -1,8 +1,7 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { ProgrammePageTemplate } from "@/components/site/ProgrammePageTemplate";
 import { type CourseSection } from "@/components/site/CourseInfoLink";
-import { getCourseInfo } from "@/data/programmes";
-import { getRequiredProgrammePageConfig } from "@/data/programmes";
+import { getCourseInfo, getProgrammePageConfig } from "@/data/programmes";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, CheckCircle2, Eye, FileText, Target } from "lucide-react";
 
@@ -246,13 +245,23 @@ function CourseSectionPage() {
   }
 
   const currentSection = section;
+  if (course.features?.courseInfoSections?.[currentSection] === false) {
+    return (
+      <SiteLayout>
+        <main className="mx-auto min-h-[60vh] max-w-4xl px-5 py-16">
+          <h1 className="text-2xl font-bold">Course information not found</h1>
+          <Link to="/programmes" className="mt-4 inline-flex text-[#0d5c45] underline">
+            Browse programmes
+          </Link>
+        </main>
+      </SiteLayout>
+    );
+  }
+
   const Icon = currentSection === "vision" ? Eye : currentSection === "mission" ? Target : FileText;
-  const isBAIslamicStudies = course.slug === "ba-islamic-studies";
-  const isMBAorMCA = course.slug === "mba" || course.slug === "mca";
+  const programmeConfig = getProgrammePageConfig(course);
 
-  if (isBAIslamicStudies || isMBAorMCA) {
-    const programmeConfig = getRequiredProgrammePageConfig(course.slug);
-
+  if (programmeConfig.layout === "programme") {
     return (
       <ProgrammePageTemplate {...programmeConfig} actions={[]}>
         <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
@@ -262,7 +271,7 @@ function CourseSectionPage() {
             Icon={Icon}
             compact
             showSectionNavigation={false}
-            accentColor={isMBAorMCA ? "blue" : "green"}
+            accentColor={course.theme ?? "blue"}
           />
         </section>
       </ProgrammePageTemplate>

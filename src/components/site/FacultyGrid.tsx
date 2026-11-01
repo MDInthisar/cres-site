@@ -1,12 +1,12 @@
-import type { FacultyProfile } from "@/data/facultyProfiles";
 import { PeopleCard } from "@/components/site/PeopleCard";
+import type { ProgrammeFacultyProfile } from "@/data/programmes";
 
 export type FacultyTheme = "blue" | "green";
 
 type FacultyCardProps = {
-  faculty: FacultyProfile;
+  faculty: ProgrammeFacultyProfile;
   theme: FacultyTheme;
-  onSelect: (faculty: FacultyProfile, trigger: HTMLButtonElement) => void;
+  onSelect: (faculty: ProgrammeFacultyProfile, trigger: HTMLButtonElement) => void;
 };
 
 const cardStyles: Record<FacultyTheme, string> = {
@@ -47,9 +47,9 @@ export function FacultyGrid({
   theme,
   onSelect,
 }: {
-  faculty: FacultyProfile[];
+  faculty: ProgrammeFacultyProfile[];
   theme: FacultyTheme;
-  onSelect: (faculty: FacultyProfile, trigger: HTMLButtonElement) => void;
+  onSelect: (faculty: ProgrammeFacultyProfile, trigger: HTMLButtonElement) => void;
 }) {
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">

@@ -28,6 +28,7 @@ import { circularFont } from "@/lib/fonts";
 
 type Destination = Exclude<ProgrammeDestination, { type: "dialog" }>;
 type ProgrammeVariant = ProgrammePageConfig["variant"];
+type ProgrammeTheme = Exclude<ProgrammeVariant, "generic">;
 
 export type { ProgrammeActionItem, ProgrammeNavigationItem };
 export type ProgrammePageTemplateProps = ProgrammePageConfig & { children: ReactNode };
@@ -103,10 +104,10 @@ function DestinationLink({
   }
 }
 
-function getNavigationStyles(variant: ProgrammeVariant) {
+function getNavigationStyles(variant: ProgrammeVariant, density: "compact" | "standard") {
   if (variant !== "generic") {
-    const isBA = variant === "ba-islamic-studies";
-    const compact = isBA || variant === "mba" || variant === "mca";
+    const isGreen = variant === "green";
+    const compact = true;
 
     return {
       section: "w-full",
@@ -122,12 +123,12 @@ function getNavigationStyles(variant: ProgrammeVariant) {
       arrowSize: 0,
       underline: "",
       sidebar: true,
-      activeClassName: isBA ? "bg-[#2F6F4E] text-white" : "bg-[#334b7c] text-white",
-      inactiveClassName: isBA
+      activeClassName: isGreen ? "bg-[#2F6F4E] text-white" : "bg-[#334b7c] text-white",
+      inactiveClassName: isGreen
         ? "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#2F6F4E]"
         : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#334b7c]",
       activeIconClassName: "text-white",
-      inactiveIconClassName: isBA ? "text-[#2F6F4E]" : "text-[#334b7c]",
+      inactiveIconClassName: isGreen ? "text-[#2F6F4E]" : "text-[#334b7c]",
     };
   }
 
@@ -148,7 +149,7 @@ function getNavigationStyles(variant: ProgrammeVariant) {
     };
   }
 
-  const compact = variant === "mca";
+  const compact = density === "compact";
   return {
     section: compact
       ? "mx-auto max-w-7xl px-5 pt-5 sm:px-6 lg:px-8"
@@ -259,23 +260,25 @@ function NavigationCard({
 
 export function ProgrammeSidebarNavigation({
   variant,
+  navigationLabel,
   navigation,
   brochureDialog,
   activeTitle,
 }: {
-  variant: Exclude<ProgrammeVariant, "generic">;
+  variant: ProgrammeTheme;
+  navigationLabel?: string;
   navigation: ProgrammeNavigationItem[];
   brochureDialog?: ProgrammePageTemplateProps["brochureDialog"];
   activeTitle: string;
 }) {
   const [showBrochureForm, setShowBrochureForm] = useState(false);
-  const navigationStyles = getNavigationStyles(variant);
+  const navigationStyles = getNavigationStyles(variant, "compact");
 
   return (
     <>
       <aside className={navigationStyles.container}>
         <p className="mb-2 px-3 pt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#737782]">
-          {variant === "ba-islamic-studies" ? "BA Islamic Studies" : variant.toUpperCase()}
+          {navigationLabel ?? variant.toUpperCase()}
         </p>
         <nav aria-label={`${variant} navigation`} className={navigationStyles.grid}>
           {navigation.map((item) => (
@@ -304,8 +307,8 @@ export function ProgrammeSidebarNavigation({
   );
 }
 
-function getActionStyles(variant: ProgrammeVariant) {
-  if (variant === "ba-islamic-studies" || variant === "generic") {
+function getActionStyles(variant: ProgrammeVariant, density: "compact" | "standard") {
+  if (variant === "green" || variant === "generic") {
     return {
       section: "mx-auto max-w-7xl px-5 pt-4 sm:px-6 lg:px-8",
       grid: "grid gap-4 sm:grid-cols-2 lg:grid-cols-4",
@@ -320,7 +323,7 @@ function getActionStyles(variant: ProgrammeVariant) {
     };
   }
 
-  const compact = variant === "mca";
+  const compact = density === "compact";
   return {
     section: compact
       ? "mx-auto max-w-7xl px-5 pt-4 sm:px-6 lg:px-8"
@@ -394,8 +397,8 @@ function ActionCard({
 }
 
 function getHeroStyles(variant: ProgrammeVariant) {
-  if (variant === "ba-islamic-studies" || variant === "generic") {
-    const compact = variant === "ba-islamic-studies";
+  if (variant === "green" || variant === "generic") {
+    const compact = variant === "green";
 
     return {
       section: "relative overflow-hidden bg-[#0d5c45]",
@@ -426,7 +429,7 @@ function getHeroStyles(variant: ProgrammeVariant) {
     };
   }
 
-  const compact = variant === "mca" || variant === "mba";
+  const compact = true;
   return {
     section: "relative overflow-hidden bg-[#334b7c]",
     gradient: "absolute inset-0 bg-gradient-to-br from-[#334b7c] via-[#2b416d] to-[#23365c]",
@@ -458,7 +461,7 @@ function getHeroStyles(variant: ProgrammeVariant) {
 }
 
 function getCtaStyles(variant: ProgrammeVariant) {
-  if (variant === "ba-islamic-studies") {
+  if (variant === "green") {
     return {
       section: "border-t border-slate-200 bg-white",
       container: "mx-auto max-w-7xl px-5 py-8 sm:px-6 lg:px-8",
@@ -471,7 +474,7 @@ function getCtaStyles(variant: ProgrammeVariant) {
     };
   }
 
-  if (variant === "mca" || variant === "mba") {
+  if (variant === "blue") {
     return {
       section: "mt-4",
       container: "w-full",
@@ -499,6 +502,10 @@ function getCtaStyles(variant: ProgrammeVariant) {
 
 export function ProgrammePageTemplate({
   variant,
+  layout = "programme",
+  density = "standard",
+  navigationLabel,
+  ctaPlacement = "outside",
   mainClassName,
   hero,
   navigation,
@@ -510,8 +517,8 @@ export function ProgrammePageTemplate({
   const [showBrochureForm, setShowBrochureForm] = useState(false);
   const { pathname } = useLocation();
   const heroStyles = getHeroStyles(variant);
-  const navigationStyles = getNavigationStyles(variant);
-  const actionStyles = getActionStyles(variant);
+  const navigationStyles = getNavigationStyles(variant, density);
+  const actionStyles = getActionStyles(variant, density);
   const ctaStyles = getCtaStyles(variant);
   const normalizedPathname = pathname.replace(/\/$/, "") || "/";
 
@@ -545,7 +552,7 @@ export function ProgrammePageTemplate({
             </Link>
             <div className="max-w-4xl">
               <div className={heroStyles.badge}>
-                {variant !== "ba-islamic-studies" && <ProgrammeIcon icon={hero.badgeIcon} />}
+                {variant !== "green" && <ProgrammeIcon icon={hero.badgeIcon} />}
                 {hero.badge}
               </div>
               <h1 className={heroStyles.title}>{hero.title}</h1>
@@ -565,19 +572,22 @@ export function ProgrammePageTemplate({
           </div>
         </section>
 
-        {variant !== "generic" ? (
+        {layout !== "generic" ? (
           <section
             className={
-              variant === "ba-islamic-studies"
+              variant === "green"
                 ? "mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-4 px-4 pt-4 sm:px-6 sm:pt-5 md:grid-cols-[180px_minmax(0,1fr)] lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-6 lg:px-8"
                 : "mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-5 px-5 pt-6 sm:px-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-6 lg:px-8"
             }
           >
             <aside className={navigationStyles.container}>
               <p className="mb-2 px-3 pt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#737782]">
-                {variant === "ba-islamic-studies" ? "BA Islamic Studies" : variant.toUpperCase()}
+                {navigationLabel ?? variant.toUpperCase()}
               </p>
-              <nav aria-label={`${variant} navigation`} className={navigationStyles.grid}>
+              <nav
+                aria-label={`${navigationLabel ?? variant} navigation`}
+                className={navigationStyles.grid}
+              >
                 {navigation.map((item) => (
                   <NavigationCard
                     key={item.title}
@@ -605,7 +615,7 @@ export function ProgrammePageTemplate({
                 </section>
               )}
               {children}
-              {cta && (variant === "mba" || variant === "mca") && (
+              {cta && ctaPlacement === "inside" && (
                 <section className={ctaStyles.section}>
                   <div className={ctaStyles.container}>
                     <div className={ctaStyles.content}>
@@ -658,7 +668,7 @@ export function ProgrammePageTemplate({
           </>
         )}
 
-        {cta && variant !== "mba" && variant !== "mca" && (
+        {cta && ctaPlacement === "outside" && (
           <section className={ctaStyles.section}>
             <div className={ctaStyles.container}>
               <div className={ctaStyles.content}>

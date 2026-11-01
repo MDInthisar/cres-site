@@ -3,11 +3,11 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { ArrowRight, BookOpen, Mail, Phone, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import type { FacultyProfile } from "@/data/facultyProfiles";
+import type { ProgrammeFacultyProfile } from "@/data/programmes";
 import type { FacultyTheme } from "@/components/site/FacultyGrid";
 
 type FacultyProfileDialogProps = {
-  faculty: FacultyProfile | null;
+  faculty: ProgrammeFacultyProfile | null;
   theme: FacultyTheme;
   programmeBadge: string;
   programmeName: string;

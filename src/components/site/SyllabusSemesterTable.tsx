@@ -1,17 +1,8 @@
 import { BookOpen } from "lucide-react";
 
+import type { SyllabusCourse } from "@/data/programmes";
 import { circularFont } from "@/lib/fonts";
-
-export type SyllabusCourse = {
-  no: number;
-  category: string;
-  code: string;
-  title: string;
-  l: number | string;
-  t: number | string;
-  p: number | string;
-  credits: number;
-};
+export type { SyllabusCourse };
 
 type SyllabusSemesterTableProps = {
   semester: string;

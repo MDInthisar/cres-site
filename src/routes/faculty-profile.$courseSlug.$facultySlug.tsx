@@ -1,11 +1,10 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { getCourseInfo } from "@/data/programmes";
-import { getFacultyProfile, type FacultyProfile } from "@/data/facultyProfiles";
+import { getCourseInfo, getFacultyProfile, type ProgrammeFacultyProfile } from "@/data/programmes";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, BookOpen, GraduationCap, Mail, Phone } from "lucide-react";
 
 const detailedSectionTitles: {
-  key: keyof NonNullable<FacultyProfile["detailedProfile"]>;
+  key: keyof NonNullable<ProgrammeFacultyProfile["detailedProfile"]>;
   title: string;
 }[] = [
   { key: "education", title: "Educational Background" },

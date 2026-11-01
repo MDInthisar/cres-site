@@ -7,16 +7,16 @@ import {
   type ProgrammeNavigationItem,
 } from "@/components/site/ProgrammePageTemplate";
 
-type ProgrammeVariant = "mba" | "mca" | "ba-islamic-studies";
+type ProgrammeVariant = "blue" | "green";
 
 const themeStyles: Record<ProgrammeVariant, { hover: string; credits: string }> = {
-  mba: { hover: "hover:text-[#334b7c]", credits: "bg-[#1d355f]" },
-  mca: { hover: "hover:text-[#334b7c]", credits: "bg-[#1d355f]" },
-  "ba-islamic-studies": { hover: "hover:text-[#0d5c45]", credits: "bg-[#0d5c45]" },
+  blue: { hover: "hover:text-[#334b7c]", credits: "bg-[#1d355f]" },
+  green: { hover: "hover:text-[#0d5c45]", credits: "bg-[#0d5c45]" },
 };
 
 type ProgrammeSyllabusLayoutProps = {
   variant: ProgrammeVariant;
+  navigationLabel?: string;
   navigation: ProgrammeNavigationItem[];
   title: string;
   notice: string;
@@ -27,6 +27,7 @@ type ProgrammeSyllabusLayoutProps = {
 
 export function ProgrammeSyllabusLayout({
   variant,
+  navigationLabel,
   navigation,
   title,
   notice,
@@ -40,6 +41,7 @@ export function ProgrammeSyllabusLayout({
     <section className="mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-4 px-4 py-4 sm:px-6 md:grid-cols-[180px_minmax(0,1fr)] lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-6 lg:px-8">
       <ProgrammeSidebarNavigation
         variant={variant}
+        navigationLabel={navigationLabel}
         navigation={navigation}
         activeTitle="Syllabus"
       />
@@ -76,7 +78,7 @@ export function SyllabusCreditSummary({
   credits: number;
   variant: ProgrammeVariant;
 }) {
-  const isBaIslamicStudies = variant === "ba-islamic-studies";
+  const isGreen = variant === "green";
 
   return (
     <section
@@ -88,7 +90,7 @@ export function SyllabusCreditSummary({
             Programme Credit Structure
           </p>
           <h2 className="mt-1 text-xl font-bold">
-            {isBaIslamicStudies ? "Total Credits" : "Total Minimum Credits"}
+            {isGreen ? "Total Credits" : "Total Minimum Credits"}
           </h2>
         </div>
         <div className="text-4xl font-bold text-[#d4af37]">{credits}</div>

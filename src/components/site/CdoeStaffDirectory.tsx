@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AboutSectionHeading, AboutSectionLayout } from "@/components/site/AboutSectionLayout";
 import { PeopleCard } from "@/components/site/PeopleCard";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { facultyProfiles } from "@/data/facultyProfiles";
+import { getFacultyDirectoryData, type FacultyDirectoryEntry } from "@/data/programmes";
 
 import deepakPhoto from "@/assets/deepak.jpeg";
 import lathaPhoto from "@/assets/latha.jpeg";
@@ -14,6 +14,12 @@ import vigneshPhoto from "@/assets/vignesh.jpg";
 
 type StaffTab = "faculty" | "technical";
 type FacultyLevel = "ug" | "pg";
+
+type ProgrammeFilter = {
+  label: string;
+  slug: string;
+  theme: FacultyDirectoryEntry["theme"];
+};
 
 const technicalTeam = [
   {
@@ -54,20 +60,22 @@ const technicalTeam = [
   },
 ];
 
-const programmeFilters: Record<FacultyLevel, { label: string; slug: string }[]> = {
-  ug: [
-    { label: "BA Islamic Studies", slug: "ba-islamic-studies" },
-    // { label: "BA Public Policy", slug: "ba-public-policy" },
-    // { label: "BA English", slug: "ba-english" },
-  ],
-  pg: [
-    { label: "MBA", slug: "mba" },
-    { label: "MCA", slug: "mca" },
-  ],
-};
+const facultyDirectory = getFacultyDirectoryData();
 
-function getFacultyLevel(courseSlug: string): FacultyLevel {
-  return courseSlug.startsWith("ba-") ? "ug" : "pg";
+function getProgrammeFilters(level: FacultyLevel): ProgrammeFilter[] {
+  return facultyDirectory.reduce<ProgrammeFilter[]>((filters, faculty) => {
+    if (
+      faculty.level === level &&
+      !filters.some((programme) => programme.slug === faculty.courseSlug)
+    ) {
+      filters.push({
+        label: faculty.courseName,
+        slug: faculty.courseSlug,
+        theme: faculty.theme,
+      });
+    }
+    return filters;
+  }, []);
 }
 
 export function CdoeStaffDirectory({
@@ -75,16 +83,22 @@ export function CdoeStaffDirectory({
   initialProgramme,
 }: {
   initialTab: StaffTab;
-  initialProgramme?: "mba" | "mca";
+  initialProgramme?: string;
 }) {
   const [activeTab, setActiveTab] = useState<StaffTab>(initialTab);
-  const [activeLevel, setActiveLevel] = useState<FacultyLevel>(initialProgramme ? "pg" : "ug");
+  const initialFacultyProgramme = facultyDirectory.find(
+    (person) => person.courseSlug === initialProgramme,
+  );
+  const [activeLevel, setActiveLevel] = useState<FacultyLevel>(
+    initialFacultyProgramme?.level ?? "ug",
+  );
   const [activeProgramme, setActiveProgramme] = useState(initialProgramme ?? "all");
-  const faculty = facultyProfiles.filter(
+  const faculty = facultyDirectory.filter(
     (person) =>
-      getFacultyLevel(person.courseSlug) === activeLevel &&
+      person.level === activeLevel &&
       (activeProgramme === "all" || person.courseSlug === activeProgramme),
   );
+  const programmeFilters = getProgrammeFilters(activeLevel);
 
   const selectLevel = (level: FacultyLevel) => {
     setActiveLevel(level);
@@ -181,17 +195,17 @@ export function CdoeStaffDirectory({
               >
                 All {activeLevel.toUpperCase()} Programmes
               </button>
-              {programmeFilters[activeLevel].map((programme) => (
+              {programmeFilters.map((programme) => (
                 <Link
                   key={programme.slug}
                   to={`/${programme.slug}/people`}
                   aria-current={activeProgramme === programme.slug ? "page" : undefined}
                   className={`min-h-9 shrink-0 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
                     activeProgramme === programme.slug
-                      ? programme.slug === "ba-islamic-studies"
+                      ? programme.theme === "green"
                         ? "bg-[#2F6F4E] text-white"
                         : "bg-[#334b7c] text-white"
-                      : programme.slug === "ba-islamic-studies"
+                      : programme.theme === "green"
                         ? "bg-white text-[#2F6F4E] hover:bg-[#2F6F4E]/10"
                         : "bg-white text-[#334b7c] hover:bg-[#334b7c]/10"
                   }`}
@@ -208,7 +222,7 @@ export function CdoeStaffDirectory({
                     key={person.slug}
                     headingLevel="h2"
                     className={`rounded-2xl border border-[#d7dfeb] bg-white px-4 py-6 shadow-[0_8px_24px_rgba(35,69,125,0.08)] ${
-                      person.courseSlug === "ba-islamic-studies"
+                      person.cardStyle === "rounded"
                         ? "rounded-[30px] border-[#d7dfeb] px-5 py-7 shadow-[0_8px_24px_rgba(35,69,125,0.08)]"
                         : faculty.length === 1
                           ? "col-span-2 mx-auto w-full max-w-[12rem] sm:col-span-1 sm:mx-0 sm:max-w-none"
@@ -221,8 +235,8 @@ export function CdoeStaffDirectory({
                     <div className="mt-3">
                       <Link
                         to={
-                          person.courseSlug === "ba-islamic-studies"
-                            ? "/ba-islamic-studies/people"
+                          person.profileDestination === "programmePeople"
+                            ? `/${encodeURIComponent(person.courseSlug)}/people`
                             : `/faculty-profile/${encodeURIComponent(person.courseSlug)}/${encodeURIComponent(person.slug)}`
                         }
                         className="text-sm font-semibold text-[#a33438] hover:underline"

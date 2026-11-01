@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 import type { ProgrammeOverviewContent } from "@/data/programmes";
 
@@ -17,8 +18,10 @@ export function ProgrammeOverview({
   department,
   theme,
   paragraphs,
+  additionalSections = [],
+  cta,
   children,
-}: ProgrammeOverviewContent & { children?: ReactNode }) {
+}: ProgrammeOverviewContent & { theme: "blue" | "green"; children?: ReactNode }) {
   return (
     <>
       <section id="overview" className="scroll-mt-24">
@@ -86,6 +89,49 @@ export function ProgrammeOverview({
           </div>
         </div>
       </section>
+      {additionalSections.map((section) => (
+        <section
+          key={section.title}
+          className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
+        >
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#0d5c45]">
+            {section.eyebrow}
+          </span>
+          <h3 className="mt-2 text-2xl font-bold text-[#111111] sm:text-3xl">{section.title}</h3>
+          <div className="mt-3 h-1 w-9 rounded-full bg-[#d4af37]" />
+          {section.highlight && (
+            <div className="mt-3 border-b border-slate-200 pb-4">
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#8f1d1d]">
+                {section.highlight.label}
+              </span>
+              <h4 className="mt-2 text-xl font-bold tracking-tight text-[#111111] sm:text-2xl">
+                {section.highlight.title}
+              </h4>
+              <div className="mt-3 h-1 w-10 rounded-full bg-[#d4af37]" />
+              <p className="mt-4 text-justify text-sm leading-6 text-[#111111] sm:text-base sm:leading-7">
+                {section.highlight.paragraph}
+              </p>
+            </div>
+          )}
+          <div className="mt-4 space-y-3 text-sm leading-6 text-[#111111] sm:text-base sm:leading-7">
+            {section.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      ))}
+      {cta && (
+        <section className="mt-4 rounded-2xl bg-[#0d5c45] px-4 py-4 text-center sm:px-6 sm:py-5">
+          <h3 className="text-xl font-bold text-white sm:text-2xl">{cta.title}</h3>
+          <p className="mt-1.5 text-base font-semibold text-white sm:text-lg">{cta.label}</p>
+          <Link
+            to={cta.to}
+            className="mt-4 inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-2.5 text-sm font-bold text-[#111111] transition-colors hover:bg-[#c19b2e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d5c45]"
+          >
+            {cta.linkText}
+          </Link>
+        </section>
+      )}
       {children}
     </>
   );
