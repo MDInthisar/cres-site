@@ -18,6 +18,11 @@ export type FacultyProfile = {
   qualification?: string;
   phone?: string;
   email?: string;
+  biography?: string;
+  additionalInformation?: Array<{
+    label: string;
+    value: string;
+  }>;
   photo: string;
   detailedProfile?: {
     education: string[];
