@@ -10,7 +10,7 @@ import {
   SyllabusBackLink,
   SyllabusCreditSummary,
 } from "@/components/site/ProgrammeSyllabusLayout";
-import { baIslamicStudiesProgrammePageConfig } from "@/data/programmePageConfigs";
+import { getRequiredProgrammePageConfig } from "@/data/programmes";
 import {
   SyllabusSemesterTable as SemesterTable,
   type SyllabusCourse as Course,
@@ -686,7 +686,7 @@ function SyllabusPage() {
         {/* Content */}
         <ProgrammeSyllabusLayout
           variant="ba-islamic-studies"
-          navigation={baIslamicStudiesProgrammePageConfig.navigation}
+          navigation={getRequiredProgrammePageConfig("ba-islamic-studies").navigation}
           title="B.A. Islamic Studies"
           notice="Click Here To Download Our BA Islamic Studies Syllabus"
           downloadLabel="BA Islamic Studies Syllabus PDF"

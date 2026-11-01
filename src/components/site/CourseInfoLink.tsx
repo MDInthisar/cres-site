@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import type { CourseSection } from "@/data/courseInfo";
+import type { CourseSection } from "@/data/programmes";
 
-export type { CourseSection } from "@/data/courseInfo";
+export type { CourseSection } from "@/data/programmes";
 
 export function CourseInfoLink({
   courseSlug,

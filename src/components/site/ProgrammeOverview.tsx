@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import type { ProgrammeOverviewContent } from "@/data/programmeOverview";
+import type { ProgrammeOverviewContent } from "@/data/programmes";
 
 const themeStyles = {
   blue: "text-[#334b7c]",

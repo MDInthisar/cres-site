@@ -12,7 +12,7 @@ import {
   SyllabusCreditSummary,
   SyllabusPageNote,
 } from "@/components/site/ProgrammeSyllabusLayout";
-import { mcaProgrammePageConfig } from "@/data/programmePageConfigs";
+import { getRequiredProgrammePageConfig } from "@/data/programmes";
 import {
   SyllabusSemesterTable as SemesterTable,
   type SyllabusCourse as Course,
@@ -381,7 +381,7 @@ function SyllabusPage() {
 
         <ProgrammeSyllabusLayout
           variant="mca"
-          navigation={mcaProgrammePageConfig.navigation}
+          navigation={getRequiredProgrammePageConfig("mca").navigation}
           title="M.C.A."
           notice="Click Here To Download Our MCA Syllabus"
           downloadLabel="MCA Syllabus PDF"

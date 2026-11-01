@@ -1,72 +1,53 @@
 import { useState, type ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  BookOpen,
+  Download,
+  Eye,
+  FileText,
+  GraduationCap,
+  Target,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 
-import { CourseInfoLink, type CourseSection } from "@/components/site/CourseInfoLink";
+import { CourseInfoLink } from "@/components/site/CourseInfoLink";
 import { EnquiryFormDialog } from "@/components/site/EnquiryFormDialog";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import type {
+  ProgrammeActionItem,
+  ProgrammeDestination,
+  ProgrammeIconConfig,
+  ProgrammeIconName,
+  ProgrammeNavigationItem,
+  ProgrammePageConfig,
+} from "@/data/programmes";
 import { circularFont } from "@/lib/fonts";
 
-type Destination =
-  | { type: "courseInfo"; courseSlug: string; section: CourseSection }
-  | {
-      type: "route";
-      to: string;
-      search?: { programme?: "mba" | "mca" };
-    }
-  | { type: "anchor"; href: string }
-  | { type: "external"; href: string };
+type Destination = Exclude<ProgrammeDestination, { type: "dialog" }>;
+type ProgrammeVariant = ProgrammePageConfig["variant"];
 
-export interface ProgrammeNavigationItem {
-  destination: Destination | { type: "dialog" };
-  icon: ReactNode;
-  title: string;
-  description: string;
-  iconClassName: string;
-}
+export type { ProgrammeActionItem, ProgrammeNavigationItem };
+export type ProgrammePageTemplateProps = ProgrammePageConfig & { children: ReactNode };
 
-export interface ProgrammeActionItem {
-  destination: Destination | { type: "dialog" };
-  icon: ReactNode;
-  title: string;
-  iconClassName?: string;
-  iconBackgroundColor?: string;
-  iconColor?: string;
-  trailingIcon?: ReactNode;
-}
+const programmeIcons: Record<ProgrammeIconName, LucideIcon> = {
+  ArrowLeft,
+  ArrowRight,
+  BookOpen,
+  Download,
+  Eye,
+  FileText,
+  GraduationCap,
+  Target,
+  Users,
+};
 
-type ProgrammeVariant = "mba" | "mca" | "ba-islamic-studies" | "generic";
-
-export interface ProgrammePageTemplateProps {
-  variant: ProgrammeVariant;
-  mainClassName: string;
-  hero: {
-    backIcon: ReactNode;
-    badgeIcon: ReactNode;
-    badge: string;
-    title: string;
-    description: string;
-    applyIcon: ReactNode;
-    applyTo: string;
-    applyHash?: string;
-  };
-  navigation: ProgrammeNavigationItem[];
-  actions: ProgrammeActionItem[];
-  cta?: {
-    label: string;
-    title: string;
-    to: string;
-    linkText: string;
-    icon: ReactNode;
-  };
-  brochureDialog?: {
-    title: string;
-    description: string;
-    idPrefix: string;
-    downloadHref: string;
-    downloadLabel: string;
-  };
-  children: ReactNode;
+function ProgrammeIcon({ icon }: { icon: ProgrammeIconConfig | null }) {
+  if (!icon) return null;
+  const Icon = programmeIcons[icon.name];
+  return <Icon size={icon.size} className={icon.className} />;
 }
 
 function DestinationLink({
@@ -216,7 +197,7 @@ function NavigationCard({
         <span
           className={`flex size-4 shrink-0 items-center justify-center [&_svg]:size-3.5 ${active ? styles.activeIconClassName : styles.inactiveIconClassName}`}
         >
-          {item.icon}
+          <ProgrammeIcon icon={item.icon} />
         </span>
         <span className="min-w-0 flex-1 whitespace-normal break-words text-left">{item.title}</span>
       </>
@@ -245,7 +226,9 @@ function NavigationCard({
     return (
       <button type="button" onClick={onOpenDialog} className={styles.card}>
         <div className="flex items-center gap-3">
-          <div className={`${styles.icon} ${item.iconClassName}`}>{item.icon}</div>
+          <div className={`${styles.icon} ${item.iconClassName}`}>
+            <ProgrammeIcon icon={item.icon} />
+          </div>
           <div className="min-w-0">
             <h3 className={styles.title}>{item.title}</h3>
             <p className={styles.description}>{item.description}</p>
@@ -260,7 +243,9 @@ function NavigationCard({
   return (
     <DestinationLink destination={item.destination} className={styles.card}>
       <div className="flex items-center gap-3">
-        <div className={`${styles.icon} ${item.iconClassName}`}>{item.icon}</div>
+        <div className={`${styles.icon} ${item.iconClassName}`}>
+          <ProgrammeIcon icon={item.icon} />
+        </div>
         <div className="min-w-0">
           <h3 className={styles.title}>{item.title}</h3>
           <p className={styles.description}>{item.description}</p>
@@ -381,10 +366,14 @@ function ActionCard({
             : undefined
         }
       >
-        {item.icon}
+        <ProgrammeIcon icon={item.icon} />
       </span>
       <span className={styles.title}>{item.title}</span>
-      {item.trailingIcon ?? <ArrowRight size={styles.arrowSize} className={styles.trailing} />}
+      {item.trailingIcon ? (
+        <ProgrammeIcon icon={item.trailingIcon} />
+      ) : (
+        <ArrowRight size={styles.arrowSize} className={styles.trailing} />
+      )}
       <span className={styles.underline} />
     </>
   );
@@ -550,13 +539,13 @@ export function ProgrammePageTemplate({
           <div className={heroStyles.leftGlow} />
           <div className={heroStyles.container}>
             <Link to="/programmes" className={heroStyles.back}>
-              {hero.backIcon}
+              <ProgrammeIcon icon={hero.backIcon} />
               Back to Programmes
               <span className="pointer-events-none absolute -bottom-1 left-0 h-[2px] w-0 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
             </Link>
             <div className="max-w-4xl">
               <div className={heroStyles.badge}>
-                {variant !== "ba-islamic-studies" && hero.badgeIcon}
+                {variant !== "ba-islamic-studies" && <ProgrammeIcon icon={hero.badgeIcon} />}
                 {hero.badge}
               </div>
               <h1 className={heroStyles.title}>{hero.title}</h1>
@@ -568,7 +557,7 @@ export function ProgrammePageTemplate({
                   className={heroStyles.apply}
                 >
                   Apply Now
-                  {hero.applyIcon}
+                  <ProgrammeIcon icon={hero.applyIcon} />
                   <span className="pointer-events-none absolute -bottom-1 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-8" />
                 </Link>
               </div>
@@ -624,7 +613,7 @@ export function ProgrammePageTemplate({
                       <h2 className={ctaStyles.title}>{cta.title}</h2>
                       <Link to={cta.to} className={ctaStyles.link}>
                         {cta.linkText}
-                        {cta.icon}
+                        <ProgrammeIcon icon={cta.icon} />
                         <span className={ctaStyles.underline} />
                       </Link>
                     </div>
@@ -678,7 +667,7 @@ export function ProgrammePageTemplate({
               </div>
               <Link to={cta.to} className={ctaStyles.link}>
                 {cta.linkText}
-                {cta.icon}
+                <ProgrammeIcon icon={cta.icon} />
                 <span className={ctaStyles.underline} />
               </Link>
             </div>

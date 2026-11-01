@@ -1,12 +1,8 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { ProgrammePageTemplate } from "@/components/site/ProgrammePageTemplate";
 import { type CourseSection } from "@/components/site/CourseInfoLink";
-import { getCourseInfo } from "@/data/courseInfo";
-import {
-  baIslamicStudiesProgrammePageConfig,
-  mcaProgrammePageConfig,
-  mbaProgrammePageConfig,
-} from "@/data/programmePageConfigs";
+import { getCourseInfo } from "@/data/programmes";
+import { getRequiredProgrammePageConfig } from "@/data/programmes";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, CheckCircle2, Eye, FileText, Target } from "lucide-react";
 
@@ -255,12 +251,7 @@ function CourseSectionPage() {
   const isMBAorMCA = course.slug === "mba" || course.slug === "mca";
 
   if (isBAIslamicStudies || isMBAorMCA) {
-    const programmeConfig =
-      course.slug === "mba"
-        ? mbaProgrammePageConfig
-        : course.slug === "mca"
-          ? mcaProgrammePageConfig
-          : baIslamicStudiesProgrammePageConfig;
+    const programmeConfig = getRequiredProgrammePageConfig(course.slug);
 
     return (
       <ProgrammePageTemplate {...programmeConfig} actions={[]}>

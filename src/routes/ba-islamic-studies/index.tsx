@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import { ProgrammeOverview } from "@/components/site/ProgrammeOverview";
 import { ProgrammePageTemplate } from "@/components/site/ProgrammePageTemplate";
-import { programmeOverviewData } from "@/data/programmeOverview";
-import { baIslamicStudiesProgrammePageConfig } from "@/data/programmePageConfigs";
+import { getRequiredProgrammeOverview, getRequiredProgrammePageConfig } from "@/data/programmes";
 
 function BAIslamicStudiesPage() {
   return (
-    <ProgrammePageTemplate {...baIslamicStudiesProgrammePageConfig}>
+    <ProgrammePageTemplate {...getRequiredProgrammePageConfig("ba-islamic-studies")}>
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
-        <ProgrammeOverview {...programmeOverviewData.baIslamicStudies}>
+        <ProgrammeOverview {...getRequiredProgrammeOverview("ba-islamic-studies")}>
           <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#0d5c45]">
               Programme Information

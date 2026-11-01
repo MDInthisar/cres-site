@@ -6,7 +6,7 @@ import { FacultyDirectory } from "@/components/site/FacultyDirectory";
 import { ProgrammeSidebarNavigation } from "@/components/site/ProgrammePageTemplate";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { getFacultyForCourse } from "@/data/facultyProfiles";
-import { mcaProgrammePageConfig } from "@/data/programmePageConfigs";
+import { getRequiredProgrammePageConfig } from "@/data/programmes";
 
 const faculty = getFacultyForCourse("mca");
 
@@ -47,7 +47,7 @@ function MCAPeoplePage() {
         <section className="mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-5 px-5 py-6 sm:px-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-6 lg:px-8">
           <ProgrammeSidebarNavigation
             variant="mca"
-            navigation={mcaProgrammePageConfig.navigation}
+            navigation={getRequiredProgrammePageConfig("mca").navigation}
             activeTitle="People"
           />
           <main className="min-w-0 py-2 sm:py-4">

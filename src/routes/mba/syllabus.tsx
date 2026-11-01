@@ -12,7 +12,7 @@ import {
   SyllabusCreditSummary,
   SyllabusPageNote,
 } from "@/components/site/ProgrammeSyllabusLayout";
-import { mbaProgrammePageConfig } from "@/data/programmePageConfigs";
+import { getRequiredProgrammePageConfig } from "@/data/programmes";
 import {
   SyllabusSemesterTable as SemesterTable,
   type SyllabusCourse as Course,
@@ -397,7 +397,7 @@ function SyllabusPage() {
 
         <ProgrammeSyllabusLayout
           variant="mba"
-          navigation={mbaProgrammePageConfig.navigation}
+          navigation={getRequiredProgrammePageConfig("mba").navigation}
           title="M.B.A."
           notice="Click Here To Download Our MBA Syllabus"
           downloadLabel="MBA Syllabus PDF"

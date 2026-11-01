@@ -1,7 +1,6 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { CourseInfoLink, type CourseSection } from "@/components/site/CourseInfoLink";
-import { getCourseInfo } from "@/data/courseInfo";
-import { getGenericProgrammePageConfig } from "@/data/programmePageConfigs";
+import { getCourseInfo, getGenericProgrammePageConfig } from "@/data/programmes";
 import { ProgrammePageTemplate } from "@/components/site/ProgrammePageTemplate";
 import { Link, useParams } from "react-router-dom";
 import { ArrowRight, Eye, FileText, Target } from "lucide-react";

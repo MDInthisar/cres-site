@@ -1,5 +1,5 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { getCourseInfo } from "@/data/courseInfo";
+import { getCourseInfo } from "@/data/programmes";
 import { getFacultyProfile, type FacultyProfile } from "@/data/facultyProfiles";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, BookOpen, GraduationCap, Mail, Phone } from "lucide-react";
