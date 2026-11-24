@@ -15,7 +15,7 @@ type SyllabusSemesterTableProps = {
 const themeStyles = {
   purple: {
     icon: "bg-[#6b4c9a]",
-    heading: "bg-[#1d355f]",
+    heading: "bg-[#355b8a]",
     rowHover: "hover:bg-[#faf8fc]",
     credits: "text-[#6b4c9a]",
   },
@@ -79,7 +79,7 @@ export function SyllabusSemesterTable({
                   </span>
                 </td>
 
-                <td className="px-3 py-3 text-sm font-medium text-[#1d355f]">
+                <td className="px-3 py-3 text-sm font-medium text-[#355b8a]">
                   {course.code || "—"}
                 </td>
 

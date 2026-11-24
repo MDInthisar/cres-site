@@ -130,7 +130,7 @@ function ExecutionTeamPage() {
                 Leadership
               </p>
 
-              <h2 className="mt-1 text-xl font-bold tracking-tight text-[#14284e] sm:text-2xl">
+              <h2 className="mt-1 text-xl font-bold tracking-tight text-[#24426c] sm:text-2xl">
                 Director
               </h2>
             </div>
@@ -146,7 +146,7 @@ function ExecutionTeamPage() {
                     Director
                   </p>
 
-                  <h3 className="break-words text-xl font-bold tracking-tight text-[#14284e] sm:text-2xl">
+                  <h3 className="break-words text-xl font-bold tracking-tight text-[#24426c] sm:text-2xl">
                     {director.name}
                   </h3>
 
@@ -190,7 +190,7 @@ function ExecutionTeamPage() {
                 Our People
               </p>
 
-              <h2 className="mt-1 text-xl font-bold tracking-tight text-[#14284e] sm:text-2xl">
+              <h2 className="mt-1 text-xl font-bold tracking-tight text-[#24426c] sm:text-2xl">
                 CDOE Team
               </h2>
 
@@ -231,7 +231,7 @@ function ExecutionTeamPage() {
                       <div className="flex min-w-0 flex-col justify-center p-5">
                         <div className={`mb-4 h-[3px] w-10 rounded-full ${accent.line}`} />
 
-                        <h3 className="break-words text-lg font-bold leading-snug text-[#14284e]">
+                        <h3 className="break-words text-lg font-bold leading-snug text-[#24426c]">
                           {member.name}
                         </h3>
 
@@ -264,7 +264,7 @@ function ExecutionTeamPage() {
                 Our Legacy
               </p>
 
-              <h2 className="mt-1 text-xl font-bold tracking-tight text-[#14284e] sm:text-2xl">
+              <h2 className="mt-1 text-xl font-bold tracking-tight text-[#24426c] sm:text-2xl">
                 Former Director
               </h2>
             </div>
@@ -289,7 +289,7 @@ function ExecutionTeamPage() {
               <div className="flex min-w-0 flex-col justify-center p-5 sm:p-7">
                 <div className="mb-4 h-[3px] w-10 rounded-full bg-[#d5ad28]" />
 
-                <h3 className="break-words text-xl font-bold tracking-tight text-[#14284e]">
+                <h3 className="break-words text-xl font-bold tracking-tight text-[#24426c]">
                   {formerDirector.name}
                 </h3>
 

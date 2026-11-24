@@ -62,7 +62,7 @@ function AboutTeamCards() {
               <Icon className="size-4" />
             </div>
 
-            <h3 className="text-base font-bold leading-6 text-[#17234B]">{item.title}</h3>
+            <h3 className="text-base font-bold leading-6 text-[#2d4f7d]">{item.title}</h3>
 
             <p className="mt-2 min-w-0 flex-1 break-words text-sm leading-6 text-[#555b66] sm:text-base">
               {item.description}
@@ -70,7 +70,7 @@ function AboutTeamCards() {
 
             <Link
               to={item.href}
-              className="mt-4 inline-flex w-fit max-w-full items-center gap-1.5 rounded-full border border-[#dedbd6] px-3 py-2 text-sm font-semibold text-[#17234B] transition-colors duration-200 hover:border-[#8f1d1d] hover:bg-[#8f1d1d] hover:text-white"
+              className="mt-4 inline-flex w-fit max-w-full items-center gap-1.5 rounded-full border border-[#dedbd6] px-3 py-2 text-sm font-semibold text-[#2d4f7d] transition-colors duration-200 hover:border-[#8f1d1d] hover:bg-[#8f1d1d] hover:text-white"
             >
               <span>Read More</span>
               <ArrowRight className="size-3 shrink-0" />
@@ -106,7 +106,7 @@ function AboutPage() {
             About Us
           </p>
 
-          <h1 className="mt-1.5 text-2xl font-bold tracking-tight text-[#17234B] sm:text-3xl">
+          <h1 className="mt-1.5 text-2xl font-bold tracking-tight text-[#2d4f7d] sm:text-3xl">
             About Crescent
           </h1>
 
@@ -138,7 +138,7 @@ function AboutPage() {
         {/* INSTITUTION DETAILS */}
 
         <section className="mb-6">
-          <h2 className="text-lg font-bold leading-7 text-[#17234B] sm:text-xl">
+          <h2 className="text-lg font-bold leading-7 text-[#2d4f7d] sm:text-xl">
             B.S. Abdur Rahman Crescent Institute of Science &amp; Technology
           </h2>
 
@@ -167,7 +167,7 @@ function AboutPage() {
               Discover Crescent
             </p>
 
-            <h2 className="mt-1.5 text-xl font-bold text-[#17234B] sm:text-2xl">
+            <h2 className="mt-1.5 text-xl font-bold text-[#2d4f7d] sm:text-2xl">
               People, Leadership &amp; Facilities
             </h2>
 

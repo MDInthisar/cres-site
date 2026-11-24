@@ -123,12 +123,12 @@ function getNavigationStyles(variant: ProgrammeVariant, density: "compact" | "st
       arrowSize: 0,
       underline: "",
       sidebar: true,
-      activeClassName: isGreen ? "bg-[#2F6F4E] text-white" : "bg-[#334b7c] text-white",
+      activeClassName: isGreen ? "bg-[#2F6F4E] text-white" : "bg-[#3b6292] text-white",
       inactiveClassName: isGreen
         ? "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#2F6F4E]"
-        : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#334b7c]",
+        : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#3b6292]",
       activeIconClassName: "text-white",
-      inactiveIconClassName: isGreen ? "text-[#2F6F4E]" : "text-[#334b7c]",
+      inactiveIconClassName: isGreen ? "text-[#2F6F4E]" : "text-[#3b6292]",
     };
   }
 
@@ -431,10 +431,10 @@ function getHeroStyles(variant: ProgrammeVariant) {
 
   const compact = true;
   return {
-    section: "relative overflow-hidden bg-[#334b7c]",
-    gradient: "absolute inset-0 bg-gradient-to-br from-[#334b7c] via-[#2b416d] to-[#23365c]",
+    section: "relative overflow-hidden bg-[#3b6292]",
+    gradient: "absolute inset-0 bg-gradient-to-br from-[#3b6292] via-[#2d4f7d] to-[#24426c]",
     rightGlow: "absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#d4af37]/10 blur-2xl",
-    leftGlow: "absolute -bottom-16 left-24 h-32 w-32 rounded-full bg-[#334b7c]/15 blur-2xl",
+    leftGlow: "absolute -bottom-16 left-24 h-32 w-32 rounded-full bg-[#3b6292]/15 blur-2xl",
     container: compact
       ? "relative mx-auto max-w-7xl px-5 py-3 sm:px-6 sm:py-4 sm:pl-16 lg:px-8 lg:py-5 lg:pl-16"
       : "relative mx-auto max-w-7xl px-5 py-6 sm:px-6 sm:py-7 sm:pl-16 lg:px-8 lg:py-8 lg:pl-16",
@@ -479,10 +479,10 @@ function getCtaStyles(variant: ProgrammeVariant) {
       section: "mt-4",
       container: "w-full",
       content:
-        "flex flex-col items-center gap-1 rounded-2xl bg-[#334b7c] px-4 py-4 text-center sm:px-6 sm:py-5",
+        "flex flex-col items-center gap-1 rounded-2xl bg-[#3b6292] px-4 py-4 text-center sm:px-6 sm:py-5",
       label: "text-xl font-bold text-white sm:text-2xl",
       title: "text-base font-semibold text-white sm:text-lg",
-      link: "group relative mt-4 inline-flex w-fit items-center justify-center gap-2 rounded-full bg-[#d4af37] px-6 py-2.5 text-sm font-bold text-[#111111] transition-colors hover:bg-[#c19b2e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#334b7c]",
+      link: "group relative mt-4 inline-flex w-fit items-center justify-center gap-2 rounded-full bg-[#d4af37] px-6 py-2.5 text-sm font-bold text-[#111111] transition-colors hover:bg-[#c19b2e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b6292]",
       underline:
         "pointer-events-none absolute -bottom-1 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#d4af37] transition-all duration-300 group-hover:w-8",
     };

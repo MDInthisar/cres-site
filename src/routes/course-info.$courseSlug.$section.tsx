@@ -32,20 +32,20 @@ function CourseSectionContent({
 }) {
   const isBlue = accentColor === "blue";
   const visionIconClass = isBlue
-    ? "bg-[#334b7c]/10 text-[#334b7c]"
-    : "bg-[#1d355f]/10 text-[#1d355f]";
+    ? "bg-[#3b6292]/10 text-[#3b6292]"
+    : "bg-[#355b8a]/10 text-[#355b8a]";
   const missionIconClass = isBlue
-    ? "bg-[#334b7c]/10 text-[#334b7c]"
+    ? "bg-[#3b6292]/10 text-[#3b6292]"
     : "bg-[#8f1d1d]/10 text-[#8f1d1d]";
   const eligibilityIconClass = isBlue
-    ? "bg-[#334b7c]/10 text-[#334b7c]"
+    ? "bg-[#3b6292]/10 text-[#3b6292]"
     : "bg-[#0d5c45]/10 text-[#0d5c45]";
-  const accentTextClass = isBlue ? "text-[#334b7c]" : "text-[#0d5c45]";
+  const accentTextClass = isBlue ? "text-[#3b6292]" : "text-[#0d5c45]";
   const accentHoverClass = isBlue
-    ? "hover:border-[#334b7c] hover:text-[#334b7c]"
+    ? "hover:border-[#3b6292] hover:text-[#3b6292]"
     : "hover:border-[#0d5c45] hover:text-[#0d5c45]";
-  const feeHeaderClass = isBlue ? "bg-[#334b7c]" : "bg-[#1d355f]";
-  const missionCheckClass = isBlue ? "text-[#334b7c]" : "text-[#0d5c45]";
+  const feeHeaderClass = isBlue ? "bg-[#3b6292]" : "bg-[#355b8a]";
+  const missionCheckClass = isBlue ? "text-[#3b6292]" : "text-[#0d5c45]";
 
   return (
     <>

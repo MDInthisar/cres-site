@@ -18,12 +18,12 @@ function FaqPage() {
         {/* BACKGROUND GLOWS */}
         <div className="pointer-events-none absolute -left-40 -top-40 h-[420px] w-[420px] rounded-full bg-[#741b1b]/7 blur-[100px]" />
 
-        <div className="pointer-events-none absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-[#0f1f3d]/7 blur-[110px]" />
+        <div className="pointer-events-none absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-[#24426c]/7 blur-[110px]" />
 
         <div className="pointer-events-none absolute bottom-[-180px] left-1/2 h-[350px] w-[700px] -translate-x-1/2 rounded-full bg-[#d4a017]/8 blur-[120px]" />
 
         {/* TOP ACCENT */}
-        <div className="relative h-[4px] bg-gradient-to-r from-[#741b1b] via-[#d4a017] to-[#0f1f3d]" />
+        <div className="relative h-[4px] bg-gradient-to-r from-[#741b1b] via-[#d4a017] to-[#24426c]" />
 
         {/* HEADER */}
         <section className="relative px-4 pb-6 pt-5 sm:px-6 sm:pb-7 sm:pt-6 lg:px-8">
@@ -56,12 +56,12 @@ function FaqPage() {
               <div className="mx-auto mt-3 flex items-center justify-center gap-2">
                 <span className="h-px w-8 bg-[#741b1b]/20" />
                 <span className="h-1 w-8 rounded-full bg-[#d4a017]" />
-                <span className="h-px w-8 bg-[#0f1f3d]/20" />
+                <span className="h-px w-8 bg-[#24426c]/20" />
               </div>
             </div>
 
             {/* FAQ PANEL */}
-            <div className="relative overflow-hidden rounded-[22px] border border-[#0f1f3d]/10 bg-[#0f1f3d] shadow-[0_15px_45px_rgba(15,31,61,0.14)]">
+            <div className="relative overflow-hidden rounded-[22px] border border-[#24426c]/10 bg-[#24426c] shadow-[0_15px_45px_rgba(15,31,61,0.14)]">
               {/* PANEL TOP LINE */}
               <div className="h-[3px] bg-gradient-to-r from-[#741b1b] via-[#d4a017] to-[#741b1b]" />
 
@@ -96,7 +96,7 @@ function FaqPage() {
                         className={[
                           "overflow-hidden rounded-xl border transition-all duration-300",
                           isOpen
-                            ? "border-[#d4a017]/40 bg-[#162846]"
+                            ? "border-[#d4a017]/40 bg-[#24426c]"
                             : "border-white/[0.09] bg-white/[0.055] hover:border-[#d4a017]/25 hover:bg-white/[0.08]",
                         ].join(" ")}
                       >
@@ -120,7 +120,7 @@ function FaqPage() {
                             className={[
                               "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
                               isOpen
-                                ? "rotate-180 border-[#d4a017] bg-[#d4a017] text-[#0f1f3d]"
+                                ? "rotate-180 border-[#d4a017] bg-[#d4a017] text-[#24426c]"
                                 : "border-white/15 bg-white/5 text-white/60",
                             ].join(" ")}
                           >
@@ -169,7 +169,7 @@ function FaqPage() {
                   </div>
                 </div>
 
-                <div className="rounded-lg bg-[#0f1f3d] px-4 py-1.5 shadow-sm">
+                <div className="rounded-lg bg-[#24426c] px-4 py-1.5 shadow-sm">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#d4a017]">
                     Contact to Admin Office
                   </span>
@@ -180,7 +180,7 @@ function FaqPage() {
         </section>
 
         {/* BOTTOM ACCENT */}
-        <div className="relative h-[3px] bg-gradient-to-r from-[#741b1b] via-[#d4a017] to-[#0f1f3d]" />
+        <div className="relative h-[3px] bg-gradient-to-r from-[#741b1b] via-[#d4a017] to-[#24426c]" />
       </main>
     </SiteLayout>
   );

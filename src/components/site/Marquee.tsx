@@ -108,7 +108,7 @@ function MarqueeItem({
             justify-center
             rounded-full
             bg-white
-            text-[#172554]
+            text-[#2d4f7d]
             transition-all
             duration-300
             group-hover/item:bg-[#8f1d1d]
@@ -156,9 +156,9 @@ function MarqueeItem({
             transition-all
             duration-300
             group-hover/item:bg-[#f3c969]
-            group-hover/item:text-[#172554]
+            group-hover/item:text-[#2d4f7d]
             group-active/item:bg-[#f3c969]
-            group-active/item:text-[#172554]
+            group-active/item:text-[#2d4f7d]
           "
         >
           Now Open
@@ -201,7 +201,7 @@ export function Marquee({ compact = false }: { compact?: boolean }) {
         overflow-hidden
         border-y
         border-white/15
-        bg-[#334b7c]
+        bg-[#3b6292]
         dark:shadow-[0_4px_18px_rgba(0,0,0,0.2)]
       "
     >
@@ -233,7 +233,7 @@ export function Marquee({ compact = false }: { compact?: boolean }) {
           h-full
           w-8
           bg-gradient-to-r
-          from-[#334b7c]
+          from-[#3b6292]
           to-transparent
           sm:w-16
         "
@@ -250,7 +250,7 @@ export function Marquee({ compact = false }: { compact?: boolean }) {
           h-full
           w-8
           bg-gradient-to-l
-          from-[#334b7c]
+          from-[#3b6292]
           to-transparent
           sm:w-16
         "

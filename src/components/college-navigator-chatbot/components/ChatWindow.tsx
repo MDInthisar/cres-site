@@ -110,7 +110,7 @@ export function ChatWindow() {
           bg-gradient-to-r
           from-[#8f1d1d]
           via-[#c49a45]
-          to-[#172c5b]
+          to-[#2d4f7d]
         "
       />
 
@@ -118,7 +118,7 @@ export function ChatWindow() {
           HEADER
       ====================================================== */}
 
-      <header className="shrink-0 bg-gradient-to-r from-[#172c5b] to-[#203b70] px-4 py-4 text-white">
+      <header className="shrink-0 bg-gradient-to-r from-[#2d4f7d] to-[#355b8a] px-4 py-4 text-white">
         <h2 className="text-base font-semibold tracking-tight">Crescent Assistant</h2>
       </header>
 
@@ -140,7 +140,7 @@ export function ChatWindow() {
           py-3
 
           scrollbar-thin
-          scrollbar-thumb-[#172c5b]/20
+          scrollbar-thumb-[#2d4f7d]/20
           scrollbar-track-transparent
         "
       >
@@ -214,7 +214,7 @@ export function ChatWindow() {
 
                     rounded-xl
 
-                    bg-[#172c5b]
+                    bg-[#2d4f7d]
 
                     shadow-sm
                   "
@@ -223,7 +223,7 @@ export function ChatWindow() {
                 </div>
 
                 <div>
-                  <p className="text-[11px] font-bold text-[#172c5b]">{t.suggestionsTitle}</p>
+                  <p className="text-[11px] font-bold text-[#2d4f7d]">{t.suggestionsTitle}</p>
 
                   <p className="text-[9px] text-slate-500">Choose a question to get started</p>
                 </div>
@@ -260,7 +260,7 @@ export function ChatWindow() {
                       rounded-full
 
                       border
-                      border-[#172c5b]/15
+                      border-[#2d4f7d]/15
 
                       bg-white
 
@@ -269,7 +269,7 @@ export function ChatWindow() {
 
                       text-[11px]
                       font-medium
-                      text-[#172c5b]
+                      text-[#2d4f7d]
 
                       shadow-[0_2px_8px_rgba(23,44,91,0.06)]
 
@@ -300,7 +300,7 @@ export function ChatWindow() {
           shrink-0
 
           border-t
-          border-[#172c5b]/10
+          border-[#2d4f7d]/10
 
           bg-white
 

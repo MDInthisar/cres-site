@@ -53,7 +53,7 @@ export function HeroDE() {
   return (
     <section
       style={circularFont}
-      className="relative w-full overflow-hidden bg-gradient-to-br from-[#1d355f] via-[#172554] to-[#101d37] px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14"
+      className="relative w-full overflow-hidden bg-gradient-to-br from-[#355b8a] via-[#2d4f7d] to-[#24426c] px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14"
     >
       {/* =====================================================
           SOFT BACKGROUND DETAILS
@@ -477,9 +477,9 @@ export function HeroDE() {
               rounded-[2rem]
               border
               border-[#B08A24]/30
-              bg-[#1d355f]/[0.04]
+              bg-[#355b8a]/[0.04]
               p-2
-              shadow-[0_20px_55px_rgba(29,53,95,0.14)]
+              shadow-[0_20px_55px_rgba(53,91,138,0.14)]
               sm:rounded-[2.2rem]
               sm:p-2.5
             "
@@ -495,7 +495,7 @@ export function HeroDE() {
                 w-full
                 overflow-hidden
                 rounded-[1.65rem]
-                bg-[#1d355f]
+                bg-[#355b8a]
                 sm:h-[390px]
                 lg:h-[440px]
                 xl:h-[475px]
@@ -559,9 +559,9 @@ export function HeroDE() {
                   absolute
                   inset-0
                   bg-gradient-to-t
-                  from-[#101d37]/80
-                  via-[#1d355f]/15
-                  to-[#1d355f]/10
+                  from-[#24426c]/80
+                  via-[#355b8a]/15
+                  to-[#355b8a]/10
                 "
               />
 
@@ -724,7 +724,7 @@ export function HeroDE() {
                 rounded-full
                 border
                 border-[#B08A24]/40
-                bg-[#1d355f]
+                bg-[#355b8a]
                 sm:size-11
               "
             >

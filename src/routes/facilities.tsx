@@ -21,7 +21,7 @@ function SectionHeading({
 }) {
   return (
     <div className="mb-5 flex items-center gap-3">
-      <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[#14284e]">
+      <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[#24426c]">
         <Icon className="size-5 text-[#d8b84c]" />
       </div>
 
@@ -30,7 +30,7 @@ function SectionHeading({
           {eyebrow}
         </p>
 
-        <h2 className="mt-1 text-xl font-bold tracking-tight text-[#14284e] sm:text-2xl">
+        <h2 className="mt-1 text-xl font-bold tracking-tight text-[#24426c] sm:text-2xl">
           {title}
         </h2>
       </div>
@@ -47,7 +47,7 @@ function FacilitiesPage() {
     <SiteLayout>
       <AboutSectionLayout
         activeHref="/facilities"
-        mainClassName="min-h-screen bg-[#F5F1E9] text-[#14284e]"
+        mainClassName="min-h-screen bg-[#F5F1E9] text-[#24426c]"
       >
         <div className="min-w-0">
           {/* PAGE HEADER — ABOUT US STYLE */}
@@ -79,7 +79,7 @@ function FacilitiesPage() {
                   Welcome
                 </p>
 
-                <h2 className="mt-1 text-xl font-bold tracking-tight text-[#14284e] sm:text-2xl">
+                <h2 className="mt-1 text-xl font-bold tracking-tight text-[#24426c] sm:text-2xl">
                   Online Education Infrastructure
                 </h2>
               </div>
@@ -90,19 +90,19 @@ function FacilitiesPage() {
               >
                 <Link
                   to="/studio"
-                  className="inline-flex items-center rounded-lg border border-[#d7dfeb] px-4 py-2.5 text-base font-semibold text-[#23457D] transition-colors hover:border-[#8f1d1d] hover:bg-[#8f1d1d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8f1d1d]"
+                  className="inline-flex items-center rounded-lg border border-[#d7dfeb] px-4 py-2.5 text-base font-semibold text-[#355b8a] transition-colors hover:border-[#8f1d1d] hover:bg-[#8f1d1d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8f1d1d]"
                 >
                   Studio
                 </Link>
                 <Link
                   to="/lms"
-                  className="inline-flex items-center rounded-lg border border-[#d7dfeb] px-4 py-2.5 text-base font-semibold text-[#23457D] transition-colors hover:border-[#8f1d1d] hover:bg-[#8f1d1d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8f1d1d]"
+                  className="inline-flex items-center rounded-lg border border-[#d7dfeb] px-4 py-2.5 text-base font-semibold text-[#355b8a] transition-colors hover:border-[#8f1d1d] hover:bg-[#8f1d1d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8f1d1d]"
                 >
                   LMS
                 </Link>
                 <Link
                   to="/datacenter"
-                  className="inline-flex items-center rounded-lg border border-[#d7dfeb] px-4 py-2.5 text-base font-semibold text-[#23457D] transition-colors hover:border-[#8f1d1d] hover:bg-[#8f1d1d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8f1d1d]"
+                  className="inline-flex items-center rounded-lg border border-[#d7dfeb] px-4 py-2.5 text-base font-semibold text-[#355b8a] transition-colors hover:border-[#8f1d1d] hover:bg-[#8f1d1d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8f1d1d]"
                 >
                   Data Center
                 </Link>
@@ -120,7 +120,7 @@ function FacilitiesPage() {
                     </span>
                   </div>
 
-                  <h3 className="mt-4 text-2xl font-bold leading-tight tracking-tight text-[#14284e] sm:text-3xl lg:text-4xl">
+                  <h3 className="mt-4 text-2xl font-bold leading-tight tracking-tight text-[#24426c] sm:text-3xl lg:text-4xl">
                     Modern infrastructure for{" "}
                     <span className="text-[#8f1d1d]">flexible online learning.</span>
                   </h3>
@@ -138,7 +138,7 @@ function FacilitiesPage() {
 
                   <div className="mt-6 grid grid-cols-3 border-y border-[#e5e0dc] py-4">
                     <div className="min-w-0 border-r border-[#e5e0dc] pr-2 sm:pr-4">
-                      <p className="text-2xl font-bold text-[#14284e] sm:text-3xl">01</p>
+                      <p className="text-2xl font-bold text-[#24426c] sm:text-3xl">01</p>
 
                       <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-[#737782] sm:text-xs">
                         LMS
@@ -146,7 +146,7 @@ function FacilitiesPage() {
                     </div>
 
                     <div className="min-w-0 border-r border-[#e5e0dc] px-2 sm:px-4">
-                      <p className="text-2xl font-bold text-[#14284e] sm:text-3xl">01</p>
+                      <p className="text-2xl font-bold text-[#24426c] sm:text-3xl">01</p>
 
                       <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-[#737782] sm:text-xs">
                         Studio
@@ -154,7 +154,7 @@ function FacilitiesPage() {
                     </div>
 
                     <div className="min-w-0 pl-2 sm:pl-4">
-                      <p className="text-2xl font-bold text-[#14284e] sm:text-3xl">24/7</p>
+                      <p className="text-2xl font-bold text-[#24426c] sm:text-3xl">24/7</p>
 
                       <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-[#737782] sm:text-xs">
                         Support
@@ -170,7 +170,7 @@ function FacilitiesPage() {
                       Digital Learning
                     </span>
 
-                    <span className="inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-[#F5F1E9] px-3.5 py-2 text-xs font-semibold text-[#14284e]">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-[#F5F1E9] px-3.5 py-2 text-xs font-semibold text-[#24426c]">
                       <Sparkles className="size-3.5 text-[#b08a24]" />
                       Flexible Learning
                     </span>
@@ -195,7 +195,7 @@ function FacilitiesPage() {
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#101a31]/85 via-[#101a31]/10 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#24426c]/85 via-[#24426c]/10 to-transparent" />
 
                   <div className="absolute left-0 top-0 h-full w-1 bg-[#b08a24]" />
 
@@ -268,7 +268,7 @@ function FacilitiesPage() {
 
                   <Link
                     to="/studio"
-                    className="inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-white px-5 py-2.5 text-sm font-semibold text-[#14284e] transition-colors hover:border-[#8f1d1d] hover:text-[#8f1d1d]"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-white px-5 py-2.5 text-sm font-semibold text-[#24426c] transition-colors hover:border-[#8f1d1d] hover:text-[#8f1d1d]"
                   >
                     Explore Studio
                     <ArrowRight className="size-4" />
@@ -310,12 +310,12 @@ function FacilitiesPage() {
                 </p>
 
                 <div className="mt-6 flex items-start gap-3 rounded-xl border border-[#e5e0dc] bg-[#F5F1E9] p-4">
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#14284e]">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#24426c]">
                     <ShieldCheck className="size-5 text-[#d8b84c]" />
                   </div>
 
                   <div className="min-w-0">
-                    <h3 className="text-sm font-bold text-[#14284e]">
+                    <h3 className="text-sm font-bold text-[#24426c]">
                       Reliable Digital Infrastructure
                     </h3>
 

@@ -38,7 +38,7 @@ export function PeopleCard({
         decoding="async"
         className="size-24 shrink-0 rounded-full border-4 border-[#e8eef6] object-cover sm:size-28"
       />
-      <NameHeading className="mt-4 w-full break-words text-base font-bold leading-6 text-[#17366F] sm:text-lg">
+      <NameHeading className="mt-4 w-full break-words text-base font-bold leading-6 text-[#355b8a] sm:text-lg">
         {name}
       </NameHeading>
       <p className="mt-1 text-sm font-semibold leading-5 text-[#a33438]">{designation}</p>

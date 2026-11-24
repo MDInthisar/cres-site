@@ -10,9 +10,9 @@ type FacultyCardProps = {
 };
 
 const cardStyles: Record<FacultyTheme, string> = {
-  blue: "rounded-2xl border border-[#d7dfeb] px-4 py-6 shadow-[0_8px_24px_rgba(35,69,125,0.08)]",
+  blue: "rounded-2xl border border-[#d7dfeb] px-4 py-6 shadow-[0_8px_24px_rgba(53,91,138,0.08)]",
   green:
-    "rounded-[30px] border border-[#d7dfeb] px-5 py-7 shadow-[0_8px_24px_rgba(35,69,125,0.08)]",
+    "rounded-[30px] border border-[#d7dfeb] px-5 py-7 shadow-[0_8px_24px_rgba(53,91,138,0.08)]",
 };
 
 const linkColors: Record<FacultyTheme, string> = {

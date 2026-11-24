@@ -120,7 +120,7 @@ export function TopHeader() {
                       text-[#d1ad5b]
                       transition-all
                       duration-200
-                      group-hover:bg-[#172554]
+                      group-hover:bg-[#2d4f7d]
                       group-hover:text-[#d1ad5b]
                     "
                   >
@@ -174,7 +174,7 @@ export function TopHeader() {
                 text-[#d1ad5b]
                 transition-all
                 duration-200
-                group-hover:bg-[#172554]
+                group-hover:bg-[#2d4f7d]
                 group-hover:text-[#d1ad5b]
               "
             >
@@ -206,8 +206,8 @@ export function TopHeader() {
               gap-1.5
               rounded-full
               border
-              border-[#172554]/40
-              bg-[#172554]
+              border-[#2d4f7d]/40
+              bg-[#2d4f7d]
               px-2.5
               py-2
               text-xs
@@ -217,7 +217,7 @@ export function TopHeader() {
               transition-all
               duration-300
               hover:-translate-y-0.5
-              hover:bg-[#102044]
+              hover:bg-[#24426c]
               hover:shadow-[0_6px_16px_rgba(0,0,0,0.22)]
               sm:gap-2
               sm:px-4

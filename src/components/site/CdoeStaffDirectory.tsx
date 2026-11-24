@@ -109,7 +109,7 @@ export function CdoeStaffDirectory({
     <SiteLayout>
       <AboutSectionLayout
         activeHref="/cdoe-team"
-        mainClassName="min-h-screen overflow-x-clip bg-[#F5F1E9] text-[#17366F]"
+        mainClassName="min-h-screen overflow-x-clip bg-[#F5F1E9] text-[#355b8a]"
         contentClassName="w-full min-w-0"
       >
         <AboutSectionHeading
@@ -122,7 +122,7 @@ export function CdoeStaffDirectory({
         />
 
         <div
-          className="flex w-full max-w-full gap-1.5 overflow-x-auto rounded-full border border-[#d7dfeb] bg-white p-1.5 shadow-[0_5px_16px_rgba(35,69,125,0.06)]"
+          className="flex w-full max-w-full gap-1.5 overflow-x-auto rounded-full border border-[#d7dfeb] bg-white p-1.5 shadow-[0_5px_16px_rgba(53,91,138,0.06)]"
           role="tablist"
           aria-label="CDOE team"
         >
@@ -140,7 +140,7 @@ export function CdoeStaffDirectory({
               onClick={() => setActiveTab(tab)}
               className={`min-h-10 shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition-colors sm:px-5 ${
                 activeTab === tab
-                  ? "bg-[#23457D] text-white shadow-sm"
+                  ? "bg-[#355b8a] text-white shadow-sm"
                   : "text-[#61718a] hover:bg-[#eaf0f7]"
               }`}
             >
@@ -170,8 +170,8 @@ export function CdoeStaffDirectory({
                   onClick={() => selectLevel(level)}
                   className={`min-h-10 shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
                     activeLevel === level
-                      ? "border-[#23457D] bg-[#23457D] text-white"
-                      : "border-[#d7dfeb] bg-white text-[#17366F] hover:border-[#23457D]/40"
+                      ? "border-[#355b8a] bg-[#355b8a] text-white"
+                      : "border-[#d7dfeb] bg-white text-[#355b8a] hover:border-[#355b8a]/40"
                   }`}
                 >
                   {label}
@@ -189,7 +189,7 @@ export function CdoeStaffDirectory({
                 onClick={() => setActiveProgramme("all")}
                 className={`min-h-9 shrink-0 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
                   activeProgramme === "all"
-                    ? "bg-[#17366F] text-white"
+                    ? "bg-[#355b8a] text-white"
                     : "bg-white text-[#61718a] hover:bg-[#eaf0f7]"
                 }`}
               >
@@ -204,10 +204,10 @@ export function CdoeStaffDirectory({
                     activeProgramme === programme.slug
                       ? programme.theme === "green"
                         ? "bg-[#2F6F4E] text-white"
-                        : "bg-[#334b7c] text-white"
+                        : "bg-[#3b6292] text-white"
                       : programme.theme === "green"
                         ? "bg-white text-[#2F6F4E] hover:bg-[#2F6F4E]/10"
-                        : "bg-white text-[#334b7c] hover:bg-[#334b7c]/10"
+                        : "bg-white text-[#3b6292] hover:bg-[#3b6292]/10"
                   }`}
                 >
                   {programme.label}
@@ -221,9 +221,9 @@ export function CdoeStaffDirectory({
                   <PeopleCard
                     key={person.slug}
                     headingLevel="h2"
-                    className={`rounded-2xl border border-[#d7dfeb] bg-white px-4 py-6 shadow-[0_8px_24px_rgba(35,69,125,0.08)] ${
+                    className={`rounded-2xl border border-[#d7dfeb] bg-white px-4 py-6 shadow-[0_8px_24px_rgba(53,91,138,0.08)] ${
                       person.cardStyle === "rounded"
-                        ? "rounded-[30px] border-[#d7dfeb] px-5 py-7 shadow-[0_8px_24px_rgba(35,69,125,0.08)]"
+                        ? "rounded-[30px] border-[#d7dfeb] px-5 py-7 shadow-[0_8px_24px_rgba(53,91,138,0.08)]"
                         : faculty.length === 1
                           ? "col-span-2 mx-auto w-full max-w-[12rem] sm:col-span-1 sm:mx-0 sm:max-w-none"
                           : ""
@@ -262,7 +262,7 @@ export function CdoeStaffDirectory({
               <PeopleCard
                 key={person.name}
                 headingLevel="h2"
-                className="rounded-2xl border border-[#d7dfeb] bg-white px-4 py-6 shadow-[0_8px_24px_rgba(35,69,125,0.08)]"
+                className="rounded-2xl border border-[#d7dfeb] bg-white px-4 py-6 shadow-[0_8px_24px_rgba(53,91,138,0.08)]"
                 name={person.name}
                 designation={person.designation}
                 photo={person.photo}

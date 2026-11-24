@@ -147,7 +147,7 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
               <Sparkles className="size-3.5 text-[#d4af37]" />
             </div>
 
-            <h2 className="max-w-3xl text-3xl font-black tracking-[-0.035em] text-[#172554] sm:text-4xl">
+            <h2 className="max-w-3xl text-3xl font-black tracking-[-0.035em] text-[#2d4f7d] sm:text-4xl">
               Moments that define our
               <span className="text-[#8f1d1d]"> community.</span>
             </h2>
@@ -158,7 +158,7 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
           </div>
 
           {/* Photo count */}
-          <div className="hidden rounded-2xl border border-[#d4af37]/25 bg-[#172554] px-5 py-3 text-white shadow-[0_12px_30px_rgba(23,37,84,0.15)] sm:flex sm:items-center sm:gap-3">
+          <div className="hidden rounded-2xl border border-[#d4af37]/25 bg-[#2d4f7d] px-5 py-3 text-white shadow-[0_12px_30px_rgba(45,79,125,0.15)] sm:flex sm:items-center sm:gap-3">
             <div className="flex size-9 items-center justify-center rounded-xl bg-[#8f1d1d]">
               <Images className="size-4" />
             </div>
@@ -177,7 +177,7 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
             CATEGORY NAVIGATION
         ===================================================== */}
         <div className="mb-7 overflow-x-auto pb-1 scrollbar-none">
-          <div className="flex min-w-max items-center gap-2 rounded-2xl border border-[#172554]/10 bg-white/60 p-1.5 shadow-[0_8px_25px_rgba(23,37,84,0.06)] backdrop-blur-xl">
+          <div className="flex min-w-max items-center gap-2 rounded-2xl border border-[#2d4f7d]/10 bg-white/60 p-1.5 shadow-[0_8px_25px_rgba(45,79,125,0.06)] backdrop-blur-xl">
             {[{ id: "all", label: "All Moments" }, ...galleryCategories].map((category) => {
               const selected = active === category.id;
 
@@ -190,7 +190,7 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
                   className={cn(
                     "group relative flex scroll-mt-24 items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300",
                     selected
-                      ? "bg-[#172554] text-white shadow-md"
+                      ? "bg-[#2d4f7d] text-white shadow-md"
                       : "text-slate-500 hover:bg-[#8f1d1d]/8 hover:text-[#8f1d1d]",
                   )}
                 >
@@ -214,7 +214,7 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
           <div className="flex items-center gap-2">
             <Camera className="size-4 text-[#8f1d1d]" />
 
-            <span className="text-sm font-bold text-[#172554]">{activeLabel}</span>
+            <span className="text-sm font-bold text-[#2d4f7d]">{activeLabel}</span>
 
             <span className="rounded-full bg-[#d4af37]/15 px-2 py-0.5 text-[10px] font-bold text-[#8f1d1d]">
               {filtered.length}
@@ -234,7 +234,7 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
           {visiblePhotos.map((photo, i) => (
             <div
               key={`${photo.category}-${i}`}
-              className="relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-[1.35rem] border border-[#172554]/10 bg-[#172554] text-left shadow-[0_8px_25px_rgba(23,37,84,0.08)]"
+              className="relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-[1.35rem] border border-[#2d4f7d]/10 bg-[#2d4f7d] text-left shadow-[0_8px_25px_rgba(45,79,125,0.08)]"
             >
               {/* Image */}
               <span className="relative block overflow-hidden">
@@ -251,11 +251,11 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
                 />
 
                 {/* Dark cinematic overlay */}
-                <span className="absolute inset-0 bg-gradient-to-t from-[#172554]/95 via-[#172554]/10 to-transparent opacity-50" />
+                <span className="absolute inset-0 bg-gradient-to-t from-[#2d4f7d]/95 via-[#2d4f7d]/10 to-transparent opacity-50" />
 
                 {/* Bottom information */}
                 <span className="absolute inset-x-0 bottom-0 p-4">
-                  <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-[#d4af37]/30 bg-[#172554]/65 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-[#d4af37] backdrop-blur-md">
+                  <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-[#d4af37]/30 bg-[#2d4f7d]/65 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-[#d4af37] backdrop-blur-md">
                     <span className="size-1.5 rounded-full bg-[#d4af37]" />
                     {galleryCategories.find((item) => item.id === photo.category)?.label}
                   </span>
@@ -276,7 +276,7 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
           <div className="rounded-3xl border border-dashed border-[#d4af37]/40 bg-[#f7f4ee] px-6 py-12 text-center">
             <Images className="mx-auto size-8 text-[#8f1d1d]" />
 
-            <p className="mt-3 text-sm font-semibold text-[#172554]">No images available</p>
+            <p className="mt-3 text-sm font-semibold text-[#2d4f7d]">No images available</p>
 
             <p className="mt-1 text-xs text-slate-500">More moments will be added soon.</p>
           </div>
@@ -288,10 +288,10 @@ export function GalleryGrid({ featured = false }: { featured?: boolean }) {
         <div className="mt-7 flex items-center justify-center gap-3">
           <span className="h-px w-10 bg-[#d4af37]" />
 
-          <div className="flex items-center gap-2 rounded-full border border-[#172554]/10 bg-white/70 px-4 py-2 shadow-sm backdrop-blur">
+          <div className="flex items-center gap-2 rounded-full border border-[#2d4f7d]/10 bg-white/70 px-4 py-2 shadow-sm backdrop-blur">
             <span className="size-1.5 rounded-full bg-[#8f1d1d]" />
 
-            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#172554]">
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#2d4f7d]">
               Learn • Connect • Grow
             </span>
 
@@ -354,7 +354,7 @@ function GallerySpotlight() {
           </span>
           <Sparkles className="size-3.5 text-[#d4af37]" />
         </div>
-        <h2 className="text-2xl font-black tracking-[-0.035em] text-[#172554] sm:text-3xl">
+        <h2 className="text-2xl font-black tracking-[-0.035em] text-[#2d4f7d] sm:text-3xl">
           Life at <span className="text-[#8f1d1d]">Crescent.</span>
         </h2>
         <p className="mt-1 text-sm leading-6 text-slate-500">
@@ -362,7 +362,7 @@ function GallerySpotlight() {
         </p>
       </div>
 
-      <div className="group relative min-h-[280px] flex-1 overflow-hidden rounded-[1.35rem] border border-[#172554]/10 bg-[#172554] shadow-[0_12px_35px_rgba(23,37,84,0.14)]">
+      <div className="group relative min-h-[280px] flex-1 overflow-hidden rounded-[1.35rem] border border-[#2d4f7d]/10 bg-[#2d4f7d] shadow-[0_12px_35px_rgba(45,79,125,0.14)]">
         <div className="relative block size-full min-h-[280px] w-full overflow-hidden">
           <img
             src={photo.src}
@@ -375,9 +375,9 @@ function GallerySpotlight() {
             decoding="async"
             className="absolute inset-0 size-full object-cover"
           />
-          <span className="absolute inset-0 bg-gradient-to-t from-[#101a3c]/90 via-[#172554]/5 to-transparent" />
+          <span className="absolute inset-0 bg-gradient-to-t from-[#24426c]/90 via-[#2d4f7d]/5 to-transparent" />
           <span className="absolute inset-x-0 bottom-0 p-4 pr-24 text-white sm:p-5 sm:pr-28">
-            <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-[#d4af37]/30 bg-[#172554]/65 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-[#d4af37] backdrop-blur-md">
+            <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-[#d4af37]/30 bg-[#2d4f7d]/65 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-[#d4af37] backdrop-blur-md">
               <span className="size-1.5 rounded-full bg-[#d4af37]" />
               {galleryCategories.find((item) => item.id === photo.category)?.label}
             </span>
@@ -389,7 +389,7 @@ function GallerySpotlight() {
           type="button"
           onClick={showPrevious}
           aria-label="Previous gallery image"
-          className="absolute right-14 top-4 z-10 flex size-9 items-center justify-center rounded-xl border border-white/20 bg-[#172554]/70 text-white backdrop-blur-md transition-colors hover:bg-[#8f1d1d]"
+          className="absolute right-14 top-4 z-10 flex size-9 items-center justify-center rounded-xl border border-white/20 bg-[#2d4f7d]/70 text-white backdrop-blur-md transition-colors hover:bg-[#8f1d1d]"
         >
           <ChevronRight className="size-4 rotate-180" />
         </button>
@@ -397,7 +397,7 @@ function GallerySpotlight() {
           type="button"
           onClick={showNext}
           aria-label="Next gallery image"
-          className="absolute right-4 top-4 z-10 flex size-9 items-center justify-center rounded-xl border border-white/20 bg-[#172554]/70 text-white backdrop-blur-md transition-colors hover:bg-[#8f1d1d]"
+          className="absolute right-4 top-4 z-10 flex size-9 items-center justify-center rounded-xl border border-white/20 bg-[#2d4f7d]/70 text-white backdrop-blur-md transition-colors hover:bg-[#8f1d1d]"
         >
           <ChevronRight className="size-4" />
         </button>

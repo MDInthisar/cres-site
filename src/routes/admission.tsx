@@ -107,8 +107,8 @@ function AdmissionSidebar() {
               rel={item.external ? "noreferrer" : undefined}
               className={`group flex w-full min-w-0 items-center justify-start gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-semibold leading-5 transition-colors duration-200 ${
                 index === 0
-                  ? "bg-[#23457D] text-white"
-                  : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#23457D]"
+                  ? "bg-[#355b8a] text-white"
+                  : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#355b8a]"
               }`}
             >
               <span className="flex size-4 shrink-0 items-center justify-center">
@@ -160,7 +160,7 @@ function AdmissionSteps() {
 
         <h2
           id="steps-heading"
-          className="mt-1.5 scroll-mt-24 text-xl font-bold tracking-tight text-[#17234B] sm:text-2xl"
+          className="mt-1.5 scroll-mt-24 text-xl font-bold tracking-tight text-[#2d4f7d] sm:text-2xl"
         >
           Steps to Apply Online
         </h2>
@@ -182,7 +182,7 @@ function AdmissionSteps() {
               {step.number}
             </div>
 
-            <h3 className="text-sm font-bold leading-6 text-[#17234B]">{step.title}</h3>
+            <h3 className="text-sm font-bold leading-6 text-[#2d4f7d]">{step.title}</h3>
 
             <p className="mt-1 text-[10px] font-medium leading-4 text-[#737782] sm:text-xs">
               {step.description}
@@ -199,7 +199,7 @@ function AdmissionSteps() {
                 href={step.action.href}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-flex min-h-9 items-center justify-center gap-2 rounded-full bg-[#23457D] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#172554]"
+                className="mt-4 inline-flex min-h-9 items-center justify-center gap-2 rounded-full bg-[#355b8a] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#2d4f7d]"
               >
                 {step.action.label}
                 <ArrowRight className="size-3.5" />
@@ -218,7 +218,7 @@ function AdmissionSteps() {
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <Link
           to="/programmes"
-          className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#23457D] px-5 py-2.5 text-xs font-semibold text-white transition-colors duration-200 hover:bg-[#172554] sm:text-sm"
+          className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#355b8a] px-5 py-2.5 text-xs font-semibold text-white transition-colors duration-200 hover:bg-[#2d4f7d] sm:text-sm"
         >
           Explore Programmes
           <ArrowRight className="size-3.5" />

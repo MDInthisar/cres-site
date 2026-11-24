@@ -10,7 +10,7 @@ import {
 type ProgrammeVariant = "blue" | "green";
 
 const themeStyles: Record<ProgrammeVariant, { hover: string; credits: string }> = {
-  blue: { hover: "hover:text-[#334b7c]", credits: "bg-[#1d355f]" },
+  blue: { hover: "hover:text-[#3b6292]", credits: "bg-[#355b8a]" },
   green: { hover: "hover:text-[#0d5c45]", credits: "bg-[#0d5c45]" },
 };
 

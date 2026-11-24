@@ -104,7 +104,7 @@ export function StudentReviews() {
               >
                 {/* Top Row */}
                 <figcaption>
-                  <span className="block text-[16px] font-bold text-[#172554]">{r.name}</span>
+                  <span className="block text-[16px] font-bold text-[#2d4f7d]">{r.name}</span>
                   <span className="mt-0.5 block text-[12px] text-[#4b4b4b]">{r.programme}</span>
                 </figcaption>
 
@@ -163,7 +163,7 @@ export function StudentReviews() {
                       text-[11px]
                       font-semibold
                       tracking-wider
-                      text-[#172554]/45
+                      text-[#2d4f7d]/45
                     "
                   >
                     CDOE
@@ -207,11 +207,11 @@ export function StudentReviews() {
               justify-center
               rounded-full
               border
-              border-[#172554]/20
+              border-[#2d4f7d]/20
               bg-white
-              text-[#172554]
+              text-[#2d4f7d]
               transition-all
-              hover:bg-[#172554]
+              hover:bg-[#2d4f7d]
               hover:text-white
             "
           >
@@ -248,11 +248,11 @@ export function StudentReviews() {
               justify-center
               rounded-full
               border
-              border-[#172554]/20
+              border-[#2d4f7d]/20
               bg-white
-              text-[#172554]
+              text-[#2d4f7d]
               transition-all
-              hover:bg-[#172554]
+              hover:bg-[#2d4f7d]
               hover:text-white
             "
           >

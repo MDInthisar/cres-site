@@ -23,8 +23,8 @@ export function FacilitiesSidebar({ activeHref }: { activeHref: FacilityRoute })
               aria-current={active ? "page" : undefined}
               className={`group flex w-full min-w-0 items-center justify-start gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-semibold leading-5 transition-colors duration-200 ${
                 active
-                  ? "bg-[#23457D] text-white"
-                  : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#23457D]"
+                  ? "bg-[#355b8a] text-white"
+                  : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#355b8a]"
               }`}
             >
               <span className="flex size-4 shrink-0 items-center justify-center">

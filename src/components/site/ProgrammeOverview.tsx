@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import type { ProgrammeOverviewContent } from "@/data/programmes";
 
 const themeStyles = {
-  blue: "text-[#334b7c]",
+  blue: "text-[#3b6292]",
   green: "text-[#0d5c45]",
 } as const;
 
@@ -42,7 +42,7 @@ export function ProgrammeOverview({
               </div>
 
               <div className="flex min-h-[200px] w-full flex-col justify-center rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-[#fdf8f1] px-6 py-6 shadow-[0_10px_30px_rgba(0,0,0,0.07)] sm:h-[280px] sm:px-8 lg:h-[320px]">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0f2a5c] text-white shadow-md sm:h-14 sm:w-14">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#24426c] text-white shadow-md sm:h-14 sm:w-14">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -59,7 +59,7 @@ export function ProgrammeOverview({
                   </svg>
                 </div>
 
-                <h3 className="mt-5 text-2xl font-bold leading-tight tracking-tight text-[#0f2a5c] sm:text-3xl">
+                <h3 className="mt-5 text-2xl font-bold leading-tight tracking-tight text-[#24426c] sm:text-3xl">
                   {title}
                 </h3>
 

@@ -228,8 +228,8 @@ function UgcSidebar() {
               href={item.href}
               className={`group flex w-full min-w-0 items-center justify-start gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-semibold leading-5 transition-colors duration-200 ${
                 index === 0
-                  ? "bg-[#23457D] text-white"
-                  : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#23457D]"
+                  ? "bg-[#355b8a] text-white"
+                  : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#355b8a]"
               }`}
             >
               <span className="flex size-4 shrink-0 items-center justify-center">
@@ -249,11 +249,11 @@ function UgcSidebar() {
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div className="mb-4">
-      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#23457D]">{eyebrow}</p>
+      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#355b8a]">{eyebrow}</p>
       <h2 className="mt-1.5 text-xl font-bold tracking-tight text-[#20242B] sm:text-2xl">
         {title}
       </h2>
-      <div className="mt-3 h-1 w-12 rounded-full bg-[#23457D]" />
+      <div className="mt-3 h-1 w-12 rounded-full bg-[#355b8a]" />
     </div>
   );
 }
@@ -295,7 +295,7 @@ function DisclosureCard({
           />
         </div>
         <div className="min-w-0">
-          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#23457D]">
+          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#355b8a]">
             Regulatory Authority
           </p>
           <h3 className="mt-1 text-lg font-bold leading-snug text-[#20242B]">{heading}</h3>
@@ -311,7 +311,7 @@ function DisclosureCard({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#23457D] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#18355f]"
+        className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#355b8a] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#355b8a]"
       >
         <FileDown className="size-4 text-white/80" />
         View Disclosure
@@ -331,7 +331,7 @@ function UgcResources() {
           const Icon = resource.icon;
           const dialog = resourceDialogs[resource.id];
           const actionClassName =
-            "inline-flex items-center gap-1.5 rounded-lg bg-[#23457D] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#18355f]";
+            "inline-flex items-center gap-1.5 rounded-lg bg-[#355b8a] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#355b8a]";
 
           return (
             <motion.article
@@ -342,16 +342,16 @@ function UgcResources() {
               className="flex min-h-[220px] min-w-0 flex-col rounded-2xl border border-[#D9D4CA] bg-white p-5 shadow-[0_4px_14px_rgba(32,36,43,0.04)] sm:p-6"
             >
               <div className="flex items-start justify-between gap-3">
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#23457D] text-white">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#355b8a] text-white">
                   <Icon className="size-4" />
                 </div>
-                <span className="rounded-full bg-[#23457D]/5 px-2 py-1 text-[10px] font-bold tracking-wider text-[#23457D]/80">
+                <span className="rounded-full bg-[#355b8a]/5 px-2 py-1 text-[10px] font-bold tracking-wider text-[#355b8a]/80">
                   PDF
                 </span>
               </div>
 
               <div className="mt-3 flex-1">
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#23457D]">
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#355b8a]">
                   {resource.short}
                 </p>
                 <h3 className="mt-1 text-base font-bold leading-snug text-[#20242B]">
@@ -362,7 +362,7 @@ function UgcResources() {
 
               <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-3">
                 <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide text-slate-400">
-                  <CheckCircle2 className="size-3.5 text-[#23457D]" />
+                  <CheckCircle2 className="size-3.5 text-[#355b8a]" />
                   Official Resource
                 </span>
 
@@ -407,7 +407,7 @@ function UgcCornerPage() {
 
           <div className="min-w-0 space-y-6">
             <header className="rounded-2xl border border-[#E2DDD4] bg-white px-5 py-4 shadow-[0_5px_16px_rgba(31,35,43,0.04)] sm:px-6">
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#23457D]">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#355b8a]">
                 Regulatory Information
               </p>
               <h1 className="mt-1.5 text-2xl font-bold tracking-tight text-[#20242B] sm:text-3xl">
@@ -453,19 +453,19 @@ function UgcCornerPage() {
 
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 rounded-xl border border-[#D9D4CA] bg-white px-4 py-3">
               <span className="flex items-center gap-1.5 text-xs font-bold text-[#20242B]">
-                <ShieldCheck className="size-4 text-[#23457D]" />
+                <ShieldCheck className="size-4 text-[#355b8a]" />
                 Transparent
               </span>
               <span className="flex items-center gap-1.5 text-xs font-bold text-[#20242B]">
-                <BadgeCheck className="size-4 text-[#23457D]" />
+                <BadgeCheck className="size-4 text-[#355b8a]" />
                 Verified Information
               </span>
               <span className="flex items-center gap-1.5 text-xs font-bold text-[#20242B]">
-                <FileCheck2 className="size-4 text-[#23457D]" />
+                <FileCheck2 className="size-4 text-[#355b8a]" />
                 Public Disclosure
               </span>
               <span className="flex items-center gap-1.5 text-xs font-bold text-[#20242B]">
-                <GraduationCap className="size-4 text-[#23457D]" />
+                <GraduationCap className="size-4 text-[#355b8a]" />
                 UGC-DEB
               </span>
             </div>

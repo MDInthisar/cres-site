@@ -89,10 +89,10 @@ function ProgrammeExploreLink({
   const className = `
     group inline-flex h-9 flex-1 cursor-pointer items-center
     justify-center gap-2 whitespace-nowrap rounded-full border
-    border-[#172554]/20 bg-white px-2.5
+    border-[#2d4f7d]/20 bg-white px-2.5
     text-[clamp(0.68rem,0.62rem+0.18vw,0.82rem)]
     font-semibold text-[#111111] transition-all duration-300
-    hover:border-[#172554] hover:bg-[#172554] hover:text-white
+    hover:border-[#2d4f7d] hover:bg-[#2d4f7d] hover:text-white
     focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
   `;
 
@@ -152,7 +152,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
         style={circularFont}
         className={`
           group relative flex h-full min-h-[490px] flex-col
-          overflow-hidden rounded-[1.2rem] border border-[#172554]/10
+          overflow-hidden rounded-[1.2rem] border border-[#2d4f7d]/10
           bg-white p-0 shadow-[0_5px_18px_rgba(15,23,42,0.055)]
           transition-all duration-300 hover:border-[#D4AF37]/55
           hover:shadow-[0_16px_36px_rgba(15,23,42,0.10)]
@@ -164,15 +164,15 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
         <div
           className={`absolute inset-x-0 top-0 z-10 h-[3px] ${
             hasGoldAccent
-              ? "bg-gradient-to-r from-[#172554] via-[#23457D] to-[#D4AF37]"
-              : "bg-gradient-to-r from-[#172554] via-[#8F1D1D] to-[#D4AF37]"
+              ? "bg-gradient-to-r from-[#2d4f7d] via-[#355b8a] to-[#D4AF37]"
+              : "bg-gradient-to-r from-[#2d4f7d] via-[#8F1D1D] to-[#D4AF37]"
           }`}
         />
 
         {/* PROGRAMME IMAGE */}
 
         <div
-          className={`relative w-full shrink-0 overflow-hidden bg-[#172554] ${
+          className={`relative w-full shrink-0 overflow-hidden bg-[#2d4f7d] ${
             isCompact && hasGoldAccent ? "h-32" : isCompact ? "h-40" : "h-48 sm:h-52"
           }`}
         >
@@ -186,7 +186,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/75 via-[#172554]/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/75 via-[#2d4f7d]/10 to-transparent" />
         </div>
 
         <div
@@ -199,7 +199,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
           {/* HEADER */}
 
           <div className="relative flex items-center justify-between gap-2">
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-[0.7rem] bg-[#172554] text-[#D4AF37] shadow-[0_5px_12px_rgba(23,37,84,0.15)]">
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-[0.7rem] bg-[#2d4f7d] text-[#D4AF37] shadow-[0_5px_12px_rgba(45,79,125,0.15)]">
               {isCertification ? (
                 <Sparkles className="size-4" />
               ) : (
@@ -209,7 +209,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
 
             <span
               className={`rounded-full px-2.5 py-1.5 text-[clamp(0.55rem,0.5rem+0.12vw,0.7rem)] font-bold uppercase tracking-[0.11em] ${
-                hasGoldAccent ? "bg-[#23457D]/[0.08] text-[#172554]" : "bg-[#F4F1E8] text-[#111111]"
+                hasGoldAccent ? "bg-[#355b8a]/[0.08] text-[#2d4f7d]" : "bg-[#F4F1E8] text-[#111111]"
               }`}
             >
               {isCertification ? "Certification" : isPG ? "Postgraduate" : "Undergraduate"}
@@ -221,7 +221,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
           <div className="relative mt-3">
             <h4
               className={`text-[clamp(1rem,0.9rem+0.35vw,1.15rem)] font-bold leading-tight tracking-[-0.01em] ${
-                hasGoldAccent ? "text-[#172554]" : "text-[#111111]"
+                hasGoldAccent ? "text-[#2d4f7d]" : "text-[#111111]"
               }`}
             >
               {programme.name}
@@ -236,8 +236,8 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
 
           <div className="relative mt-3 grid grid-cols-1 gap-2.5">
             <div className="flex flex-col gap-1.5">
-              <div className="rounded-[0.7rem] border border-[#172554]/10 bg-[#172554]/[0.045] px-2.5 py-2 transition-all duration-300 group-hover:border-[#172554]/15">
-                <div className="flex items-center gap-1.5 text-[#172554]">
+              <div className="rounded-[0.7rem] border border-[#2d4f7d]/10 bg-[#2d4f7d]/[0.045] px-2.5 py-2 transition-all duration-300 group-hover:border-[#2d4f7d]/15">
+                <div className="flex items-center gap-1.5 text-[#2d4f7d]">
                   <Clock3 className="size-3.5 shrink-0" />
 
                   <span className="text-[clamp(0.6rem,0.55rem+0.15vw,0.72rem)] font-bold uppercase tracking-wide text-[#111111]">
@@ -266,7 +266,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
           {/* ELIGIBILITY */}
 
           <p className="relative mt-3 line-clamp-2 text-xs leading-5 text-slate-600">
-            <span className="font-semibold text-[#172554]">Eligibility:</span>{" "}
+            <span className="font-semibold text-[#2d4f7d]">Eligibility:</span>{" "}
             {programme.eligibility}
           </p>
 
@@ -287,7 +287,7 @@ function ProgrammeCard({ programme, index, type, compact = false }: ProgrammeCar
 
             <Button
               size="pill"
-              className="h-9 flex-1 rounded-full border-0 bg-[#8F1D1D] px-2.5 text-[clamp(0.68rem,0.62rem+0.18vw,0.82rem)] font-bold text-white shadow-[0_5px_12px_rgba(143,29,29,0.15)] transition-all duration-300 hover:bg-[#172554] hover:shadow-[0_6px_15px_rgba(23,37,84,0.18)]"
+              className="h-9 flex-1 rounded-full border-0 bg-[#8F1D1D] px-2.5 text-[clamp(0.68rem,0.62rem+0.18vw,0.82rem)] font-bold text-white shadow-[0_5px_12px_rgba(143,29,29,0.15)] transition-all duration-300 hover:bg-[#2d4f7d] hover:shadow-[0_6px_15px_rgba(45,79,125,0.18)]"
               asChild
             >
               <Link to="/admission#how-to-apply">
@@ -333,7 +333,7 @@ function ProgrammeSection({
             CDOE · Programmes
           </p>
           <h3
-            className="text-2xl font-bold leading-tight tracking-tight text-[#17234B] sm:text-3xl lg:text-4xl"
+            className="text-2xl font-bold leading-tight tracking-tight text-[#2d4f7d] sm:text-3xl lg:text-4xl"
             style={circularFont}
           >
             {title}
@@ -343,7 +343,7 @@ function ProgrammeSection({
 
         {items.length > 0 && (
           <div className="mb-0.5 inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/75 px-3 py-1.5 text-xs font-semibold text-[#61718a] shadow-sm">
-            <BookOpen className="size-3.5 text-[#23457D]" />
+            <BookOpen className="size-3.5 text-[#355b8a]" />
             {items.length} Programme{items.length > 1 ? "s" : ""}
           </div>
         )}
@@ -365,10 +365,10 @@ function ProgrammeSection({
         </div>
       ) : (
         <div
-          className="flex min-h-40 items-center justify-center rounded-[1.2rem] border border-dashed border-[#172554]/15 bg-[#F4F1E8]/40 px-6 py-10 text-center"
+          className="flex min-h-40 items-center justify-center rounded-[1.2rem] border border-dashed border-[#2d4f7d]/15 bg-[#F4F1E8]/40 px-6 py-10 text-center"
           role="status"
         >
-          <p className="text-sm font-semibold text-[#172554]">Coming Soon</p>
+          <p className="text-sm font-semibold text-[#2d4f7d]">Coming Soon</p>
         </div>
       )}
     </div>
@@ -402,12 +402,12 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
 
       {withHeading && (
         <div className="px-3 pb-4 pt-5 sm:px-5 lg:px-0">
-          <div className="grid items-center gap-5 overflow-hidden rounded-2xl border border-[#172554]/10 bg-[#F8F7F3] p-4 sm:p-6 md:grid-cols-[1.05fr_0.95fr] md:gap-8 md:p-7 lg:p-8">
+          <div className="grid items-center gap-5 overflow-hidden rounded-2xl border border-[#2d4f7d]/10 bg-[#F8F7F3] p-4 sm:p-6 md:grid-cols-[1.05fr_0.95fr] md:gap-8 md:p-7 lg:p-8">
             {/* LEFT SIDE: HEADING */}
 
             <div className="min-w-0">
               <div className="mb-3 flex items-center gap-2">
-                <span className="h-[2px] w-7 rounded-full bg-[#172554]" />
+                <span className="h-[2px] w-7 rounded-full bg-[#2d4f7d]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#8F1D1D] sm:text-sm">
                   Programmes Offered
@@ -417,7 +417,7 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
               </div>
 
               <h2
-                className="max-w-lg text-2xl font-bold leading-tight tracking-tight text-[#17234B] sm:text-3xl md:text-4xl"
+                className="max-w-lg text-2xl font-bold leading-tight tracking-tight text-[#2d4f7d] sm:text-3xl md:text-4xl"
                 style={circularFont}
               >
                 Build your future with the right programme
@@ -429,12 +429,12 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
               </p>
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-2 rounded-full border border-[#172554]/10 bg-white px-3 py-2.5 text-sm font-semibold text-[#17234B]">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#2d4f7d]/10 bg-white px-3 py-2.5 text-sm font-semibold text-[#2d4f7d]">
                   <GraduationCap className="size-4 text-[#8F1D1D]" />
                   Undergraduate
                 </span>
 
-                <span className="inline-flex items-center gap-2 rounded-full border border-[#172554]/10 bg-white px-3 py-2.5 text-sm font-semibold text-[#17234B]">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#2d4f7d]/10 bg-white px-3 py-2.5 text-sm font-semibold text-[#2d4f7d]">
                   <BookOpen className="size-4 text-[#8F1D1D]" />
                   Postgraduate
                 </span>
@@ -443,7 +443,7 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
 
             {/* RIGHT SIDE: CAMPUS IMAGE */}
 
-            <div className="group relative min-h-44 overflow-hidden rounded-xl bg-[#172554] sm:min-h-56 md:min-h-60">
+            <div className="group relative min-h-44 overflow-hidden rounded-xl bg-[#2d4f7d] sm:min-h-56 md:min-h-60">
               <img
                 src={programmeStudentsPhoto}
                 alt="Students discussing their studies on campus"
@@ -454,9 +454,9 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#172554]/60 via-[#172554]/10 to-[#D4AF37]/10" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#2d4f7d]/60 via-[#2d4f7d]/10 to-[#D4AF37]/10" />
 
-              <div className="absolute bottom-3 left-3 rounded-full border border-white/30 bg-[#172554]/80 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-4 sm:py-2 sm:text-sm">
+              <div className="absolute bottom-3 left-3 rounded-full border border-white/30 bg-[#2d4f7d]/80 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-4 sm:py-2 sm:text-sm">
                 Learn. Grow. Succeed.
               </div>
 
@@ -475,7 +475,7 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
           withHeading ? "mt-1.5" : ""
         }`}
       >
-        <aside className="h-fit min-w-0 rounded-2xl border border-white/80 bg-white/70 p-3 shadow-[0_8px_24px_rgba(23,37,84,0.07)] backdrop-blur-xl lg:sticky lg:top-24">
+        <aside className="h-fit min-w-0 rounded-2xl border border-white/80 bg-white/70 p-3 shadow-[0_8px_24px_rgba(45,79,125,0.07)] backdrop-blur-xl lg:sticky lg:top-24">
           <p className="mb-2 px-3 pt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#61718a]">
             Browse Programmes
           </p>
@@ -499,8 +499,8 @@ export function ProgrammeCards({ withHeading = true }: { withHeading?: boolean }
                   onClick={() => setActiveCategory(categoryId)}
                   className={`flex min-h-11 shrink-0 items-center gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-semibold transition-colors lg:w-full ${
                     active
-                      ? "bg-[#23457D] text-white shadow-[0_5px_14px_rgba(35,69,125,0.2)]"
-                      : "text-[#61718a] hover:bg-[#23457D]/[0.07] hover:text-[#23457D]"
+                      ? "bg-[#355b8a] text-white shadow-[0_5px_14px_rgba(53,91,138,0.2)]"
+                      : "text-[#61718a] hover:bg-[#355b8a]/[0.07] hover:text-[#355b8a]"
                   }`}
                 >
                   <Icon className="size-4 shrink-0" />

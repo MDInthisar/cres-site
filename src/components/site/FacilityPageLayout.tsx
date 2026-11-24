@@ -17,7 +17,7 @@ export function FacilityPageLayout({
   children: ReactNode;
 }) {
   return (
-    <main style={circularFont} className="min-h-screen bg-[#f7f5f7] text-[#14284e]">
+    <main style={circularFont} className="min-h-screen bg-[#f7f5f7] text-[#24426c]">
       <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-start gap-6 px-4 pb-10 pt-7 sm:px-6 sm:pt-9 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-8 lg:px-8 xl:grid-cols-[220px_minmax(0,1fr)] xl:px-10">
         <FacilitiesSidebar activeHref={activeHref} />
 
@@ -32,7 +32,7 @@ export function FacilityPageLayout({
               Facilities
             </p>
 
-            <h1 className="mt-1 text-2xl font-bold tracking-tight text-[#14284e] sm:text-3xl">
+            <h1 className="mt-1 text-2xl font-bold tracking-tight text-[#24426c] sm:text-3xl">
               {title}
             </h1>
 
@@ -52,7 +52,7 @@ export function FacilitySectionHeading({ eyebrow, title }: { eyebrow: string; ti
   return (
     <div className="mb-5">
       <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#c93636]">{eyebrow}</p>
-      <h2 className="mt-1 text-xl font-bold tracking-tight text-[#14284e] sm:text-2xl">{title}</h2>
+      <h2 className="mt-1 text-xl font-bold tracking-tight text-[#24426c] sm:text-2xl">{title}</h2>
     </div>
   );
 }

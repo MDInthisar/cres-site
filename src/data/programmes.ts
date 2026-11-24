@@ -390,9 +390,9 @@ export function getGenericProgrammePageConfig(course: CourseInfo): PageConfig {
 }
 
 const sharedNavIconClass = "bg-[#0d5c45]/10 text-[#0d5c45]";
-const blueNavIconClass = "bg-[#334b7c]/10 text-[#334b7c]";
+const blueNavIconClass = "bg-[#3b6292]/10 text-[#3b6292]";
 const peopleIconClass = "bg-[#8f1d1d]/10 text-[#8f1d1d]";
-const visionIconClass = "bg-[#1d355f]/10 text-[#1d355f]";
+const visionIconClass = "bg-[#355b8a]/10 text-[#355b8a]";
 const missionIconClass = "bg-[#d4af37]/20 text-[#8a6d12]";
 
 export const programmes = {
@@ -1709,14 +1709,14 @@ export const programmes = {
           destination: { type: "courseInfo", courseSlug: "mca", section: "eligibility-fee" },
           icon: { name: "BookOpen", size: 17 },
           title: "Eligibility & fee",
-          iconBackgroundColor: "#334b7c12",
-          iconColor: "#334b7c",
+          iconBackgroundColor: "#3b629212",
+          iconColor: "#3b6292",
         },
         {
           destination: { type: "route", to: "/mca/syllabus" },
           icon: { name: "BookOpen", size: 17 },
           title: "Syllabus",
-          iconClassName: "bg-[#1d355f]/10 text-[#1d355f]",
+          iconClassName: "bg-[#355b8a]/10 text-[#355b8a]",
         },
         {
           destination: { type: "external", href: mbaRegulationsPdf },
@@ -1728,7 +1728,7 @@ export const programmes = {
           destination: { type: "external", href: mcaBrochurePdf },
           icon: { name: "Download", size: 17 },
           title: "Download Brochure",
-          iconClassName: "bg-[#334b7c]/10 text-[#334b7c]",
+          iconClassName: "bg-[#3b6292]/10 text-[#3b6292]",
         },
       ],
       cta: {
@@ -2508,14 +2508,14 @@ export const programmes = {
           destination: { type: "courseInfo", courseSlug: "mba", section: "eligibility-fee" },
           icon: { name: "BookOpen", size: 20 },
           title: "Eligibility & Fee",
-          iconBackgroundColor: "#334b7c12",
-          iconColor: "#334b7c",
+          iconBackgroundColor: "#3b629212",
+          iconColor: "#3b6292",
         },
         {
           destination: { type: "route", to: "/mba/syllabus" },
           icon: { name: "BookOpen", size: 20 },
           title: "Syllabus",
-          iconClassName: "bg-[#1d355f]/10 text-[#1d355f]",
+          iconClassName: "bg-[#355b8a]/10 text-[#355b8a]",
         },
         {
           destination: { type: "external", href: mbaRegulationsPdf },
@@ -2527,7 +2527,7 @@ export const programmes = {
           destination: { type: "external", href: mbaBrochurePdf },
           icon: { name: "Download", size: 20 },
           title: "Download Brochure",
-          iconClassName: "bg-[#334b7c]/10 text-[#334b7c]",
+          iconClassName: "bg-[#3b6292]/10 text-[#3b6292]",
         },
       ],
       cta: {

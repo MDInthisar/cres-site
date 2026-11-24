@@ -121,7 +121,7 @@ function LMSPage() {
                 </span>
               </div>
 
-              <h2 className="mt-4 text-2xl font-bold leading-tight tracking-tight text-[#14284e] sm:text-3xl lg:text-4xl">
+              <h2 className="mt-4 text-2xl font-bold leading-tight tracking-tight text-[#24426c] sm:text-3xl lg:text-4xl">
                 A smarter <span className="text-[#8f1d1d]">learning experience</span> for every
                 learner.
               </h2>
@@ -169,12 +169,12 @@ function LMSPage() {
                   Digital Learning
                 </span>
 
-                <span className="inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-[#f7f5f7] px-3.5 py-2 text-xs font-semibold text-[#14284e]">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-[#f7f5f7] px-3.5 py-2 text-xs font-semibold text-[#24426c]">
                   <Sparkles className="size-3.5 text-[#6b4c9a]" />
                   Personalised
                 </span>
 
-                <span className="inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-[#f7f5f7] px-3.5 py-2 text-xs font-semibold text-[#14284e]">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-[#f7f5f7] px-3.5 py-2 text-xs font-semibold text-[#24426c]">
                   <LockKeyhole className="size-3.5 text-[#2f6f4e]" />
                   Secure Access
                 </span>
@@ -199,7 +199,7 @@ function LMSPage() {
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#14284e]/90 via-[#14284e]/15 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#24426c]/90 via-[#24426c]/15 to-transparent" />
 
               <div className="absolute left-0 top-0 h-full w-1 bg-[#b08a24]" />
 
@@ -277,7 +277,7 @@ function LMSPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold leading-6 text-[#14284e] sm:text-lg">
+                  <h3 className="text-base font-bold leading-6 text-[#24426c] sm:text-lg">
                     {feature.title}
                   </h3>
 
@@ -302,7 +302,7 @@ function LMSPage() {
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#e5e0dc] pt-5">
           <Link
             to="/studio"
-            className="group inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-white px-4 py-2.5 text-sm font-semibold text-[#14284e] transition-colors hover:border-[#8f1d1d] hover:text-[#8f1d1d]"
+            className="group inline-flex items-center gap-2 rounded-full border border-[#e5e0dc] bg-white px-4 py-2.5 text-sm font-semibold text-[#24426c] transition-colors hover:border-[#8f1d1d] hover:text-[#8f1d1d]"
           >
             <ArrowLeft className="size-4" />
             Back to Studio

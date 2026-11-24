@@ -20,7 +20,7 @@ type FacultyProfileDialogProps = {
 const themeStyles = {
   blue: {
     dialog: "max-w-2xl rounded-2xl",
-    header: "bg-gradient-to-r from-[#334b7c] via-[#2b416d] to-[#23365c] px-5 py-6 sm:px-7 sm:py-7",
+    header: "bg-gradient-to-r from-[#3b6292] via-[#2d4f7d] to-[#24426c] px-5 py-6 sm:px-7 sm:py-7",
     close:
       "absolute right-4 top-4 flex size-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20",
     photoFrame: "rounded-xl",
@@ -30,23 +30,23 @@ const themeStyles = {
     designation: "mt-2 text-sm font-medium leading-6 text-white/85 sm:text-base",
     badge:
       "mt-3 inline-flex rounded-full bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-white/90",
-    bodyHeading: "text-xs font-semibold uppercase tracking-[0.12em] text-[#334b7c]",
+    bodyHeading: "text-xs font-semibold uppercase tracking-[0.12em] text-[#3b6292]",
     bodyTitle: "mt-2 text-xl font-bold leading-7 text-[#111111] sm:text-2xl",
-    rowLabel: "text-sm font-semibold leading-6 text-[#334b7c] sm:text-base",
+    rowLabel: "text-sm font-semibold leading-6 text-[#3b6292] sm:text-base",
     rowValue: "mt-2 text-sm font-medium leading-6 text-[#111111] sm:mt-0 sm:text-base",
     rowGrid: "sm:grid-cols-[190px_1fr] sm:gap-5",
-    contactLabel: "flex items-center gap-2 text-sm font-semibold text-[#334b7c] sm:text-base",
-    programmeBox: "rounded-xl border border-[#334b7c]/10 bg-[#F5F1E9] p-4 sm:p-5",
-    programmeIcon: "size-5 shrink-0 text-[#334b7c]",
-    programmeLabel: "text-[#334b7c]",
+    contactLabel: "flex items-center gap-2 text-sm font-semibold text-[#3b6292] sm:text-base",
+    programmeBox: "rounded-xl border border-[#3b6292]/10 bg-[#F5F1E9] p-4 sm:p-5",
+    programmeIcon: "size-5 shrink-0 text-[#3b6292]",
+    programmeLabel: "text-[#3b6292]",
     programmeName: "mt-1 text-sm font-bold leading-6 text-[#111111] sm:text-base",
     profileHeading: "text-base font-semibold text-[#111111]",
     profileDescription: "mt-1 text-sm leading-5 text-black/55",
     contactValue: "mt-2 text-sm font-medium leading-6 text-[#111111] sm:mt-0 sm:text-base",
-    contactLink: "hover:text-[#334b7c]",
+    contactLink: "hover:text-[#3b6292]",
     profileFooter: "mt-5 gap-3",
     profileLink:
-      "group relative inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-[#334b7c] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 sm:text-base",
+      "group relative inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-[#3b6292] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 sm:text-base",
     profileArrow: "size-4 text-[#D4AF37]",
     divider:
       "absolute bottom-0 left-2 right-2 h-0.5 origin-left scale-x-0 bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100",

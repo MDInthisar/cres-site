@@ -100,7 +100,7 @@ function ProgrammePeopleRoute({ slug }: { slug: string }) {
             </div>
           </section>
         ) : (
-          <section className="bg-gradient-to-r from-[#334b7c] via-[#2b416d] to-[#23365c] text-white">
+          <section className="bg-gradient-to-r from-[#3b6292] via-[#2d4f7d] to-[#24426c] text-white">
             <div className="mx-auto max-w-6xl px-5 py-5 sm:px-6 sm:py-6">
               <div className="mb-3">
                 <Link
@@ -146,7 +146,7 @@ function ProgrammePeopleRoute({ slug }: { slug: string }) {
                 className={
                   isGreen
                     ? "mb-2 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-[#2F6F4E]"
-                    : "mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#334b7c] sm:text-sm"
+                    : "mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#3b6292] sm:text-sm"
                 }
               >
                 <span className={isGreen ? "h-px w-7 bg-[#D4AF37]" : "h-px w-6 bg-[#D4AF37]"} />
@@ -185,14 +185,14 @@ function ProgrammePeopleRoute({ slug }: { slug: string }) {
               className={
                 isGreen
                   ? "mt-7 flex items-start gap-3 rounded-2xl border border-[#2F6F4E]/10 bg-[#2F6F4E]/5 px-5 py-4"
-                  : "mt-6 flex items-start gap-3 rounded-xl border border-[#334b7c]/10 bg-[#334b7c]/5 px-4 py-4 sm:items-center sm:px-5"
+                  : "mt-6 flex items-start gap-3 rounded-xl border border-[#3b6292]/10 bg-[#3b6292]/5 px-4 py-4 sm:items-center sm:px-5"
               }
             >
               <BookOpen
                 className={
                   isGreen
                     ? "mt-0.5 h-5 w-5 shrink-0 text-[#2F6F4E]"
-                    : "mt-0.5 size-5 shrink-0 text-[#334b7c] sm:mt-0"
+                    : "mt-0.5 size-5 shrink-0 text-[#3b6292] sm:mt-0"
                 }
               />
               <p
@@ -233,7 +233,7 @@ function ProgrammeSyllabusRoute({ slug }: { slug: string }) {
       <main style={circularFont} className="bg-white">
         <section
           className={`${
-            syllabus.download.theme === "green" ? "bg-[#0d5c45]" : "bg-[#334b7c]"
+            syllabus.download.theme === "green" ? "bg-[#0d5c45]" : "bg-[#3b6292]"
           } px-5 py-6 text-white sm:px-8 sm:py-7`}
         >
           <div className="mx-auto max-w-7xl">

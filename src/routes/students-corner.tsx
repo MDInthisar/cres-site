@@ -69,7 +69,7 @@ function StudentsCornerPage() {
 
   return (
     <SiteLayout>
-      <main style={circularFont} className="bg-[#F5F1E9] text-[#17234B]">
+      <main style={circularFont} className="bg-[#F5F1E9] text-[#2d4f7d]">
         <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-start gap-4 px-4 py-4 sm:px-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-6 lg:px-8 lg:py-5">
           {/* SIDEBAR NAVIGATION */}
 
@@ -97,8 +97,8 @@ function StudentsCornerPage() {
                     aria-current={!item.external && isActive ? "location" : undefined}
                     className={`group flex w-full min-w-0 items-center justify-start gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-semibold leading-5 transition-colors duration-200 ${
                       isActive
-                        ? "bg-[#23457D] text-white"
-                        : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#23457D]"
+                        ? "bg-[#355b8a] text-white"
+                        : "text-[#555b66] hover:bg-[#F5F1E9] hover:text-[#355b8a]"
                     }`}
                   >
                     <span className="flex size-4 shrink-0 items-center justify-center">
@@ -125,11 +125,11 @@ function StudentsCornerPage() {
               transition={{ duration: 0.35 }}
               className="scroll-mt-5 pb-4"
             >
-              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[#23457D]">
+              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[#355b8a]">
                 STUDENT SERVICES
               </p>
 
-              <h1 className="text-[clamp(1.9rem,3vw,2.5rem)] font-bold leading-[1.1] tracking-[-0.04em] text-[#17234B]">
+              <h1 className="text-[clamp(1.9rem,3vw,2.5rem)] font-bold leading-[1.1] tracking-[-0.04em] text-[#2d4f7d]">
                 Student Learning &amp; Support
               </h1>
 
@@ -150,22 +150,22 @@ function StudentsCornerPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.35 }}
-                className="flex scroll-mt-5 flex-col overflow-hidden rounded-[18px] border border-[#E1DDD6] bg-white shadow-[0_4px_16px_rgba(23,35,75,0.04)]"
+                className="flex scroll-mt-5 flex-col overflow-hidden rounded-[18px] border border-[#E1DDD6] bg-white shadow-[0_4px_16px_rgba(45,79,125,0.04)]"
               >
-                <div className="h-1 w-full shrink-0 bg-[#23457D]" />
+                <div className="h-1 w-full shrink-0 bg-[#355b8a]" />
 
                 <div className="flex flex-1 flex-col p-4 sm:p-5">
                   <div className="flex items-center gap-3">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#23457D]">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#355b8a]">
                       <BookOpen className="size-5 text-white" />
                     </div>
 
                     <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#23457D]">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#355b8a]">
                         Digital Learning
                       </p>
 
-                      <h2 className="mt-0.5 text-[20px] font-bold leading-tight text-[#17234B]">
+                      <h2 className="mt-0.5 text-[20px] font-bold leading-tight text-[#2d4f7d]">
                         LMS Login
                       </h2>
                     </div>
@@ -186,7 +186,7 @@ function StudentsCornerPage() {
                       "Exam updates and results",
                     ].map((item) => (
                       <div key={item} className="flex items-start gap-2">
-                        <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-[#23457D]" />
+                        <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-[#355b8a]" />
 
                         <span className="text-[12px] leading-[1.6] text-[#343846]">{item}</span>
                       </div>
@@ -198,7 +198,7 @@ function StudentsCornerPage() {
                       href={LMS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 rounded-lg bg-[#23457D] px-4 py-2.5 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#18355f]"
+                      className="group inline-flex items-center gap-2 rounded-lg bg-[#355b8a] px-4 py-2.5 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#355b8a]"
                     >
                       Login to LMS
                       <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
@@ -215,9 +215,9 @@ function StudentsCornerPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.35, delay: 0.05 }}
-                className="flex scroll-mt-5 flex-col overflow-hidden rounded-[18px] bg-[#17234B] text-white shadow-[0_5px_18px_rgba(23,35,75,0.1)]"
+                className="flex scroll-mt-5 flex-col overflow-hidden rounded-[18px] bg-[#2d4f7d] text-white shadow-[0_5px_18px_rgba(45,79,125,0.1)]"
               >
-                <div className="h-1 w-full shrink-0 bg-gradient-to-r from-[#18355f] via-[#23457D] to-[#3b69a5]" />
+                <div className="h-1 w-full shrink-0 bg-gradient-to-r from-[#355b8a] via-[#355b8a] to-[#3b69a5]" />
 
                 <div className="flex flex-1 flex-col p-4 sm:p-5">
                   <div className="flex items-center gap-3">
@@ -275,7 +275,7 @@ function StudentsCornerPage() {
                     <button
                       type="button"
                       onClick={() => setIsComplaintOpen(true)}
-                      className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-2.5 text-[11px] font-bold text-[#23457D] transition-all hover:-translate-y-0.5 hover:bg-[#eaf0f7] sm:text-[12px]"
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-2.5 text-[11px] font-bold text-[#355b8a] transition-all hover:-translate-y-0.5 hover:bg-[#eaf0f7] sm:text-[12px]"
                     >
                       <FileText className="size-3.5" />
                       Online Complaint Form
@@ -322,8 +322,8 @@ function StudentsCornerPage() {
                 aria-labelledby="student-grievance-title"
                 className="relative max-h-[92vh] w-full max-w-xl overflow-y-auto rounded-[20px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
               >
-                <div className="sticky top-0 z-10 bg-[#23457D] px-5 py-4 text-white">
-                  <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-[#18355f] via-[#23457D] to-[#3b69a5]" />
+                <div className="sticky top-0 z-10 bg-[#355b8a] px-5 py-4 text-white">
+                  <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-[#355b8a] via-[#355b8a] to-[#3b69a5]" />
 
                   <button
                     type="button"
@@ -363,13 +363,13 @@ function StudentsCornerPage() {
                     onSubmitted={() => setIsComplaintOpen(false)}
                   />
 
-                  <div className="mt-4 rounded-lg border-l-[3px] border-[#23457D] bg-[#F5F1E9] px-3.5 py-3">
+                  <div className="mt-4 rounded-lg border-l-[3px] border-[#355b8a] bg-[#F5F1E9] px-3.5 py-3">
                     <p className="text-[12px] leading-[1.7] text-[#343846]">
-                      <span className="font-bold text-[#23457D]">Note:</span> You can also email
+                      <span className="font-bold text-[#355b8a]">Note:</span> You can also email
                       your grievance to{" "}
                       <a
                         href="mailto:cdoesupport@crescent.education"
-                        className="font-bold text-[#23457D] underline underline-offset-2"
+                        className="font-bold text-[#355b8a] underline underline-offset-2"
                       >
                         cdoesupport@crescent.education
                       </a>{" "}

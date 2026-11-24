@@ -126,9 +126,9 @@ function getAccentClasses(accent: string) {
       };
     default:
       return {
-        border: "border-[#1d355f]/15",
+        border: "border-[#355b8a]/15",
         line: "bg-[#d4af37]",
-        icon: "text-[#1d355f]",
+        icon: "text-[#355b8a]",
         label: "text-[#c93636]",
       };
   }
@@ -153,7 +153,7 @@ function TeamCard({ person, index }: { person: (typeof visionaryTeam)[number]; i
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.4 }}
-      className={`overflow-hidden rounded-[24px] border ${styles.border} bg-white p-4 shadow-[0_8px_28px_rgba(29,53,95,0.07)] sm:p-6 lg:p-7`}
+      className={`overflow-hidden rounded-[24px] border ${styles.border} bg-white p-4 shadow-[0_8px_28px_rgba(53,91,138,0.07)] sm:p-6 lg:p-7`}
     >
       <div
         className={`grid grid-cols-1 items-start gap-5 sm:gap-7 lg:gap-8 ${
@@ -186,7 +186,7 @@ function TeamCard({ person, index }: { person: (typeof visionaryTeam)[number]; i
             </p>
           </div>
 
-          <h2 className="text-xl font-bold leading-tight tracking-tight text-[#14284e] sm:text-2xl lg:text-[26px]">
+          <h2 className="text-xl font-bold leading-tight tracking-tight text-[#24426c] sm:text-2xl lg:text-[26px]">
             {person.name}
           </h2>
 
@@ -204,7 +204,7 @@ function TeamCard({ person, index }: { person: (typeof visionaryTeam)[number]; i
             type="button"
             onClick={() => setExpanded((previous) => !previous)}
             aria-expanded={expanded}
-            className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#17365f] transition-colors hover:text-[#8f1d1d]"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#355b8a] transition-colors hover:text-[#8f1d1d]"
           >
             {expanded ? "Read Less" : "Read More"}
             {expanded ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}

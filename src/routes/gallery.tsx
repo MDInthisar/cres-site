@@ -39,7 +39,7 @@ function GalleryPage() {
         ===================================================== */}
 
         <section className="px-5 pb-8 sm:px-8 lg:px-12">
-          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 rounded-[1.75rem] bg-[#172554] px-6 py-5 text-white shadow-[0_15px_45px_rgba(23,37,84,0.16)] sm:flex-row sm:px-8">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 rounded-[1.75rem] bg-[#2d4f7d] px-6 py-5 text-white shadow-[0_15px_45px_rgba(45,79,125,0.16)] sm:flex-row sm:px-8">
             <div>
               <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#d4af37]">
                 Experience Crescent

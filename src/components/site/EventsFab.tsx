@@ -79,10 +79,10 @@ export function EventsModalProvider({ children }: { children: ReactNode }) {
       <Dialog open={eventsOpen} onOpenChange={setEventsOpen}>
         <DialogContent
           overlayClassName="z-[10000] bg-[#101827]/55 backdrop-blur-sm"
-          className="z-[10001] max-h-[88vh] max-w-3xl gap-5 overflow-y-auto rounded-2xl border-[#d9dee7] bg-[#f8f7f4] p-5 text-[#172554] sm:p-7"
+          className="z-[10001] max-h-[88vh] max-w-3xl gap-5 overflow-y-auto rounded-2xl border-[#d9dee7] bg-[#f8f7f4] p-5 text-[#2d4f7d] sm:p-7"
         >
           <DialogHeader className="pr-8 text-left">
-            <DialogTitle className="text-2xl font-bold text-[#172554]">
+            <DialogTitle className="text-2xl font-bold text-[#2d4f7d]">
               News &amp; Events
             </DialogTitle>
             <DialogDescription className="text-sm leading-6 text-[#667085]">
@@ -101,11 +101,11 @@ export function EventsModalProvider({ children }: { children: ReactNode }) {
                     <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#7f1d1d]">
                       {item.date}
                     </p>
-                    <h2 className="mt-1 text-base font-bold text-[#172554] sm:text-lg">
+                    <h2 className="mt-1 text-base font-bold text-[#2d4f7d] sm:text-lg">
                       {item.title}
                     </h2>
                   </div>
-                  <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#172554]/70">
+                  <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#2d4f7d]/70">
                     Details
                   </span>
                 </AccordionTrigger>

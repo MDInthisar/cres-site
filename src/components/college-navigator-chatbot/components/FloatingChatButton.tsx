@@ -91,7 +91,7 @@ function FloatingChatButtonBase({ open, onToggle, label }: Props) {
             inset-[3px]
             rounded-full
             border
-            border-[#202b55]/15
+            border-[#24426c]/15
             bg-gradient-to-br
             from-[#ffffff]
             via-[#f8f6f1]
@@ -123,7 +123,7 @@ function FloatingChatButtonBase({ open, onToggle, label }: Props) {
                 items-center
                 justify-center
                 rounded-full
-                bg-[#202b55]
+                bg-[#24426c]
                 text-white
                 shadow-md
               "

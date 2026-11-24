@@ -173,7 +173,7 @@ export function MainNav({ compact = false }: { compact?: boolean }) {
           -right-16
           size-32
           rounded-full
-          bg-[#172554]/[0.035]
+          bg-[#2d4f7d]/[0.035]
           blur-3xl
           sm:-bottom-20
           sm:-right-20
@@ -330,7 +330,7 @@ export function MainNav({ compact = false }: { compact?: boolean }) {
                   rounded-xl
                   border-[#dfe3e8]
                   bg-white/80
-                  text-[#172554]
+                  text-[#2d4f7d]
                   shadow-sm
                   transition-all
 
@@ -384,7 +384,7 @@ export function MainNav({ compact = false }: { compact?: boolean }) {
                   text-lg
                   font-bold
                   leading-tight
-                  text-[#172554]
+                  text-[#2d4f7d]
                 "
               >
                 {college.name}
@@ -488,7 +488,7 @@ export function MainNav({ compact = false }: { compact?: boolean }) {
                   text-white
                   shadow-lg
                   shadow-[#7f1d1d]/20
-                  hover:bg-[#172554]
+                  hover:bg-[#2d4f7d]
                 "
                 asChild
               >
@@ -521,15 +521,15 @@ export function MainNav({ compact = false }: { compact?: boolean }) {
                       items-center
                       justify-center
                       rounded-full
-                      bg-[#172554]/[0.06]
-                      text-[#172554]
+                      bg-[#2d4f7d]/[0.06]
+                      text-[#2d4f7d]
                     "
                   >
                     <ShieldCheck className="size-4" />
                   </div>
 
                   <div>
-                    <p className="text-xs font-bold text-[#172554]">UGC Approved</p>
+                    <p className="text-xs font-bold text-[#2d4f7d]">UGC Approved</p>
 
                     <p className="mt-0.5 text-[11px] text-[#737b87]">Recognised programmes</p>
                   </div>

@@ -128,7 +128,7 @@ export function WhoWeAre() {
                       absolute
                       inset-0
                       bg-gradient-to-t
-                      from-[#07152f]/45
+                      from-[#24426c]/45
                       via-transparent
                       to-transparent
                     "
@@ -209,7 +209,7 @@ export function WhoWeAre() {
                           items-center
                           justify-center
                           rounded-lg
-                          bg-[#1d3b73]
+                          bg-[#355b8a]
                           text-white
                           sm:size-9
                         "
@@ -368,7 +368,7 @@ export function WhoWeAre() {
                     items-center
                     gap-2
                     rounded-full
-                    bg-[#1d3b73]
+                    bg-[#355b8a]
                     px-5
                     py-2.5
                     text-sm
@@ -378,7 +378,7 @@ export function WhoWeAre() {
                     transition-all
                     duration-300
                     hover:-translate-y-0.5
-                    hover:bg-[#16305f]
+                    hover:bg-[#355b8a]
                     hover:shadow-lg
                     sm:px-6
                     sm:py-3

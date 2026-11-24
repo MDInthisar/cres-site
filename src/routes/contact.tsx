@@ -58,7 +58,7 @@ function ContactPage() {
         {/* ADMISSION SUPPORT */}
         <section className="bg-white px-5 py-6 sm:px-8 lg:px-10" style={circularFont}>
           <div className="mx-auto max-w-6xl">
-            <div className="rounded-2xl border border-[#172554]/10 bg-[#f8f9fc] px-5 py-8 text-center sm:px-8">
+            <div className="rounded-2xl border border-[#2d4f7d]/10 bg-[#f8f9fc] px-5 py-8 text-center sm:px-8">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8f1d1d]">
                 Admission Support
               </p>
@@ -77,7 +77,7 @@ function ContactPage() {
               <div className="mt-5 flex flex-wrap justify-center gap-3">
                 <a
                   href={`tel:${college.numbers[0].tel}`}
-                  className="inline-flex items-center gap-2 rounded-full bg-[#172554] px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#8f1d1d]"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#2d4f7d] px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#8f1d1d]"
                 >
                   <Phone className="size-4" />
                   {college.numbers[0].label} Enquiries
@@ -85,7 +85,7 @@ function ContactPage() {
 
                 <a
                   href={`tel:${college.numbers[1].tel}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#172554]/15 bg-white px-5 py-3 text-sm font-bold text-black transition-all hover:-translate-y-0.5 hover:border-[#d4af37]"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#2d4f7d]/15 bg-white px-5 py-3 text-sm font-bold text-black transition-all hover:-translate-y-0.5 hover:border-[#d4af37]"
                 >
                   <Phone className="size-4" />
                   {college.numbers[1].label} Enquiries
@@ -93,7 +93,7 @@ function ContactPage() {
 
                 <a
                   href={`mailto:${college.email}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#172554]/15 bg-white px-5 py-3 text-sm font-bold text-black transition-all hover:-translate-y-0.5 hover:border-[#d4af37]"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#2d4f7d]/15 bg-white px-5 py-3 text-sm font-bold text-black transition-all hover:-translate-y-0.5 hover:border-[#d4af37]"
                 >
                   <Mail className="size-4" />
                   Email Us
@@ -124,10 +124,10 @@ function ContactCard({
   return (
     <a
       href={href}
-      className="group flex min-h-[100px] min-w-0 items-center gap-3 rounded-2xl border border-[#172554]/10 bg-white px-3 py-4 shadow-[0_5px_20px_rgba(23,37,84,0.05)] transition-all duration-200 hover:-translate-y-1 hover:border-[#d4af37]/50 sm:gap-3 sm:px-4"
+      className="group flex min-h-[100px] min-w-0 items-center gap-3 rounded-2xl border border-[#2d4f7d]/10 bg-white px-3 py-4 shadow-[0_5px_20px_rgba(45,79,125,0.05)] transition-all duration-200 hover:-translate-y-1 hover:border-[#d4af37]/50 sm:gap-3 sm:px-4"
       style={circularFont}
     >
-      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#172554] text-[#d4af37] transition-colors group-hover:bg-[#8f1d1d] group-hover:text-white sm:size-11">
+      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#2d4f7d] text-[#d4af37] transition-colors group-hover:bg-[#8f1d1d] group-hover:text-white sm:size-11">
         {icon}
       </div>
 

@@ -57,7 +57,7 @@ export function AboutSectionHeading({
       <p className={`text-[10px] font-bold uppercase tracking-[0.16em] ${eyebrowClassName}`}>
         {eyebrow}
       </p>
-      <h1 className="mt-1 text-2xl font-bold tracking-tight text-[#14284e] sm:text-3xl">{title}</h1>
+      <h1 className="mt-1 text-2xl font-bold tracking-tight text-[#24426c] sm:text-3xl">{title}</h1>
       <p className={`mt-2 ${descriptionClassName}`}>{description}</p>
     </motion.header>
   );
